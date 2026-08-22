@@ -533,7 +533,7 @@
   height: 58vh;
   z-index: 3;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0;
   transition: opacity 0.8s ease;
 }
 

@@ -178,9 +178,9 @@ export function initHeroWindowScene() {
     tl.fromTo(
       windowWall,
       { scale: 1, opacity: 1 },
-      { scale: 7.2, opacity: 0, ease: 'power2.inOut', duration: 0.48 },
+      { scale: 7.5, opacity: 1, ease: 'power2.inOut', duration: 0.48 },
       0
-    );
+    ).to(windowWall, { opacity: 0, ease: 'power1.out', duration: 0.04 }, 0.46);
   }
 
   // 2. Separação lateral da tipografia (0.00 -> 0.38)
