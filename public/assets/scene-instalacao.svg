@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <linearGradient id="iw" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2FAFE"/>
+      <stop offset="1" stop-color="#DCEEF9"/>
+    </linearGradient>
+    <linearGradient id="iac" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#CBE4F3"/>
+    </linearGradient>
+    <filter id="ig" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#16304F" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#iw)"/>
+  <!-- piso -->
+  <path d="M0 486 H800 V600 H0 Z" fill="#CFE6F3"/>
+  <path d="M0 486 H800" stroke="#9CC4DC" stroke-width="3"/>
+  <!-- paredes -->
+  <path d="M60 486 V96 H740 V486" stroke="#A9CDE2" stroke-width="3" fill="#FFFFFF" opacity=".55"/>
+  <path d="M60 96 H740" stroke="#7FB0CE" stroke-width="5"/>
+
+  <!-- unidade montada na parede -->
+  <g filter="url(#ig)">
+    <rect x="300" y="128" width="260" height="76" rx="18" fill="url(#iac)" stroke="#8FB8D2" stroke-width="2.5"/>
+    <path d="M316 178 h228" stroke="#9CC4DC" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="532" cy="146" r="4" fill="#31B6E4"/>
+    <path d="M330 214 q14 18 34 20 M420 214 q10 14 24 16 M500 214 q8 12 20 14" stroke="#7CC8F0" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 9" opacity=".9"/>
+  </g>
+  <!-- nível a laser -->
+  <path d="M300 232 H560" stroke="#4FA8DC" stroke-width="2" stroke-dasharray="2 10" opacity=".8"/>
+
+  <!-- escada -->
+  <g stroke="#16304F" stroke-width="9" stroke-linecap="round">
+    <path d="M210 486 L262 330"/>
+    <path d="M330 486 L278 330"/>
+  </g>
+  <g stroke="#16304F" stroke-width="7" stroke-linecap="round">
+    <path d="M224 452 L316 452"/>
+    <path d="M236 414 L304 414"/>
+    <path d="M248 376 L292 376"/>
+    <path d="M260 340 L280 340"/>
+  </g>
+
+  <!-- técnico -->
+  <g>
+    <!-- pernas -->
+    <path d="M356 486 L368 396 L396 396 L400 486" fill="#16304F"/>
+    <!-- torso -->
+    <path d="M362 400 Q362 340 384 336 Q410 340 408 400 Z" fill="#2A5B85"/>
+    <!-- braço com parafusadora -->
+    <path d="M404 356 L452 322" stroke="#2A5B85" stroke-width="16" stroke-linecap="round"/>
+    <g transform="rotate(-32 452 322)">
+      <rect x="446" y="306" width="40" height="18" rx="6" fill="#16304F"/>
+      <rect x="484" y="309" width="16" height="12" rx="3" fill="#4FA8DC"/>
+    </g>
+    <!-- faixa refletiva -->
+    <path d="M366 382 h38" stroke="#7FE3FF" stroke-width="7" stroke-dasharray="10 8"/>
+    <!-- cabeça -->
+    <circle cx="386" cy="312" r="22" fill="#E8C9A8"/>
+    <path d="M364 308 a22 22 0 0 1 44 0 v-6 a22 16 0 0 0 -44 0 Z" fill="#16304F"/>
+    <!-- faíscas -->
+    <g stroke="#4FA8DC" stroke-width="3" stroke-linecap="round">
+      <path d="M470 300 l8 -8 M474 316 l10 4 M460 296 l2 -10"/>
+    </g>
+  </g>
+
+  <!-- caixa de ferramentas -->
+  <g transform="translate(560,440)">
+    <rect x="0" y="20" width="110" height="46" rx="8" fill="#16304F"/>
+    <path d="M30 20 v-8 a25 12 0 0 1 50 0 v8" stroke="#16304F" stroke-width="7" fill="none"/>
+    <path d="M0 38 h110" stroke="#4FA8DC" stroke-width="6"/>
+  </g>
+
+  <!-- medidas -->
+  <g stroke="#4FA8DC" stroke-width="2" opacity=".85">
+    <path d="M560 128 h60 M560 124 v8 M620 124 v8"/>
+  </g>
+  <text x="652" y="134" font-family="Arial" font-size="15" fill="#4FA8DC" letter-spacing="2">1,80 m</text>
+</svg>

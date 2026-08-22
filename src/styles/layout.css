@@ -1,0 +1,188 @@
+/* ============================================================
+   MaxFrio — layout.css
+   Container, grids, espaçadores, seções e temas.
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  position: relative;
+}
+
+.section {
+  position: relative;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.section.clip {
+  overflow: clip;
+}
+
+/* temas: cada seção redefine as variáveis locais */
+.bg-dark {
+  --bg: var(--navy-950);
+  --fg: var(--ice-50);
+  --fg-dim: var(--frost-400);
+  --fg-faint: var(--slate-400);
+  --line: rgba(168, 221, 249, 0.16);
+  --line-strong: rgba(168, 221, 249, 0.3);
+  --card: rgba(22, 48, 79, 0.5);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.bg-light {
+  --bg: var(--ice-50);
+  --fg: var(--navy-950);
+  --fg-dim: var(--slate-500);
+  --fg-faint: var(--slate-400);
+  --line: rgba(12, 24, 38, 0.14);
+  --line-strong: rgba(12, 24, 38, 0.3);
+  --card: rgba(255, 255, 255, 0.66);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* ------------------------------------------------------------
+   Grids
+   ------------------------------------------------------------ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.4rem;
+}
+
+.grid.fill {
+  height: 100%;
+  align-items: start;
+}
+
+.grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.g-col-3 {
+  grid-column: span 3;
+}
+
+.g-col-4 {
+  grid-column: span 4;
+}
+
+.g-col-6 {
+  grid-column: span 6;
+}
+
+.g-col-8 {
+  grid-column: span 8;
+}
+
+.g-col-9 {
+  grid-column: span 9;
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .g-col-3,
+  .g-col-4,
+  .g-col-6,
+  .g-col-8,
+  .g-col-9 {
+    grid-column: span 6;
+  }
+}
+
+/* ------------------------------------------------------------
+   Espaçadores verticais (unidades fixas como no original)
+   ------------------------------------------------------------ */
+
+.u-8 {
+  height: 8px;
+}
+
+.u-12 {
+  height: 12px;
+}
+
+.u-24 {
+  height: 24px;
+}
+
+.u-36 {
+  height: 36px;
+}
+
+.u-60 {
+  height: 60px;
+}
+
+.u-96 {
+  height: 96px;
+}
+
+.u-156 {
+  height: 156px;
+}
+
+/* ------------------------------------------------------------
+   Linhas e divisores
+   ------------------------------------------------------------ */
+
+.line-h {
+  height: 1px;
+  width: 100%;
+  background: var(--line-strong);
+}
+
+.line-v {
+  width: 1px;
+  align-self: stretch;
+  background: var(--line-strong);
+}
+
+.line-divider-w {
+  display: flex;
+  flex-direction: column;
+}
+
+.line-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--line-strong);
+}
+
+/* ------------------------------------------------------------
+   Pares rótulo/valor (listas de dados)
+   ------------------------------------------------------------ */
+
+.data-item {
+  display: flex;
+  justify-content: space;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 14px;
+}
+
+/* ------------------------------------------------------------
+   Seções de rolagem longa com palco sticky
+   ------------------------------------------------------------ */
+
+.scroll-track {
+  position: relative;
+}
+
+.sticky-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}

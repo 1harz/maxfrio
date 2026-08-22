@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 360" fill="none">
+  <!--
+    MAXFRIO — wordmark monoline para a seção de cobertura.
+    Cada letra tem pathLength="1" para draw-in animado via stroke-dashoffset.
+  -->
+  <defs>
+    <linearGradient id="wmgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A8DDF9" stop-opacity=".95"/>
+      <stop offset=".45" stop-color="#7CC8F0" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#4FA8DC" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#wmgrad)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+    <path class="wm-letter" pathLength="1" d="M30 300V60L115 205L200 60V300"/>
+    <path class="wm-letter" pathLength="1" d="M240 300L325 60L410 300"/>
+    <path class="wm-letter" pathLength="1" d="M282 214h86"/>
+    <path class="wm-letter" pathLength="1" d="M450 60L620 300"/>
+    <path class="wm-letter" pathLength="1" d="M620 60L450 300"/>
+    <path class="wm-letter" pathLength="1" d="M670 300V60H840"/>
+    <path class="wm-letter" pathLength="1" d="M670 176h140"/>
+    <path class="wm-letter" pathLength="1" d="M890 300V60H968Q1042 60 1042 117Q1042 174 968 174H890"/>
+    <path class="wm-letter" pathLength="1" d="M952 174L1036 300"/>
+    <path class="wm-letter" pathLength="1" d="M1062 60V300"/>
+    <path class="wm-letter" pathLength="1" d="M1032 60h60M1032 300h60"/>
+    <ellipse class="wm-letter" pathLength="1" cx="1268" cy="180" rx="86" ry="120"/>
+  </g>
+</svg>

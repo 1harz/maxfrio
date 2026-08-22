@@ -1,0 +1,306 @@
+/* ============================================================
+   MaxFrio — base.css
+   Tokens, reset, tipografia e utilitários primitivos.
+   Identidade própria: gelo + navy, grotesque expandida.
+   ============================================================ */
+
+:root {
+  /* paleta */
+  --navy-950: #0c1826;
+  --navy-900: #10233a;
+  --navy-800: #16304f;
+  --navy-700: #1b4266;
+  --ice-50: #f2fafe;
+  --ice-100: #e8f4fc;
+  --ice-200: #d6ecf8;
+  --frost-300: #a8ddf9;
+  --frost-400: #7cc8f0;
+  --frost-500: #4fa8dc;
+  --frost-600: #3187bd;
+  --slate-500: #33506b;
+  --slate-400: #5b7a93;
+  --ok: #1ba64b;
+  --warn: #ffa800;
+
+  /* tipografia */
+  --font-display: 'Encode Sans Expanded', 'Arial Narrow', Arial, sans-serif;
+  --font-body: 'Encode Sans Semi Expanded', Arial, sans-serif;
+
+  /* métricas */
+  --container: 1680px;
+  --gutter: clamp(20px, 4vw, 96px);
+  --radius: 18px;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-inout: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* tema — sobrescrito por .bg-dark / .bg-light */
+  --bg: var(--ice-50);
+  --fg: var(--navy-950);
+  --fg-dim: var(--slate-400);
+  --fg-faint: var(--slate-500);
+  --line: rgba(12, 24, 38, 0.14);
+  --line-strong: rgba(12, 24, 38, 0.28);
+  --card: rgba(255, 255, 255, 0.6);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--fg);
+  background: var(--navy-950);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+::selection {
+  color: var(--navy-950);
+  background: var(--frost-300);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* grão sutil por cima de tudo */
+body::after {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  z-index: 180;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------
+   Tipografia
+   ------------------------------------------------------------ */
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.h1 {
+  font-size: clamp(52px, 8vw, 118px);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+
+.h2 {
+  font-size: clamp(40px, 5.6vw, 80px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+}
+
+.h3 {
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.h4 {
+  font-size: clamp(24px, 2.6vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.p2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 44px);
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.p5 {
+  font-size: clamp(19px, 1.55vw, 26px);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.p6 {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.p7 {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.l1 {
+  font-size: 0.72rem;
+  line-height: 1.25;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* utilitários de cor por tema */
+.text-dim {
+  color: var(--fg-dim);
+}
+.text-faint {
+  color: var(--fg-faint);
+}
+.text-frost {
+  color: var(--frost-400);
+}
+
+/* alinhamento */
+.a-right {
+  text-align: right;
+}
+.a-center {
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   Controle de animação (elementos visíveis com suporte a blur)
+   ------------------------------------------------------------ */
+
+[data-prevent-flicker='true'] {
+  visibility: visible;
+}
+
+
+/* linhas geradas pelo SplitText não podem quebrar */
+.line {
+  overflow: visible;
+  white-space: normal;
+}
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------
+   Blocos de mídia
+   ------------------------------------------------------------ */
+
+.img-w {
+  position: relative;
+  overflow: hidden;
+}
+.img-w > img,
+.img-w > .img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-p {
+  width: 100%;
+  height: 118%;
+  object-fit: cover;
+}
+
+/* utilidades de exibição desktop/mobile */
+.b-desktop {
+  display: block;
+}
+.b-mobile {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .b-desktop {
+    display: none !important;
+  }
+  .b-mobile {
+    display: block !important;
+  }
+  .f-desktop {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .f-mobile {
+    display: none !important;
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+/* landscape cover para telas pequenas */
+.landscape-cover {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: var(--navy-950);
+}
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .landscape-cover {
+    display: block;
+  }
+}
+
+/* acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
