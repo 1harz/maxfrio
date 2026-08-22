@@ -47,7 +47,7 @@ function IconPlus({ id }) {
 
 export default function Benefits() {
   return (
-    <section id="vantagens" className="bene section bg-light" data-bg="light" style={{ position: 'relative', overflow: 'hidden' }}>
+    <section id="vantagens" className="bene section bg-light" data-bg="light" style={{ position: 'relative', zIndex: 11, overflow: 'hidden' }}>
       <div className="side-curtain-bg" data-curtain="side" aria-hidden="true" />
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="u-96" />

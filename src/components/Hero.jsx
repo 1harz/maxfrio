@@ -78,7 +78,7 @@ export default function Hero() {
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
-              {/* Máscara que cria o recorte transparente da janela quadrada central */}
+              {/* Recorte transparente da janela quadrada central */}
               <mask id="windowPortalMask">
                 <rect width="1920" height="1080" fill="white" />
                 <rect x="670" y="160" width="580" height="760" rx="16" fill="black" />
@@ -96,7 +96,7 @@ export default function Hero() {
             {/* Parede com o recorte da janela */}
             <rect width="1920" height="1080" fill="url(#wallGrad)" mask="url(#windowPortalMask)" />
 
-            {/* Moldura elegante da janela quadrada com chanfro arquitetônico */}
+            {/* Moldura da janela quadrada */}
             <rect
               x="656"
               y="146"
@@ -157,7 +157,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Grid Inferior: CTAs e prompt de rolagem */}
+            {/* Grid Inferior: CTAs */}
             <div className="hero-s_bot" data-hero-bot>
               <div className="hero-s_bot_left">
                 <a href="#orcamento" className="hero-cta-btn" pop-up-open="orcamento">
@@ -168,81 +168,75 @@ export default function Hero() {
                 </a>
               </div>
 
-              <div className="hero-s_bot_center">
-                <div className="hero-scroll-prompt">
-                  <div className="scroll-mouse-icon">
-                    <div className="scroll-mouse-wheel" />
-                  </div>
-                  <span className="scroll-prompt-label">ROLE PARA INICIAR A JORNADA</span>
-                </div>
-              </div>
-
               <div className="hero-s_bot_right">
-                <div className="hero-pill-info">
+                <div className="hero-pill-info font-mono">
                   <span className="pill-val">12 MIL+</span>
-                  <span className="pill-lbl">INSTALAÇÕES REALIZADAS</span>
+                  <span className="pill-lbl text-dim">INSTALAÇÕES REALIZADAS</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ── 4. CONTEÚDO REVELADO NO QUARTO (Surge após o zoom pela janela) ── */}
+        {/* ── 4. CONTEÚDO REVELADO NO QUARTO (Pura tipografia minimalista sobre a cena) ── */}
         <div className="hero-room-content" data-hero-room-content>
           <div className="container">
-            <div className="hero-room-editorial">
-              <div className="room-editorial_top">
-                <div className="room-tag-line">
-                  <span className="room-tag-dot" />
-                  <span>CONFORTO TÉRMICO MAXFRIO</span>
+            <div className="hero-room-minimal">
+              <div className="l1 font-mono text-frost room-min-tag">[ CONFORTO TÉRMICO // MAXFRIO ]</div>
+              <h2 className="h2 room-min-title">
+                Lá fora, 40° à sombra.<br />
+                <span className="text-frost">Aqui dentro, 22° na medida.</span>
+              </h2>
+              <p className="p6 room-min-desc">
+                Instalação limpa em até 24h, manutenção preventiva de alta precisão e o ar que você sente na primeira respirada.
+              </p>
+
+              <div className="room-min-stats font-mono">
+                <div className="min-stat-item">
+                  <span className="min-stat-num">2009</span>
+                  <span className="min-stat-lbl text-dim">DESDE</span>
                 </div>
-                <h2 className="room-lead-title">
-                  Lá fora, 40° à sombra.
-                  <br />
-                  <span className="text-frost">Aqui dentro, 22° na medida.</span>
-                </h2>
-                <p className="room-lead-desc">
-                  Instalação limpa em até 24h, manutenção preventiva de alta precisão e o ar que você sente na primeira respirada.
-                </p>
+                <div className="min-stat-divider" />
+                <div className="min-stat-item">
+                  <span className="min-stat-num">12 MIL+</span>
+                  <span className="min-stat-lbl text-dim">INSTALAÇÕES</span>
+                </div>
+                <div className="min-stat-divider" />
+                <div className="min-stat-item">
+                  <span className="min-stat-num">4,9 / 5</span>
+                  <span className="min-stat-lbl text-dim">AVALIAÇÃO</span>
+                </div>
               </div>
 
-              <div className="room-editorial_bottom">
-                <div className="room-stats-grid">
-                  <div className="room-stat-col">
-                    <span className="stat-big">2009</span>
-                    <span className="stat-sub">DESDE</span>
-                  </div>
-                  <div className="room-stat-divider" />
-                  <div className="room-stat-col">
-                    <span className="stat-big">12 MIL+</span>
-                    <span className="stat-sub">INSTALAÇÕES REALIZADAS</span>
-                  </div>
-                  <div className="room-stat-divider" />
-                  <div className="room-stat-col">
-                    <span className="stat-big">4,9 / 5</span>
-                    <span className="stat-sub">AVALIAÇÃO MÉDIA</span>
-                  </div>
-                </div>
+              <div className="room-min-actions">
+                <a href="#orcamento" className="hero-cta-btn" pop-up-open="orcamento">
+                  <span>Solicitar Orçamento</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
 
-                <div className="room-actions-wrap">
-                  <a href="#orcamento" className="hero-cta-btn" pop-up-open="orcamento">
-                    <span>Solicitar Orçamento</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </a>
+                <button
+                  type="button"
+                  className={`hero-ac-toggle-btn ${climate.isOn ? 'is-active' : ''}`}
+                  onClick={handlePowerToggle}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10" />
+                  </svg>
+                  <span>{climate.isOn ? 'MaxFrio Ligado // 22°C' : 'Ligar Ar Condicionado'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
 
-                  <button
-                    type="button"
-                    className={`hero-ac-toggle-btn ${climate.isOn ? 'is-active' : ''}`}
-                    onClick={handlePowerToggle}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10" />
-                    </svg>
-                    <span>{climate.isOn ? 'MaxFrio Ligado // 22°C' : 'Ligar Ar Condicionado'}</span>
-                  </button>
-                </div>
+          {/* Linha de telemetria para a transição com a próxima seção */}
+          <div className="hero-next-cue">
+            <div className="container">
+              <div className="line-h on-color" style={{ opacity: 0.2 }} />
+              <div className="hero-next-cue_meta font-mono">
+                <span className="l1 text-frost">[ INTERFACE DE CONTROLE // MAXCONTROL ]</span>
+                <span className="p7 text-dim">Próxima Seção ↓</span>
               </div>
             </div>
           </div>

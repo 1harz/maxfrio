@@ -229,26 +229,14 @@ function SecondModel({ isMobile }) {
           pin: true,
         },
       })
-      .to(groupRef.current.rotation, { y: -Math.PI * 2, duration: 0.8 }, 0)
-      .to(
-        groupRef.current.scale,
-        {
-          x: isMobile ? 1.4 : 1.9,
-          y: isMobile ? 1.4 : 1.9,
-          z: isMobile ? 1.4 : 1.9,
-          duration: 0.1,
-        },
-        0.8
-      )
-      .to(textsMaterial, { opacity: 0, duration: 0.05 }, 0.8)
-      .to(marqueeMaterial, { opacity: 0.25, duration: 0.05 }, 0.8)
+      .to(groupRef.current.rotation, { y: -Math.PI * 2, duration: 1 }, 0)
       .add(animateTexts(textsRef).duration(0.55), 0);
 
     return () => {
       tl.kill();
       ScrollTrigger.refresh();
     };
-  }, [isMobile, textsMaterial, marqueeMaterial]);
+  }, [isMobile]);
 
   /* Escala da condensadora */
   const acScale = isMobile ? 0.24 : 0.30;
@@ -298,23 +286,7 @@ function SecondModel({ isMobile }) {
         )}
       </group>
 
-      {/* Marquees Infinitos MaxFrio no topo e base */}
-      <MaxFrioMarqueeRing
-        y={0.34}
-        radius={R * 1.05}
-        text="MAXFRIO — CLIMATIZAÇÃO — MAXFRIO — CLIMATIZAÇÃO — "
-        size={0.038}
-        speed={-0.08}
-        material={marqueeMaterial}
-      />
-      <MaxFrioMarqueeRing
-        y={-0.34}
-        radius={R * 1.05}
-        text="DESDE 2009 — 12 MIL+ INSTALAÇÕES — AVALIAÇÃO 4,9/5 — "
-        size={0.034}
-        speed={0.08}
-        material={marqueeMaterial}
-      />
+
     </group>
   );
 }

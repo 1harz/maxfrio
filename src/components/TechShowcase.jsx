@@ -63,8 +63,22 @@ const TECH_ITEMS = [
 
 export default function TechShowcase() {
   return (
-    <section id="engenharia" className="tech-showcase section bg-dark clip" data-bg="dark">
-      <div className="tech-track" data-tech-track>
+    <section id="engenharia" className="tech-showcase section bg-dark clip" data-bg="dark" style={{ position: 'relative', zIndex: 2 }}>
+      {/* Transição superior conectando com o blur da seção anterior */}
+      <div 
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '200px',
+          background: 'linear-gradient(to bottom, #060D15 0%, rgba(6, 13, 21, 0.7) 50%, transparent 100%)',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+      />
+      <div className="tech-track" data-tech-track style={{ position: 'relative', zIndex: 1 }}>
         <div className="sticky-stage tech-stage">
           {/* Header da seção com telemetria */}
           <div className="container tech-header">

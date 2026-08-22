@@ -5,6 +5,7 @@
    ============================================================ */
 
 import { gsap, lockScroll, onDesktop, onMobile, splitEl } from './core.js';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { blurIn, blurOut } from './reveals.js';
 import { airTunnelIntensity } from './canvas.js';
 
@@ -169,57 +170,61 @@ export function initHeroWindowScene() {
       end: 'bottom bottom',
       scrub: 1,
       invalidateOnRefresh: true,
-      onLeaveBack: resetHeroState,
     },
   });
 
-  // 1. Zoom na parede com janela única (0.00 -> 0.55)
+  // 1. Zoom na parede com janela única (0.00 -> 0.48)
   if (windowWall) {
     tl.fromTo(
       windowWall,
       { scale: 1, opacity: 1 },
-      { scale: 7.2, opacity: 0, ease: 'power2.inOut', duration: 0.55 },
+      { scale: 7.2, opacity: 0, ease: 'power2.inOut', duration: 0.48 },
       0
     );
   }
 
-  // 2. Separação lateral da tipografia (0.00 -> 0.45)
+  // 2. Separação lateral da tipografia (0.00 -> 0.38)
   if (leftText) {
-    tl.to(leftText, { x: '-50vw', opacity: 0, ease: 'power2.in', duration: 0.45 }, 0);
+    tl.to(leftText, { x: '-50vw', opacity: 0, ease: 'power2.in', duration: 0.38 }, 0);
   }
   if (rightText) {
-    tl.to(rightText, { x: '50vw', opacity: 0, ease: 'power2.in', duration: 0.45 }, 0);
+    tl.to(rightText, { x: '50vw', opacity: 0, ease: 'power2.in', duration: 0.38 }, 0);
   }
   if (botBar) {
-    tl.to(botBar, { y: 30, opacity: 0, ease: 'power2.in', duration: 0.25 }, 0);
+    tl.to(botBar, { y: 30, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0);
   }
 
-  // 3. Fundo do quarto avança com parallax suave (0.00 -> 0.55)
+  // 3. Fundo do quarto avança com parallax suave (0.00 -> 0.48)
   if (roomBg) {
     tl.fromTo(
       roomBg,
       { scale: 0.96 },
-      { scale: 1.06, ease: 'power1.out', duration: 0.55 },
+      { scale: 1.04, ease: 'power1.out', duration: 0.48 },
       0
     );
   }
 
-  // 4. Revelação do conteúdo do quarto (0.45 -> 0.80)
+  // 4. Revelação do conteúdo do quarto (0.40 -> 0.68)
   if (roomContent) {
     tl.fromTo(
       roomContent,
-      { opacity: 0, y: 40, pointerEvents: 'none' },
-      { opacity: 1, y: 0, pointerEvents: 'auto', ease: 'power3.out', duration: 0.35 },
-      0.45
+      { opacity: 0, y: 30, pointerEvents: 'none' },
+      { opacity: 1, y: 0, pointerEvents: 'auto', ease: 'power2.out', duration: 0.28 },
+      0.40
     );
   }
 
-  // 5. Transição suave saindo para a próxima seção (0.80 -> 1.00)
+  // 5. Transição contínua e suave para a próxima seção (0.70 -> 1.00)
+  // O conteúdo e o fundo do quarto desvanecem totalmente para o fundo escuro antes da seção subir
   if (roomContent) {
-    tl.to(roomContent, { opacity: 0, y: -24, ease: 'power2.in', duration: 0.2 }, 0.8);
+    tl.to(roomContent, { opacity: 0, y: -40, ease: 'power2.in', duration: 0.28 }, 0.70);
   }
   if (roomBg) {
-    tl.to(roomBg, { opacity: 0.35, filter: 'blur(6px)', ease: 'power2.in', duration: 0.2 }, 0.8);
+    tl.to(
+      roomBg,
+      { scale: 1.15, opacity: 0, filter: 'blur(16px)', ease: 'power2.inOut', duration: 0.30 },
+      0.70
+    );
   }
 }
 
@@ -354,9 +359,6 @@ export function initProductsScene() {
       scrollTrigger: { trigger: track, start: 'top top', end: 'bottom bottom', scrub: true },
     });
 
-    if (light) {
-      tl.fromTo(light, { opacity: 0 }, { opacity: 1, ease: 'none', duration: 0.4 }, 0);
-    }
     if (heroScreen) {
       tl.to(heroScreen, { yPercent: -30, opacity: 0, ease: 'none', duration: 0.38 }, 0.22);
     }
@@ -573,3 +575,4 @@ export function initFooterCta() {
     );
   });
 }
+

@@ -1,6 +1,18 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { climateState } from '../js/core.js';
 
+/* ─── Bottom Blur Transition ─── */
+function BottomBlurTransition() {
+  return (
+    <div className="section-bottom-blur" aria-hidden="true">
+      <div className="blur-step blur-step-1" />
+      <div className="blur-step blur-step-2" />
+      <div className="blur-step blur-step-3" />
+      <div className="blur-gradient-fill" />
+    </div>
+  );
+}
+
 /* ─── Wind canvas that fires when AC is activated ─── */
 function WindCanvas({ active }) {
   const canvasRef = useRef(null);
@@ -152,9 +164,10 @@ export default function RemoteControl() {
 
   return (
     <section
-      className="remote-section section bg-dark clip"
+      className="remote-section section bg-dark"
       id="ativacao"
       data-remote-section
+      style={{ zIndex: 10, position: 'relative' }}
     >
       {/* Wind layer — full section */}
       <WindCanvas active={climate.isOn} />
@@ -282,6 +295,9 @@ export default function RemoteControl() {
           </div>
         </div>
       </div>
+      
+      {/* Transição de blur suave para a próxima seção */}
+      <BottomBlurTransition />
     </section>
   );
 }

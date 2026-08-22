@@ -56,7 +56,7 @@ const MODELS = [
 
 export default function Products() {
   return (
-    <section id="equipamentos" className="prod section bg-light" data-bg="light">
+    <section id="equipamentos" className="prod section bg-light" data-bg="light" style={{ position: 'relative', zIndex: 10 }}>
       <div className="prod-track" data-prod-track>
         <div className="sticky-stage prod-stage">
           {/* fundo claro que amanhece sobre a seção escura anterior */}

@@ -415,6 +415,36 @@
 }
 
 /* ============================================================
+   SLICE WIPE TRANSITION — Estilo Adidas diagonal
+   ============================================================ */
+
+.slice-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Hidden by default — GSAP reveals each slice */
+}
+
+.slice-wipe__slice {
+  flex: 1;
+  background: #050c16;
+  transform: scaleX(0);
+  transform-origin: right center;
+  will-change: transform;
+}
+
+/* Each slice clips slightly taller with diagonal offset via skewX */
+.slice-wipe__slice.sw-s1 { transform-origin: left center; }
+.slice-wipe__slice.sw-s2 { transform-origin: left center; }
+.slice-wipe__slice.sw-s3 { transform-origin: left center; }
+.slice-wipe__slice.sw-s4 { transform-origin: left center; }
+.slice-wipe__slice.sw-s5 { transform-origin: left center; }
+
+/* ============================================================
    HERO — PAREDE COM 1 JANELA CENTRAL → QUARTO CLIMATIZADO (JESKOJETS STYLE)
    ============================================================ */
 
@@ -422,7 +452,7 @@
   position: relative;
   width: 100%;
   height: 260vh;
-  background: #060e18;
+  background: #050c16;
   z-index: 2;
 }
 
@@ -437,6 +467,19 @@
   align-items: center;
   justify-content: center;
   perspective: 1200px;
+  background: #050c16;
+}
+
+.hero-w::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 260px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(5, 12, 22, 0.7) 60%, #050c16 100%);
+  pointer-events: none;
+  z-index: 8;
 }
 
 /* ── 1. CAMADA DE FUNDO: O QUARTO CLIMATIZADO (contínuo pela janela e no zoom) ── */
@@ -741,150 +784,140 @@
 }
 
 /* ── 4. CONTEÚDO REVELADO NO QUARTO (Surge após o zoom pela janela) ── */
+/* ── 4. CONTEÚDO REVELADO NO QUARTO (Pura tipografia minimalista sobre a imagem) ── */
 .hero-room-content {
   position: absolute;
   inset: 0;
   z-index: 10;
   display: flex;
-  align-items: flex-end;
-  padding-bottom: clamp(30px, 5.5vh, 60px);
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(36px, 6vh, 68px);
   pointer-events: none;
   opacity: 0;
   will-change: transform, opacity;
 }
 
-.hero-room-editorial {
-  max-width: 820px;
+.hero-room-minimal {
+  max-width: 920px;
   width: 100%;
-  background: linear-gradient(180deg, rgba(6, 14, 26, 0.45) 0%, rgba(6, 14, 26, 0.88) 40%, rgba(4, 9, 16, 0.96) 100%);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(127, 227, 255, 0.28);
-  border-inline: 1px solid rgba(127, 227, 255, 0.14);
-  border-bottom: 1px solid rgba(127, 227, 255, 0.14);
-  border-radius: 24px;
-  padding: clamp(22px, 3vw, 34px) clamp(24px, 3.4vw, 42px);
-  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.85);
   pointer-events: auto;
 }
 
-.room-tag-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--frost-400);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+.room-min-tag {
+  margin-bottom: 12px;
+  letter-spacing: 0.16em;
 }
 
-.room-tag-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--frost-400);
-  box-shadow: 0 0 10px var(--frost-400);
-  animation: pulse-glow 2s infinite;
-}
-
-.room-lead-title {
-  font-family: var(--font-display);
-  font-size: clamp(24px, 2.8vw, 38px);
+.room-min-title {
+  font-size: clamp(32px, 4.4vw, 64px);
   font-weight: 800;
-  line-height: 1.06;
-  letter-spacing: -0.035em;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--ice-50);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.7);
 }
 
-.room-lead-desc {
-  font-size: clamp(13.5px, 0.95vw, 15.5px);
-  line-height: 1.6;
-  color: rgba(242, 250, 254, 0.88);
-  max-width: 58ch;
-  margin-bottom: 18px;
+.room-min-desc {
+  max-width: 54ch;
+  line-height: 1.55;
+  color: rgba(242, 250, 254, 0.9);
+  margin-bottom: 24px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.85);
 }
 
-.room-stats-grid {
+.room-min-stats {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 2.6vw, 32px);
-  padding-block: 14px;
-  border-block: 1px solid rgba(127, 227, 255, 0.16);
-  margin-bottom: 20px;
+  gap: clamp(16px, 3.2vw, 44px);
+  padding-block: 16px;
+  border-block: 1px solid rgba(127, 227, 255, 0.2);
+  margin-bottom: 26px;
 }
 
-.room-stat-col {
+.min-stat-item {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
-.stat-big {
+.min-stat-num {
   font-family: var(--font-display);
-  font-size: clamp(18px, 1.9vw, 26px);
+  font-size: clamp(20px, 2.2vw, 30px);
   font-weight: 800;
   color: var(--ice-50);
   line-height: 1;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
 }
 
-.stat-sub {
-  font-size: 0.63rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.min-stat-lbl {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--frost-400);
 }
 
-.room-stat-divider {
+.min-stat-divider {
   width: 1px;
-  height: 28px;
-  background: rgba(127, 227, 255, 0.18);
+  height: 32px;
+  background: rgba(127, 227, 255, 0.22);
 }
 
-.room-actions-wrap {
+.room-min-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   flex-wrap: wrap;
+}
+
+.hero-next-cue {
+  width: 100%;
+  margin-top: clamp(20px, 3.5vh, 40px);
+  pointer-events: none;
+}
+
+.hero-next-cue_meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
 }
 
 .hero-ac-toggle-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 20px;
+  padding: 11px 22px;
   border-radius: 999px;
-  border: 1.5px solid rgba(127, 227, 255, 0.35);
-  background: rgba(10, 24, 40, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: rgba(242, 250, 254, 0.85);
+  border: 1.5px solid rgba(127, 227, 255, 0.45);
+  background: rgba(8, 20, 36, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: rgba(242, 250, 254, 0.95);
   font-family: var(--font-display);
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
   transition: all 0.25s ease;
 }
 
 .hero-ac-toggle-btn:hover {
   border-color: #7FE3FF;
-  background: rgba(16, 36, 60, 0.9);
+  background: rgba(14, 32, 56, 0.85);
   color: var(--frost-300);
   transform: translateY(-1px);
 }
 
 .hero-ac-toggle-btn.is-active {
   border-color: #7FE3FF;
-  background: rgba(20, 52, 88, 0.95);
+  background: rgba(18, 48, 80, 0.85);
   color: #7FE3FF;
-  box-shadow: 0 0 20px rgba(127, 227, 255, 0.28);
+  box-shadow: 0 0 24px rgba(127, 227, 255, 0.35);
 }
 
 /* ─── RESPONSIVIDADE ─── */
@@ -916,13 +949,17 @@
     display: none;
   }
 
-  .room-stat-divider {
+  .min-stat-divider {
     display: none;
   }
 
-  .room-stats-grid {
+  .room-min-stats {
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 18px;
+  }
+
+  .hero-next-cue {
+    display: none;
   }
 }
 
@@ -935,13 +972,12 @@
     font-size: 0.85rem;
   }
 
-  .hero-room-editorial {
-    padding: 20px;
-    border-radius: 18px;
+  .room-min-title {
+    font-size: clamp(22px, 6.5vw, 32px);
   }
 
-  .room-lead-title {
-    font-size: clamp(20px, 5.5vw, 26px);
+  .room-min-desc {
+    font-size: 0.86rem;
   }
 
   .hero-cta-btn {
@@ -950,8 +986,8 @@
   }
 
   .hero-ac-toggle-btn {
-    padding: 9px 14px;
-    font-size: 0.7rem;
+    padding: 9px 16px;
+    font-size: 0.72rem;
   }
 }
 
@@ -1025,20 +1061,33 @@
    ============================================================ */
 
 .prod {
+  position: relative;
+  z-index: 10;
   overflow: clip;
+  background: linear-gradient(to bottom, var(--ice-100) 0%, var(--ice-50) 100%);
 }
 
 .prod-track {
   height: 380vh;
   position: relative;
-  z-index: 2;
+  z-index: 10;
+}
+
+.prod-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--ice-100) 0%, var(--ice-50) 100%);
+  z-index: 10;
 }
 
 .prod-lightbg {
   position: absolute;
-  inset: calc(var(--gutter) * -1);
+  inset: 0;
   z-index: 0;
-  opacity: 0;
+  opacity: 1;
   background:
     radial-gradient(90% 60% at 50% 0%, #ffffff 0%, transparent 60%),
     linear-gradient(to bottom, var(--ice-100) 0%, var(--ice-50) 100%);
@@ -1825,11 +1874,75 @@
 
 .remote-section {
   position: relative;
-  padding-block: clamp(80px, 10vw, 140px);
+  padding-block: clamp(90px, 12vw, 160px);
   background:
     radial-gradient(ellipse 70% 50% at 50% 80%, rgba(0, 80, 160, 0.18), transparent 70%),
-    #060d15;
+    #050c16;
   overflow: hidden;
+}
+
+.remote-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, #050c16 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Transição de Blur Progressivo no final da seção superior */
+.section-bottom-blur {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: clamp(140px, 24vh, 300px);
+  pointer-events: none;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.blur-step {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blur-step-1 {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 100%);
+}
+
+.blur-step-2 {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  mask-image: linear-gradient(to bottom, transparent 25%, black 65%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 25%, black 65%, black 100%);
+}
+
+.blur-step-3 {
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  mask-image: linear-gradient(to bottom, transparent 50%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 50%, black 100%);
+}
+
+.blur-gradient-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 12, 22, 0.3) 25%,
+    rgba(5, 12, 22, 0.75) 60%,
+    rgba(4, 11, 18, 0.95) 88%,
+    #040b12 100%
+  );
 }
 
 /* Wind canvas â€” full section */
