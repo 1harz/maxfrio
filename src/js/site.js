@@ -10,6 +10,7 @@ import { initLinkHovers, initCtaHovers, initNavHovers, initMagnetic } from './ho
 import { initTheme, initClock, initLoopingWords, initAccordion, initPopups, initMenu } from './ui.js';
 import {
   runPreloader,
+  initHeroWindowScene,
   initRemoteScene,
   initIntroParallax,
   initTechScene,
@@ -21,6 +22,7 @@ import {
 import { initSnow, initSphere } from './canvas.js';
 
 function initAll() {
+  initHeroWindowScene();
   initBlockReveal();
   initTheme();
   initClock();

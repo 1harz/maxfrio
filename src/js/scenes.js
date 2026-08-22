@@ -135,97 +135,95 @@ export function runPreloader(onReveal) {
 }
 
 /* ------------------------------------------------------------
-   HERO — zoom scrub: mergulho pelo vão do ar no túnel 3D
+   HERO — Zoom imersivo: Janela exterior → Quarto climatizado (JeskoJets Style)
    ------------------------------------------------------------ */
-export function initHeroScene() {
+export function initHeroWindowScene() {
   const track = document.querySelector('[data-hero-track]');
-  const scene = document.querySelector('[data-hero-scene]');
-  const content = document.querySelector('[data-hero-content]');
-  const halfL = document.querySelector('[data-hero-half="l"]');
-  const halfR = document.querySelector('[data-hero-half="r"]');
-  const bot = document.querySelector('[data-hero-bot]');
-  const ac = document.querySelector('[data-hero-ac]');
-  const louver = document.querySelector('[data-hero-louver]');
-  const core = document.querySelector('[data-hero-core]');
-  if (!track || !scene || !content) return;
+  const stage = document.querySelector('[data-hero-stage]');
+  const windowWall = document.querySelector('[data-hero-window-wall]');
+  const roomBg = document.querySelector('[data-hero-room]');
+  const textGrid = document.querySelector('[data-hero-text-grid]');
+  const leftText = document.querySelector('[data-hero-left]');
+  const rightText = document.querySelector('[data-hero-right]');
+  const botBar = document.querySelector('[data-hero-bot]');
+  const roomContent = document.querySelector('[data-hero-room-content]');
 
-  // Respiração idle do AC
-  if (ac) {
-    gsap.to(ac, { y: '+=12', duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-  }
+  if (!track || !stage) return;
 
-  const applyZoom = (withHalves) => {
-    // Garante estado inicial limpo ao entrar de volta
-    gsap.set(scene, { scale: 1, yPercent: 0 });
-    gsap.set(content, { scale: 1, opacity: 1 });
-    if (louver) gsap.set(louver, { yPercent: 0, opacity: 1 });
-    if (core) gsap.set(core, { opacity: 0.4 });
-    if (bot) gsap.set(bot, { opacity: 1, y: 0 });
-    if (halfL) gsap.set(halfL, { x: '0vw', opacity: 1 });
-    if (halfR) gsap.set(halfR, { x: '0vw', opacity: 1 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: track,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: true,
-        invalidateOnRefresh: true,
-        onLeaveBack: () => {
-          // reset tudo ao voltar ao topo
-          gsap.set(scene, { scale: 1, yPercent: 0 });
-          gsap.set(content, { scale: 1, opacity: 1 });
-          if (louver) gsap.set(louver, { yPercent: 0, opacity: 1 });
-          if (core) gsap.set(core, { opacity: 0.4 });
-          if (bot) gsap.set(bot, { opacity: 1, y: 0 });
-          if (halfL) gsap.set(halfL, { x: '0vw', opacity: 1 });
-          if (halfR) gsap.set(halfR, { x: '0vw', opacity: 1 });
-          airTunnelIntensity.value = 0;
-        },
-      },
-    });
-
-    if (louver) {
-      tl.fromTo(louver, { yPercent: 0, opacity: 1 }, { yPercent: 42, opacity: 0.75, ease: 'none', duration: 0.45 }, 0.05);
-    }
-    if (core) {
-      tl.fromTo(core, { opacity: 0.4 }, { opacity: 1, ease: 'none', duration: 0.4 }, 0.1);
-    }
-
-    tl.to(airTunnelIntensity, { value: 1, ease: 'none', duration: 0.7 }, 0.15);
-    tl.fromTo(scene, { scale: 1, yPercent: 0 }, { scale: 8.8, yPercent: 14, ease: 'none', duration: 1 }, 0);
-    tl.fromTo(content, { scale: 1, opacity: 1 }, { scale: 6.5, opacity: 0.15, ease: 'none', duration: 0.8 }, 0);
-
-    if (withHalves && halfL && halfR) {
-      tl.fromTo(halfL, { x: '0vw', opacity: 1 }, { x: '-52vw', opacity: 0, ease: 'none', duration: 0.75 }, 0);
-      tl.fromTo(halfR, { x: '0vw', opacity: 1 }, { x: '52vw', opacity: 0, ease: 'none', duration: 0.75 }, 0);
-    }
-    if (bot) {
-      tl.fromTo(bot, { opacity: 1, y: 0 }, { opacity: 0, y: -24, ease: 'none', duration: 0.25 }, 0.02);
-    }
+  const resetHeroState = () => {
+    if (windowWall) gsap.set(windowWall, { scale: 1, opacity: 1 });
+    if (roomBg) gsap.set(roomBg, { scale: 1, opacity: 1, filter: 'blur(0px)' });
+    if (textGrid) gsap.set(textGrid, { opacity: 1 });
+    if (leftText) gsap.set(leftText, { x: '0vw', opacity: 1 });
+    if (rightText) gsap.set(rightText, { x: '0vw', opacity: 1 });
+    if (botBar) gsap.set(botBar, { opacity: 1, y: 0 });
+    if (roomContent) gsap.set(roomContent, { opacity: 0, y: 40, pointerEvents: 'none' });
   };
 
-  onDesktop(() => applyZoom(true));
-  onMobile(() => applyZoom(false));
+  resetHeroState();
 
-  onDesktop(() => {
-    const logo = document.querySelector('.header_logo');
-    if (!logo) return;
-    gsap.set(logo, { y: '40vh', scale: 1.2 });
-    gsap.to(logo, {
-      y: '0vh',
-      scale: 1,
-      ease: 'mf-ease',
-      scrollTrigger: { trigger: track, start: 'top top', end: 'bottom bottom', scrub: true },
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: track,
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 1,
+      invalidateOnRefresh: true,
+      onLeaveBack: resetHeroState,
+    },
   });
 
-  const dial = document.querySelector('[data-hero-dial]');
-  if (dial) {
-    gsap.set(dial, { scale: 1.6, opacity: 0, rotate: -24 });
-    gsap.to(dial, { scale: 1, opacity: 0.5, rotate: 0, duration: 1.6, ease: 'mf-out', delay: 0.35 });
+  // 1. Zoom na parede com janela única (0.00 -> 0.55)
+  if (windowWall) {
+    tl.fromTo(
+      windowWall,
+      { scale: 1, opacity: 1 },
+      { scale: 7.2, opacity: 0, ease: 'power2.inOut', duration: 0.55 },
+      0
+    );
+  }
+
+  // 2. Separação lateral da tipografia (0.00 -> 0.45)
+  if (leftText) {
+    tl.to(leftText, { x: '-50vw', opacity: 0, ease: 'power2.in', duration: 0.45 }, 0);
+  }
+  if (rightText) {
+    tl.to(rightText, { x: '50vw', opacity: 0, ease: 'power2.in', duration: 0.45 }, 0);
+  }
+  if (botBar) {
+    tl.to(botBar, { y: 30, opacity: 0, ease: 'power2.in', duration: 0.25 }, 0);
+  }
+
+  // 3. Fundo do quarto avança com parallax suave (0.00 -> 0.55)
+  if (roomBg) {
+    tl.fromTo(
+      roomBg,
+      { scale: 0.96 },
+      { scale: 1.06, ease: 'power1.out', duration: 0.55 },
+      0
+    );
+  }
+
+  // 4. Revelação do conteúdo do quarto (0.45 -> 0.80)
+  if (roomContent) {
+    tl.fromTo(
+      roomContent,
+      { opacity: 0, y: 40, pointerEvents: 'none' },
+      { opacity: 1, y: 0, pointerEvents: 'auto', ease: 'power3.out', duration: 0.35 },
+      0.45
+    );
+  }
+
+  // 5. Transição suave saindo para a próxima seção (0.80 -> 1.00)
+  if (roomContent) {
+    tl.to(roomContent, { opacity: 0, y: -24, ease: 'power2.in', duration: 0.2 }, 0.8);
+  }
+  if (roomBg) {
+    tl.to(roomBg, { opacity: 0.35, filter: 'blur(6px)', ease: 'power2.in', duration: 0.2 }, 0.8);
   }
 }
+
+
 
 /* ------------------------------------------------------------
    CONTROLE REMOTO — entra da direita, sai para a esquerda
