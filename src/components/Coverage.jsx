@@ -33,30 +33,77 @@ const BAIRROS = [
   'Água Branca',
 ];
 
-/* wordmark MAXFRIO monoline — desenhado pelo scroll */
+/* wordmark MAXFRIO com tipografia 3D geométrica minimalista */
 function Wordmark() {
   return (
-    <svg className="cov-wordmark" data-wordmark-svg viewBox="0 0 1440 360" fill="none" aria-label="MaxFrio">
+    <svg
+      className="cov-wordmark"
+      data-wordmark-svg
+      viewBox="0 0 1440 320"
+      fill="none"
+      aria-label="MaxFrio"
+    >
       <defs>
-        <linearGradient id="wmgrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#A8DDF9" stopOpacity=".95" />
-          <stop offset=".45" stopColor="#7CC8F0" stopOpacity=".55" />
-          <stop offset="1" stopColor="#4FA8DC" stopOpacity="0" />
+        {/* Gradiente Frontal de Gelo Metálico */}
+        <linearGradient id="wm3dFront" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.98" />
+          <stop offset="35%" stopColor="#C2EEFE" stopOpacity="0.95" />
+          <stop offset="75%" stopColor="#68BEED" stopOpacity="0.88" />
+          <stop offset="100%" stopColor="#256B9E" stopOpacity="0.75" />
         </linearGradient>
+
+        {/* Gradiente de Extrusão 3D e Profundidade */}
+        <linearGradient id="wm3dDepth" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#14426B" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#041220" stopOpacity="0.98" />
+        </linearGradient>
+
+        {/* Brilho Icy */}
+        <filter id="iceGlow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="6" stdDeviation="10" floodColor="#7FE3FF" floodOpacity="0.4" />
+        </filter>
       </defs>
-      <g stroke="url(#wmgrad)" strokeWidth="11" strokeLinecap="round" strokeLinejoin="round">
-        <path className="wm-letter" pathLength="1" d="M30 300V60L115 205L200 60V300" />
-        <path className="wm-letter" pathLength="1" d="M235 300L320 60L405 300" />
-        <path className="wm-letter" pathLength="1" d="M277 214h86" />
-        <path className="wm-letter" pathLength="1" d="M440 60L610 300" />
-        <path className="wm-letter" pathLength="1" d="M610 60L440 300" />
-        <path className="wm-letter" pathLength="1" d="M665 300V60H815" />
-        <path className="wm-letter" pathLength="1" d="M665 176h130" />
-        <path className="wm-letter" pathLength="1" d="M850 300V60H928Q1000 60 1000 117Q1000 174 928 174H850" />
-        <path className="wm-letter" pathLength="1" d="M912 174L996 300" />
-        <path className="wm-letter" pathLength="1" d="M1075 60V300" />
-        <path className="wm-letter" pathLength="1" d="M1045 60h60M1045 300h60" />
-        <ellipse className="wm-letter" pathLength="1" cx="1245" cy="180" rx="85" ry="120" />
+
+      {/* Camada 3D de Extrusão / Sombra Isométrica */}
+      <g fill="url(#wm3dDepth)" transform="translate(6, 12)" opacity="0.9">
+        {/* M */}
+        <path d="M 40,280 L 40,60 L 100,60 L 150,175 L 200,60 L 260,60 L 260,280 L 208,280 L 208,124 L 164,226 L 136,226 L 92,124 L 92,280 Z" />
+        {/* A */}
+        <path d="M 285,280 L 355,60 L 420,60 L 490,280 L 436,280 L 418,220 L 357,220 L 339,280 Z M 371,175 L 404,175 L 387.5,115 Z" />
+        {/* X */}
+        <path d="M 505,280 L 565,170 L 510,60 L 568,60 L 602,130 L 636,60 L 694,60 L 639,170 L 699,280 L 641,280 L 602,208 L 563,280 Z" />
+        {/* F */}
+        <path d="M 720,280 L 720,60 L 850,60 L 850,108 L 772,108 L 772,148 L 840,148 L 840,196 L 772,196 L 772,280 Z" />
+        {/* R */}
+        <path d="M 875,280 L 875,60 L 980,60 C 1025,60 1055,80 1055,125 C 1055,158 1035,180 1005,188 L 1065,280 L 1008,280 L 954,196 L 927,196 L 927,280 Z M 927,152 L 972,152 C 992,152 1004,142 1004,125 C 1004,108 992,98 972,98 L 927,98 Z" />
+        {/* I */}
+        <path d="M 1090,280 L 1090,60 L 1142,60 L 1142,280 Z" />
+        {/* O */}
+        <path d="M 1285,55 C 1355,55 1405,105 1405,170 C 1405,235 1355,285 1285,285 C 1215,285 1165,235 1165,170 C 1165,105 1215,55 1285,55 Z M 1285,102 C 1242,102 1218,132 1218,170 C 1218,208 1242,238 1285,238 C 1328,238 1352,208 1352,170 C 1352,132 1328,102 1285,102 Z" />
+      </g>
+
+      {/* Camada Frontal 3D com Degradê Metálico e Contorno Fino de Precisão */}
+      <g
+        fill="url(#wm3dFront)"
+        stroke="#A8E4FC"
+        strokeWidth="1.5"
+        filter="url(#iceGlow)"
+        className="wm-3d-group"
+      >
+        {/* M */}
+        <path className="wm-letter" d="M 40,280 L 40,60 L 100,60 L 150,175 L 200,60 L 260,60 L 260,280 L 208,280 L 208,124 L 164,226 L 136,226 L 92,124 L 92,280 Z" />
+        {/* A */}
+        <path className="wm-letter" d="M 285,280 L 355,60 L 420,60 L 490,280 L 436,280 L 418,220 L 357,220 L 339,280 Z M 371,175 L 404,175 L 387.5,115 Z" />
+        {/* X */}
+        <path className="wm-letter" d="M 505,280 L 565,170 L 510,60 L 568,60 L 602,130 L 636,60 L 694,60 L 639,170 L 699,280 L 641,280 L 602,208 L 563,280 Z" />
+        {/* F */}
+        <path className="wm-letter" d="M 720,280 L 720,60 L 850,60 L 850,108 L 772,108 L 772,148 L 840,148 L 840,196 L 772,196 L 772,280 Z" />
+        {/* R */}
+        <path className="wm-letter" d="M 875,280 L 875,60 L 980,60 C 1025,60 1055,80 1055,125 C 1055,158 1035,180 1005,188 L 1065,280 L 1008,280 L 954,196 L 927,196 L 927,280 Z M 927,152 L 972,152 C 992,152 1004,142 1004,125 C 1004,108 992,98 972,98 L 927,98 Z" />
+        {/* I */}
+        <path className="wm-letter" d="M 1090,280 L 1090,60 L 1142,60 L 1142,280 Z" />
+        {/* O */}
+        <path className="wm-letter" d="M 1285,55 C 1355,55 1405,105 1405,170 C 1405,235 1355,285 1285,285 C 1215,285 1165,235 1165,170 C 1165,105 1215,55 1285,55 Z M 1285,102 C 1242,102 1218,132 1218,170 C 1218,208 1242,238 1285,238 C 1328,238 1352,208 1352,170 C 1352,132 1328,102 1285,102 Z" />
       </g>
     </svg>
   );

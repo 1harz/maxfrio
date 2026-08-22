@@ -51,56 +51,6 @@ function Rig() {
   });
 }
 
-/* Anéis de Marquee 360° MaxFrio */
-function MaxFrioMarqueeRing({ y, radius, text, size, speed, material }) {
-  const ringRef = useRef(null);
-
-  const items = useMemo(() => {
-    const fullText = (text + '   ').repeat(3);
-    const chars = [...fullText];
-    const widths = chars.map((ch) => getCharWidth(ch, size, size * 0.08, false));
-    const totalLen = widths.reduce((a, b) => a + b, 0);
-
-    let currentDist = 0;
-    return chars.map((ch, i) => {
-      const angle = (currentDist / totalLen) * Math.PI * 2;
-      currentDist += widths[i];
-      return {
-        ch,
-        pos: [Math.sin(angle) * radius, y, Math.cos(angle) * radius],
-        rot: [0, angle, 0],
-      };
-    });
-  }, [text, y, radius, size]);
-
-  useFrame((_, delta) => {
-    if (ringRef.current) {
-      ringRef.current.rotation.y += speed * delta;
-    }
-  });
-
-  return (
-    <group ref={ringRef}>
-      {items.map((it, i) =>
-        it.ch === ' ' ? null : (
-          <group key={i} position={it.pos} rotation={it.rot}>
-            <Text
-              font={FONT_SEMI}
-              fontSize={size}
-              color="#7cc8f0"
-              anchorX="center"
-              anchorY="middle"
-              material={material}
-            >
-              {it.ch}
-            </Text>
-          </group>
-        )
-      )}
-    </group>
-  );
-}
-
 /* Modelo 3D centralizado e perfeitamente legível */
 function SecondModel({ isMobile }) {
   const { nodes } = useGLTF('/assets/ShirtScrolling.glb');
@@ -109,7 +59,7 @@ function SecondModel({ isMobile }) {
   const groupRef = useRef(null);
   const textsRef = useRef(null);
 
-  /* Raio amplo para curvatura suave que mantém todos os caracteres legíveis de frente */
+  /* Raio amplo para curvatura suave que mantém todos os caracteres legíveis */
   const R = isMobile ? 0.58 : 0.68;
 
   /* Material compartilhado para os textos principais */
@@ -119,19 +69,6 @@ function SecondModel({ isMobile }) {
         color: '#f2fafe',
         transparent: true,
         opacity: 1,
-        side: THREE.FrontSide,
-        depthTest: true,
-      }),
-    []
-  );
-
-  /* Material compartilhado para os letreiros infinitos */
-  const marqueeMaterial = useMemo(
-    () =>
-      new THREE.MeshBasicMaterial({
-        color: '#7cc8f0',
-        transparent: true,
-        opacity: 0,
         side: THREE.FrontSide,
         depthTest: true,
       }),
@@ -172,7 +109,7 @@ function SecondModel({ isMobile }) {
     [sphereTex]
   );
 
-  /* Cálculo dos caracteres em arco suave perfeitamente centralizado */
+  /* Cálculo dos caracteres em arco suave 3D perfeitamente distribuídos */
   const allTextChars = useMemo(() => {
     const list = [];
     PHRASES.forEach((p, pIdx) => {
@@ -201,15 +138,15 @@ function SecondModel({ isMobile }) {
     return list;
   }, [R]);
 
-  /* Animação dos textos — estilo Adidas */
+  /* Animação dos textos — estilo Adidas com pop-in dinâmico */
   const animateTexts = (textsGroupRef) => {
     if (!textsGroupRef.current) return gsap.timeline();
     const meshes = textsGroupRef.current.children;
 
     const tl = gsap.timeline();
     meshes.forEach((mesh, i) => {
-      tl.from(mesh.scale, { x: 0, y: 0, z: 0, duration: 1, ease: 'circ.out' }, i * 0.03);
-      tl.from(mesh.position, { y: '+=0.04', duration: 1, ease: 'back.out' }, i * 0.03);
+      tl.from(mesh.scale, { x: 0, y: 0, z: 0, duration: 1, ease: 'circ.out' }, i * 0.022);
+      tl.from(mesh.position, { y: '+=0.04', duration: 1, ease: 'back.out' }, i * 0.022);
     });
 
     return tl;
@@ -236,7 +173,7 @@ function SecondModel({ isMobile }) {
       tl.kill();
       ScrollTrigger.refresh();
     };
-  }, [isMobile]);
+  }, [isMobile, textsMaterial]);
 
   /* Escala da condensadora */
   const acScale = isMobile ? 0.24 : 0.30;
@@ -266,7 +203,7 @@ function SecondModel({ isMobile }) {
         position={[0, -1.12, -0.05]}
       />
 
-      {/* Textos 3D Curvados MaxFrio Nivelados e Legíveis */}
+      {/* Textos 3D Curvados MaxFrio Nivelados e Legíveis com animação pop-in */}
       <group ref={textsRef}>
         {allTextChars.map((item) =>
           item.ch === ' ' ? null : (
@@ -285,8 +222,6 @@ function SecondModel({ isMobile }) {
           )
         )}
       </group>
-
-
     </group>
   );
 }

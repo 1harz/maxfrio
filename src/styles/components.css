@@ -1665,8 +1665,8 @@
 }
 
 .field textarea {
-  resize: vertical;
-  min-height: 74px;
+  resize: none !important;
+  min-height: 80px;
 }
 
 .form-legal {

@@ -51,7 +51,7 @@ export default function QuotePopup() {
               <label className="l1" htmlFor="q-msg">
                 Mensagem
               </label>
-              <textarea id="q-msg" name="mensagem" placeholder="Conte sobre o ambiente, área em m², quantidade de ambientes..." />
+              <textarea id="q-msg" name="mensagem" placeholder="Conte sobre o ambiente, área em m², quantidade de ambientes..." style={{ resize: 'none' }} />
             </div>
           </div>
 

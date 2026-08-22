@@ -88,15 +88,12 @@ export default function Hero() {
                 <stop offset="45%" stopColor="#08101a" />
                 <stop offset="100%" stopColor="#04080e" />
               </linearGradient>
-              <filter id="windowShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="16" stdDeviation="32" floodColor="#000000" floodOpacity="0.9" />
-              </filter>
             </defs>
 
             {/* Parede com o recorte da janela */}
             <rect width="1920" height="1080" fill="url(#wallGrad)" mask="url(#windowPortalMask)" />
 
-            {/* Moldura da janela quadrada */}
+            {/* Moldura da janela quadrada com acabamento arquitetônico nítido */}
             <rect
               x="656"
               y="146"
@@ -105,8 +102,7 @@ export default function Hero() {
               rx="24"
               fill="none"
               stroke="#1a293b"
-              strokeWidth="20"
-              filter="url(#windowShadow)"
+              strokeWidth="16"
             />
             <rect
               x="668"

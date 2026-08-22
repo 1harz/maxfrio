@@ -153,7 +153,7 @@ export function initHeroWindowScene() {
 
   const resetHeroState = () => {
     if (windowWall) gsap.set(windowWall, { scale: 1, opacity: 1 });
-    if (roomBg) gsap.set(roomBg, { scale: 1, opacity: 1, filter: 'blur(0px)' });
+    if (roomBg) gsap.set(roomBg, { scale: 1, opacity: 1, filter: 'none' });
     if (textGrid) gsap.set(textGrid, { opacity: 1 });
     if (leftText) gsap.set(leftText, { x: '0vw', opacity: 1 });
     if (rightText) gsap.set(rightText, { x: '0vw', opacity: 1 });
@@ -222,7 +222,7 @@ export function initHeroWindowScene() {
   if (roomBg) {
     tl.to(
       roomBg,
-      { scale: 1.15, opacity: 0, filter: 'blur(16px)', ease: 'power2.inOut', duration: 0.30 },
+      { scale: 1.15, opacity: 0, ease: 'power2.inOut', duration: 0.30 },
       0.70
     );
   }
@@ -409,9 +409,6 @@ export function initCoverageScene() {
   if (!track) return;
 
   const letters = document.querySelectorAll('[data-wordmark-svg] .wm-letter');
-  if (letters.length) {
-    gsap.set(letters, { strokeDasharray: '1 1', strokeDashoffset: 1 });
-  }
 
   onDesktop(() => {
     const title = track.querySelector('[data-cov-title]');
@@ -423,15 +420,16 @@ export function initCoverageScene() {
       scrollTrigger: { trigger: track, start: 'top top', end: 'bottom bottom', scrub: true },
     });
 
-    if (title) tl.fromTo(title, { y: '34em' }, { y: '0em', ease: 'none', duration: 1 }, 0);
+    if (title) tl.fromTo(title, { y: '30em', scale: 0.88, opacity: 0.2 }, { y: '0em', scale: 1, opacity: 1, ease: 'none', duration: 1 }, 0);
     if (sphere) tl.fromTo(sphere, { yPercent: 138, scale: 2 }, { yPercent: 0, scale: 1, ease: 'none', duration: 1 }, 0);
     if (cities) tl.fromTo(cities, { yPercent: -34 }, { yPercent: 0, ease: 'none', duration: 0.4 }, 0);
 
     if (letters.length) {
-      tl.to(
+      tl.fromTo(
         letters,
-        { strokeDashoffset: 0, ease: 'none', stagger: { each: 0.035 }, duration: 0.42 },
-        0.16
+        { opacity: 0.2, y: 24 },
+        { opacity: 1, y: 0, ease: 'none', stagger: { each: 0.04 }, duration: 0.5 },
+        0.15
       );
     }
 
@@ -442,13 +440,17 @@ export function initCoverageScene() {
 
   onMobile(() => {
     const wm = document.querySelector('[data-wordmark-svg]');
-    if (!wm || !letters.length) return;
-    gsap.to(letters, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      stagger: 0.05,
-      scrollTrigger: { trigger: wm, start: 'top 92%', end: 'top 45%', scrub: true },
-    });
+    if (!wm) return;
+    gsap.fromTo(
+      wm,
+      { opacity: 0.3, scale: 0.9 },
+      {
+        opacity: 1,
+        scale: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: wm, start: 'top 92%', end: 'top 45%', scrub: true },
+      }
+    );
   });
 }
 
