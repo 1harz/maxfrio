@@ -51,29 +51,97 @@ function Rig() {
   });
 }
 
+/* Subcomponente para cada frase com transição contínua e suave de opacidade */
+function PhraseGroup({ phrase, phraseIndex, groupRef, R, onMountRef }) {
+  const phraseRef = useRef(null);
+
+  const material = useMemo(
+    () =>
+      new THREE.MeshBasicMaterial({
+        color: phrase.color,
+        transparent: true,
+        opacity: phraseIndex === 0 ? 1 : 0,
+        side: THREE.FrontSide,
+        depthTest: true,
+      }),
+    [phrase.color, phraseIndex]
+  );
+
+  const chars = useMemo(() => {
+    const angleRad = (phrase.angle * Math.PI) / 180;
+    const tracking = phrase.size * 0.12;
+    const widths = [...phrase.label].map((ch) => getCharWidth(ch, phrase.size, tracking, phrase.bold));
+    const total = widths.reduce((a, b) => a + b, 0);
+
+    let pen = -total / 2;
+    return [...phrase.label].map((ch, i) => {
+      const mid = pen + (widths[i] - tracking) / 2;
+      const dTheta = mid / R;
+      pen += widths[i];
+      const th = angleRad + dTheta;
+      return {
+        id: `${phraseIndex}-${i}`,
+        ch,
+        pos: [Math.sin(th) * R, phrase.y, Math.cos(th) * R],
+        rot: [0, th, 0],
+      };
+    });
+  }, [phrase, phraseIndex, R]);
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+    const currentRotY = groupRef.current.rotation.y;
+    const angleRad = (phrase.angle * Math.PI) / 180;
+    const netAngle = (angleRad + currentRotY) % (Math.PI * 2);
+
+    // Fade contínuo e elegante baseado no cosseno (transição suave entre 30° e 60°)
+    const cosVal = Math.cos(netAngle);
+    const t = Math.max(0, Math.min(1, (cosVal - 0.45) / 0.45));
+    const smoothOpacity = t * t * (3 - 2 * t);
+
+    material.opacity = smoothOpacity;
+    if (phraseRef.current) {
+      phraseRef.current.visible = smoothOpacity > 0.005;
+    }
+  });
+
+  return (
+    <group
+      ref={(el) => {
+        phraseRef.current = el;
+        if (onMountRef) onMountRef(el, phraseIndex);
+      }}
+    >
+      {chars.map((item) =>
+        item.ch === ' ' ? null : (
+          <group key={item.id} position={item.pos} rotation={item.rot}>
+            <Text
+              font={phrase.bold ? FONT_BOLD : FONT_SEMI}
+              fontSize={phrase.size}
+              color={phrase.color}
+              anchorX="center"
+              anchorY="middle"
+              material={material}
+            >
+              {item.ch}
+            </Text>
+          </group>
+        )
+      )}
+    </group>
+  );
+}
+
 /* Modelo 3D centralizado e perfeitamente legível */
 function SecondModel({ isMobile }) {
   const { nodes } = useGLTF('/assets/ShirtScrolling.glb');
   const acGLTF = useGLTF('/assets/air.glb');
 
   const groupRef = useRef(null);
-  const textsRef = useRef(null);
+  const phraseRefs = useRef([]);
 
   /* Raio amplo para curvatura suave que mantém todos os caracteres legíveis */
   const R = isMobile ? 0.58 : 0.68;
-
-  /* Material compartilhado para os textos principais */
-  const textsMaterial = useMemo(
-    () =>
-      new THREE.MeshBasicMaterial({
-        color: '#f2fafe',
-        transparent: true,
-        opacity: 1,
-        side: THREE.FrontSide,
-        depthTest: true,
-      }),
-    []
-  );
 
   /* Fundo glacial escuro MaxFrio */
   const sphereTex = useMemo(() => {
@@ -109,52 +177,24 @@ function SecondModel({ isMobile }) {
     [sphereTex]
   );
 
-  /* Cálculo dos caracteres em arco suave 3D perfeitamente distribuídos */
-  const allTextChars = useMemo(() => {
-    const list = [];
-    PHRASES.forEach((p, pIdx) => {
-      const angleRad = (p.angle * Math.PI) / 180;
-      const tracking = p.size * 0.12;
-      const widths = [...p.label].map((ch) => getCharWidth(ch, p.size, tracking, p.bold));
-      const total = widths.reduce((a, b) => a + b, 0);
-
-      let pen = -total / 2;
-      [...p.label].forEach((ch, i) => {
-        const mid = pen + (widths[i] - tracking) / 2;
-        const dTheta = mid / R;
-        pen += widths[i];
-        const th = angleRad + dTheta;
-        list.push({
-          id: `${pIdx}-${i}`,
-          ch,
-          pos: [Math.sin(th) * R, p.y, Math.cos(th) * R],
-          rot: [0, th, 0],
-          size: p.size,
-          bold: p.bold,
-          color: p.color,
-        });
+  /* Animação dos textos — estilo Adidas com pop-in dinâmico em cascata */
+  const animateTexts = () => {
+    const tl = gsap.timeline();
+    let idx = 0;
+    phraseRefs.current.forEach((pGroup) => {
+      if (!pGroup) return;
+      pGroup.children.forEach((mesh) => {
+        tl.from(mesh.scale, { x: 0, y: 0, z: 0, duration: 1, ease: 'circ.out' }, idx * 0.022);
+        tl.from(mesh.position, { y: '+=0.04', duration: 1, ease: 'back.out' }, idx * 0.022);
+        idx++;
       });
     });
-    return list;
-  }, [R]);
-
-  /* Animação dos textos — estilo Adidas com pop-in dinâmico */
-  const animateTexts = (textsGroupRef) => {
-    if (!textsGroupRef.current) return gsap.timeline();
-    const meshes = textsGroupRef.current.children;
-
-    const tl = gsap.timeline();
-    meshes.forEach((mesh, i) => {
-      tl.from(mesh.scale, { x: 0, y: 0, z: 0, duration: 1, ease: 'circ.out' }, i * 0.022);
-      tl.from(mesh.position, { y: '+=0.04', duration: 1, ease: 'back.out' }, i * 0.022);
-    });
-
     return tl;
   };
 
   /* ScrollTrigger Timeline: inicia com a frase 1 perfeitamente no centro e gira 360° */
   useEffect(() => {
-    if (!groupRef.current || !textsRef.current) return;
+    if (!groupRef.current) return;
 
     const tl = gsap
       .timeline({
@@ -167,13 +207,13 @@ function SecondModel({ isMobile }) {
         },
       })
       .to(groupRef.current.rotation, { y: -Math.PI * 2, duration: 1 }, 0)
-      .add(animateTexts(textsRef).duration(0.55), 0);
+      .add(animateTexts().duration(0.55), 0);
 
     return () => {
       tl.kill();
       ScrollTrigger.refresh();
     };
-  }, [isMobile, textsMaterial]);
+  }, [isMobile]);
 
   /* Escala da condensadora */
   const acScale = isMobile ? 0.24 : 0.30;
@@ -203,25 +243,19 @@ function SecondModel({ isMobile }) {
         position={[0, -1.12, -0.05]}
       />
 
-      {/* Textos 3D Curvados MaxFrio Nivelados e Legíveis com animação pop-in */}
-      <group ref={textsRef}>
-        {allTextChars.map((item) =>
-          item.ch === ' ' ? null : (
-            <group key={item.id} position={item.pos} rotation={item.rot}>
-              <Text
-                font={item.bold ? FONT_BOLD : FONT_SEMI}
-                fontSize={item.size}
-                color={item.color}
-                anchorX="center"
-                anchorY="middle"
-                material={textsMaterial}
-              >
-                {item.ch}
-              </Text>
-            </group>
-          )
-        )}
-      </group>
+      {/* Frases 3D com transição fotográfica de opacidade e animação pop-in */}
+      {PHRASES.map((phrase, pIdx) => (
+        <PhraseGroup
+          key={phrase.label}
+          phrase={phrase}
+          phraseIndex={pIdx}
+          groupRef={groupRef}
+          R={R}
+          onMountRef={(el, idx) => {
+            phraseRefs.current[idx] = el;
+          }}
+        />
+      ))}
     </group>
   );
 }
