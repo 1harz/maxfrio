@@ -2,7 +2,7 @@ const ITEMS = [
   {
     id: 'experiencia',
     title: 'Experiência que orienta',
-    text: 'Desde 2002, atendemos residências e empresas com uma avaliação clara da necessidade de cada ambiente.',
+    text: 'Desde 1994, há mais de 30 anos atendemos residências e empresas com uma avaliação clara da necessidade de cada ambiente.',
   },
   {
     id: 'equipe',

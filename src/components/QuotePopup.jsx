@@ -38,20 +38,22 @@ export default function QuotePopup() {
             </div>
             <div className="field">
               <label className="l1" htmlFor="q-amb">
-                Ambiente
+                Tipo de interesse
               </label>
               <select id="q-amb" name="ambiente" defaultValue="Residencial">
-                <option>Residencial</option>
-                <option>Comercial</option>
-                <option>Corporativo</option>
-                <option>Industrial</option>
+                <option value="Aparelho Seminovo com Garantia">Aparelho Seminovo / Usado (com garantia)</option>
+                <option value="Peças Originais Usadas / Seminovas">Peças Originais Usadas / Seminovas (Testadas)</option>
+                <option value="Instalação Residencial">Instalação Residencial</option>
+                <option value="Instalação Comercial">Instalação Comercial / Corporativa</option>
+                <option value="Manutenção e Conserto">Manutenção ou Conserto de Ar-Condicionado</option>
+                <option value="Higienização Completa">Higienização Completa</option>
               </select>
             </div>
             <div className="field field--full">
               <label className="l1" htmlFor="q-msg">
                 Mensagem
               </label>
-              <textarea id="q-msg" name="mensagem" placeholder="Conte sobre o ambiente, área em m², quantidade de ambientes..." style={{ resize: 'none' }} />
+              <textarea id="q-msg" name="mensagem" placeholder="Conte sobre o que precisa: aparelho seminovo, peça original usada ou serviço no seu ambiente..." style={{ resize: 'none' }} />
             </div>
           </div>
 

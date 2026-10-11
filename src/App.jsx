@@ -5,6 +5,7 @@ import RemoteControl from './components/RemoteControl.jsx';
 import Intro from './components/Intro.jsx';
 import TechShowcase from './components/TechShowcase.jsx';
 import Products from './components/Products.jsx';
+import PartsAndWarranty from './components/PartsAndWarranty.jsx';
 import Benefits from './components/Benefits.jsx';
 import InstallationTerms from './components/InstallationTerms.jsx';
 import Clients from './components/Clients.jsx';
@@ -28,6 +29,7 @@ export default function App() {
         <Intro />
         <TechShowcase />
         <Products />
+        <PartsAndWarranty />
         <Benefits />
         <InstallationTerms />
         <Clients />
@@ -39,5 +41,3 @@ export default function App() {
     </>
   );
 }
-
-

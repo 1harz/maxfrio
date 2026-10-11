@@ -2,12 +2,12 @@ const MENU = [
   { n: '01', label: 'Sobre', href: '#sobre' },
   { n: '02', label: 'Serviços', href: '#servicos' },
   { n: '03', label: 'Equipamentos', href: '#equipamentos' },
-  { n: '04', label: 'Diferenciais', href: '#vantagens' },
-  { n: '05', label: 'Instalação', href: '#termos-instalacao' },
-  { n: '06', label: 'Clientes', href: '#clientes' },
-  { n: '07', label: 'Contato', href: '#contato' },
+  { n: '04', label: 'Seminovos & Peças', href: '#venda-pecas' },
+  { n: '05', label: 'Diferenciais', href: '#vantagens' },
+  { n: '06', label: 'Instalação', href: '#termos-instalacao' },
+  { n: '07', label: 'Clientes', href: '#clientes' },
+  { n: '08', label: 'Contato', href: '#contato' },
 ];
-
 
 export default function MenuPopup() {
   return (

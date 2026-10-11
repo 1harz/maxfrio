@@ -83,6 +83,43 @@
   line-height: 1.65;
 }
 
+/* ============================================================
+   RESPONSIVIDADE: Notebooks e Telas Menores
+   ============================================================ */
+
+@media (max-width: 1440px) {
+  .benefits-minimal {
+    padding-block: clamp(52px, 6.5vw, 84px);
+  }
+
+  .benefits-minimal__head {
+    padding-bottom: clamp(28px, 3.5vw, 44px);
+    gap: 20px 40px;
+  }
+
+  .benefits-minimal__head h2 {
+    font-size: clamp(28px, 3.4vw, 48px);
+  }
+
+  .benefits-minimal__item {
+    min-height: 140px;
+    padding: clamp(20px, 2.4vw, 32px) clamp(16px, 2.4vw, 36px) clamp(20px, 2.4vw, 32px) 0;
+  }
+
+  .benefits-minimal__item:nth-child(even) {
+    padding-left: clamp(16px, 2.4vw, 36px);
+  }
+
+  .benefits-minimal__item h3 {
+    font-size: clamp(18px, 1.7vw, 24px);
+  }
+
+  .benefits-minimal__item p {
+    margin-top: 10px;
+    font-size: 13.5px;
+  }
+}
+
 @media (max-width: 767px) {
   .benefits-minimal__head {
     grid-template-columns: 1fr;

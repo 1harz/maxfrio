@@ -58,11 +58,11 @@ export function HoverLink({ href = '#', className = '', textClass = 'l1', childr
   );
 }
 
-/* botão CTA com rótulo rolando e ícone trocando */
+/* botão CTA com rótulo rolando e ícone animado */
 export function CtaButton({ children, className = '', ...rest }) {
   const label = String(children);
   return (
-    <button type="button" className={`btn-cta ${className}`} data-hover="cta" data-magnetic="26" {...rest}>
+    <button type="button" className={`btn-cta ${className}`} data-hover="cta" {...rest}>
       <span className="btn-cta_label">
         <span data-hover-text>{label}</span>
         <span className="is-2" data-hover-text aria-hidden="true">
@@ -71,14 +71,6 @@ export function CtaButton({ children, className = '', ...rest }) {
       </span>
       <span className="btn-cta_ico">
         <svg data-hover-ico viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path
-            d="M8 1v14M1 8h14M3 3l10 10M13 3L3 13"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-        </svg>
-        <svg className="is-2" data-hover-ico viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path
             d="M8 1v14M1 8h14M3 3l10 10M13 3L3 13"
             stroke="currentColor"

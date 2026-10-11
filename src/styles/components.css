@@ -218,19 +218,17 @@
   width: 18px;
   height: 18px;
   flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .btn-cta_ico svg {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
-}
-
-.btn-cta_ico .is-2 {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
+  transform-origin: center center;
 }
 
 /* botÃ£o outline com preenchimento deslizante */
@@ -1106,6 +1104,10 @@
 }
 
 @media (min-width: 992px) {
+  .prod-track {
+    margin-top: -100vh;
+  }
+
   .intro-c {
     padding-bottom: 58vh;
   }
@@ -1123,6 +1125,7 @@
 @media (max-width: 991px) {
   .prod-track {
     height: auto;
+    margin-top: 0;
   }
 
   .prod-stage {
@@ -1867,7 +1870,7 @@
 }
 
 .tech-track {
-  height: 520vh;
+  height: 580vh;
   position: relative;
 }
 
@@ -2412,7 +2415,7 @@
 }
 
 .tech-track {
-  height: 500vh;
+  height: 580vh;
   position: relative;
 }
 

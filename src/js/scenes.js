@@ -126,11 +126,15 @@ export function initTechScene() {
       },
     });
 
-    tl.to(strip, { x: () => -totalDist(), ease: 'none' }, 0);
+    // 1. O scroll horizontal dos serviços completa 100% dos cards aos 72% do percurso
+    tl.to(strip, { x: () => -totalDist(), ease: 'none', duration: 0.72 }, 0);
 
     if (progress) {
-      tl.fromTo(progress, { scaleX: 0 }, { scaleX: 1, ease: 'none' }, 0);
+      tl.fromTo(progress, { scaleX: 0 }, { scaleX: 1, ease: 'none', duration: 0.72 }, 0);
     }
+
+    // 2. Pausa com o último card totalmente visível e estático antes da seção seguinte subir
+    tl.to({}, { duration: 0.28 }, 0.72);
   });
 }
 

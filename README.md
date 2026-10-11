@@ -1,7 +1,7 @@
 # MaxFrio | Ar-Condicionado em Brasília
 
-Site institucional da MaxFrio Ar-Condicionado, empresa de Brasília com mais de 20 anos
-de experiência em instalação, manutenção, higienização e reparos. A abertura
+Site institucional da MaxFrio Ar-Condicionado, empresa de Brasília com mais de 30 anos
+de experiência (fundada em 1994) em instalação, venda de seminovos, manutenção, higienização e reparos. A abertura
 usa uma composição editorial minimalista com uma foto pequena de apoio; as seções
 seguintes mantêm animações de rolagem, SVG e canvas 2D.
 

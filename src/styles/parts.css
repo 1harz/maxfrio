@@ -1,0 +1,535 @@
+/* ============================================================
+   MaxFrio: parts.css
+   Seção de Venda de Aparelhos Seminovos e Peças Originais Usadas com Garantia
+   ============================================================ */
+
+.parts-section {
+  position: relative;
+  z-index: 10;
+  padding-block: clamp(72px, 8vw, 130px);
+  background:
+    radial-gradient(80% 60% at 50% 0%, rgba(214, 236, 248, 0.45) 0%, transparent 70%),
+    linear-gradient(180deg, var(--ice-50) 0%, #ffffff 50%, var(--ice-100) 100%);
+  color: var(--navy-950);
+  overflow: hidden;
+}
+
+.parts-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(12, 24, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(12, 24, 38, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 40%, transparent 80%);
+}
+
+.parts-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  align-items: end;
+  gap: 24px clamp(32px, 5vw, 80px);
+  padding-bottom: clamp(32px, 4vw, 56px);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.parts-head__tag {
+  grid-column: 1 / -1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--frost-600);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.parts-head__tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 8px rgba(27, 166, 75, 0.45);
+}
+
+.parts-head__title {
+  max-width: 17ch;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.2vw, 68px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+  text-transform: none;
+}
+
+.parts-head__title span {
+  color: #28758a;
+}
+
+.parts-head__desc {
+  max-width: 44ch;
+  color: var(--slate-500);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.55;
+  justify-self: end;
+}
+
+/* Grid Principal: 2 Cards de Destaque (Aparelhos & Peças) */
+.parts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3.2vw, 44px);
+  margin-top: clamp(36px, 4.5vw, 60px);
+}
+
+.parts-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(30px, 3.8vw, 52px);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(12, 24, 38, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(12, 24, 38, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s ease;
+  overflow: hidden;
+}
+
+.parts-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3187bd, #7cc8f0);
+  opacity: 0.85;
+}
+
+.parts-card--alt::before {
+  background: linear-gradient(90deg, #1ba64b, #7cc8f0);
+}
+
+.parts-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(49, 135, 189, 0.35);
+  box-shadow: 0 24px 50px rgba(12, 24, 38, 0.09), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.parts-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.parts-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(232, 244, 252, 0.85);
+  color: #1b4266;
+  border: 1px solid rgba(124, 200, 240, 0.45);
+}
+
+.parts-card__badge svg {
+  width: 14px;
+  height: 14px;
+  color: #28758a;
+}
+
+.parts-card__badge--green {
+  background: rgba(27, 166, 75, 0.08);
+  color: #127934;
+  border-color: rgba(27, 166, 75, 0.28);
+}
+
+.parts-card__badge--green svg {
+  color: #1ba64b;
+}
+
+.parts-card__icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(232, 244, 252, 0.6);
+  border: 1px solid rgba(124, 200, 240, 0.35);
+  display: grid;
+  place-items: center;
+  color: #16304f;
+  flex-shrink: 0;
+}
+
+.parts-card__title {
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.3vw, 34px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  margin-bottom: 12px;
+}
+
+.parts-card__text {
+  color: var(--slate-500);
+  font-size: clamp(14px, 1.02vw, 15.5px);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Pills de Marcas / Componentes */
+.parts-card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(12, 24, 38, 0.1);
+}
+
+.parts-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(242, 250, 254, 0.9);
+  border: 1px solid rgba(12, 24, 38, 0.08);
+  color: var(--navy-900);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.parts-pill svg {
+  width: 12px;
+  height: 12px;
+  color: #3187bd;
+}
+
+/* Lista de Vantagens do Card */
+.parts-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+  list-style: none;
+}
+
+.parts-card__item {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  color: var(--navy-900);
+  font-size: clamp(13.5px, 0.98vw, 15px);
+  line-height: 1.45;
+}
+
+.parts-card__item svg {
+  width: 18px;
+  height: 18px;
+  color: #1ba64b;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+.parts-card__item strong {
+  color: var(--navy-950);
+  font-weight: 600;
+}
+
+.parts-card__footer {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.parts-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  min-height: 52px;
+  padding-inline: 22px;
+  border-radius: 12px;
+  background: #102c38;
+  color: #f7fbfa;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(16, 44, 56, 0.15);
+}
+
+.parts-btn:hover {
+  background: #286b80;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(16, 44, 56, 0.25);
+}
+
+.parts-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.parts-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.parts-btn--alt {
+  background: #16304f;
+}
+
+.parts-btn--alt:hover {
+  background: #234b79;
+}
+
+/* 4 Pilares de Garantia & Segurança */
+.parts-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin-top: clamp(36px, 4.5vw, 60px);
+  padding-top: clamp(28px, 3.5vw, 44px);
+  border-top: 1px solid var(--line-strong);
+}
+
+.parts-pillar {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2.2vw, 28px);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(12, 24, 38, 0.08);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.parts-pillar:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.parts-pillar__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(232, 244, 252, 0.9);
+  border: 1px solid rgba(124, 200, 240, 0.4);
+  display: grid;
+  place-items: center;
+  color: #1b4266;
+  margin-bottom: 14px;
+}
+
+.parts-pillar__title {
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.parts-pillar__text {
+  color: var(--slate-500);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Banner de Chamada Rápida */
+.parts-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: clamp(32px, 4vw, 52px);
+  padding: clamp(22px, 2.8vw, 32px) clamp(24px, 3.2vw, 40px);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #0c1826 0%, #16304f 100%);
+  color: var(--ice-50);
+  box-shadow: 0 16px 40px rgba(12, 24, 38, 0.16);
+}
+
+.parts-banner__info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 56ch;
+}
+
+.parts-banner__info h4 {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.parts-banner__info p {
+  color: var(--frost-300);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.5;
+}
+
+.parts-banner__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.parts-banner__btn-quote {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding-inline: 22px;
+  border-radius: 999px;
+  background: var(--frost-400);
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+}
+
+.parts-banner__btn-quote:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.parts-banner__btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding-inline: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 221, 249, 0.45);
+  background: rgba(22, 48, 79, 0.6);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.parts-banner__btn-whatsapp:hover {
+  background: rgba(49, 135, 189, 0.4);
+  border-color: var(--frost-400);
+}
+
+/* ============================================================
+   RESPONSIVIDADE: Notebooks e Telas Menores
+   ============================================================ */
+
+@media (max-width: 1440px) {
+  .parts-section {
+    padding-block: clamp(52px, 6.8vw, 84px);
+  }
+
+  .parts-head {
+    padding-bottom: clamp(24px, 3.2vw, 40px);
+  }
+
+  .parts-head__title {
+    font-size: clamp(28px, 3.4vw, 48px);
+  }
+
+  .parts-card {
+    padding: clamp(22px, 2.8vw, 36px);
+  }
+
+  .parts-card__title {
+    font-size: clamp(20px, 1.9vw, 26px);
+  }
+
+  .parts-btn {
+    min-height: 46px;
+    font-size: 12px;
+    padding-inline: 18px;
+  }
+
+  .parts-pillars {
+    margin-top: clamp(28px, 3.5vw, 44px);
+    padding-top: clamp(22px, 2.8vw, 34px);
+  }
+
+  .parts-pillar {
+    padding: clamp(16px, 1.8vw, 22px);
+  }
+}
+
+@media (max-width: 991px) {
+  .parts-head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .parts-head__desc {
+    justify-self: start;
+    max-width: 100%;
+  }
+
+  .parts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .parts-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .parts-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .parts-banner__actions {
+    width: 100%;
+  }
+
+  .parts-banner__btn-quote,
+  .parts-banner__btn-whatsapp {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .parts-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .parts-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

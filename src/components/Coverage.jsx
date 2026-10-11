@@ -157,10 +157,10 @@ export default function Coverage() {
           <div className="factoid-stat">
             <div className="l1 text-frost">MAXFRIO EM BRASÍLIA</div>
             <div className="factoid-num">
-              20+ <span>anos</span>
+              30+ <span>anos</span>
               <Barcode className="barcode" />
             </div>
-            <div className="l1 text-frost">Experiência, honestidade e confiança desde 2002</div>
+            <div className="l1 text-frost">Experiência, honestidade e confiança desde 1994</div>
           </div>
           <div className="factoid-story">
             <p className="factoid-story__title">Cuidado técnico que atravessa gerações.</p>

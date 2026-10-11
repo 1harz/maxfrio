@@ -21,11 +21,11 @@ export default function Hero() {
 
         <aside className="hero-editorial__aside" aria-label="Experiência MaxFrio">
           <div className="hero-editorial__aside-top">
-            <span>EXPERIÊNCIA MAXFRIO</span>
+            <span>DESDE 1994</span>
             <span>BRASÍLIA / DF</span>
           </div>
           <div className="hero-editorial__experience">
-            <strong>20<span>+</span></strong>
+            <strong>30<span>+</span></strong>
             <p>ANOS DE EXPERIÊNCIA</p>
           </div>
           <p className="hero-editorial__aside-note">O seu ambiente, no ponto certo.</p>

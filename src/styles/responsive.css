@@ -1,0 +1,350 @@
+/* ============================================================
+   MaxFrio: responsive.css
+   Otimizações de escala para Notebooks e Telas Menores
+   (<= 1440px de largura e/ou <= 850px de altura)
+   Garante que o site tenha proporções confortáveis sem parecer "com zoom".
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Laptop Desktop (1024px até 1440px de largura)
+   ------------------------------------------------------------ */
+@media (max-width: 1440px) {
+  /* Header compacto para notebooks */
+  .header_c {
+    padding-block: 13px;
+  }
+
+  .header_logo {
+    font-size: 1.15rem;
+    gap: 10px;
+  }
+
+  .header_logo svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-item {
+    padding: 7px 11px;
+  }
+
+  .nav-item [data-hover-text] {
+    font-size: 0.72rem;
+  }
+
+  .btn-cta {
+    padding: 11px 22px;
+    font-size: 0.74rem;
+    gap: 10px;
+  }
+
+  /* Seção Remote (Controle de Temperatura) */
+  .remote-section {
+    padding-block: clamp(48px, 6.5vw, 76px);
+  }
+
+  .remote-layout {
+    gap: clamp(20px, 3.2vw, 48px);
+  }
+
+  .remote-copy__title {
+    font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+    margin-top: 10px;
+    margin-bottom: 12px;
+    line-height: 1.14;
+  }
+
+  .remote-evap {
+    width: clamp(160px, 18vw, 240px);
+  }
+
+  .evap-body {
+    height: 38px;
+  }
+
+  .remote-3d {
+    width: clamp(120px, 12vw, 150px);
+    padding: 12px 10px 14px;
+    border-radius: 18px;
+  }
+
+  .r3d-screen {
+    min-height: 68px;
+    padding: 7px 8px;
+  }
+
+  .r3d-temp {
+    font-size: 1.6rem;
+  }
+
+  .r3d-power-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* Seção Tech Showcase */
+  .tech-stage {
+    padding-top: 88px;
+    padding-bottom: 20px;
+  }
+
+  .tech-title {
+    font-size: clamp(32px, 3.8vw, 52px);
+  }
+
+  .tech-card {
+    width: clamp(320px, 34vw, 440px);
+    border-radius: 16px;
+  }
+
+  .tech-card_media {
+    height: min(22svh, 170px);
+  }
+
+  .tech-card_info {
+    padding: 14px 18px;
+  }
+
+  .tech-card_title {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+  }
+
+  .tech-card_desc {
+    font-size: 0.8rem;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .tech-card_specs {
+    margin-top: 10px;
+    padding-top: 8px;
+    gap: 5px;
+  }
+
+  .tech-spec-row {
+    font-size: 0.68rem;
+  }
+
+  /* Seção Equipamentos / Products */
+  .prod-screen {
+    padding-top: 84px;
+    padding-bottom: 24px;
+  }
+
+  .prod-spec-grid {
+    gap: clamp(16px, 2vw, 32px);
+    padding-top: 10px;
+  }
+
+  .prod-spec-card {
+    padding: 18px 22px;
+  }
+
+  .spec-row {
+    padding-block: 8px;
+  }
+
+  .model-card_media {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Seção Termos de Instalação */
+  .terms {
+    padding-block: clamp(52px, 6.5vw, 84px);
+  }
+
+  .terms-head {
+    padding-bottom: clamp(22px, 3vw, 38px);
+    gap: 18px 36px;
+  }
+
+  .terms-head > .h2 {
+    font-size: clamp(28px, 3.4vw, 48px);
+    line-height: 1.02;
+  }
+
+  .terms-grid {
+    margin-top: clamp(28px, 3.5vw, 44px);
+    gap: 18px;
+  }
+
+  .terms-card {
+    padding: clamp(20px, 2.4vw, 32px);
+    border-radius: 16px;
+  }
+
+  .terms-card > .h4 {
+    font-size: clamp(20px, 2vw, 26px);
+    margin-bottom: 16px;
+  }
+
+  .terms-card ul {
+    gap: 12px;
+  }
+
+  .terms-card li {
+    font-size: 13.5px;
+    gap: 10px;
+  }
+
+  .terms-full-copy {
+    margin-top: 18px;
+    padding: clamp(16px, 2.2vw, 26px);
+  }
+
+  /* Seção Clientes */
+  .clients {
+    padding-block: clamp(44px, 5.5vw, 68px);
+  }
+
+  .clients-head {
+    padding-bottom: clamp(22px, 3vw, 38px);
+  }
+
+  .client-logo {
+    min-height: clamp(86px, 9vw, 120px);
+    padding: clamp(14px, 2vw, 22px);
+  }
+
+  .client-logo img {
+    max-width: 130px;
+    max-height: 58px;
+  }
+
+  /* Seção Factoid & Cobertura */
+  .cov-factoid {
+    padding-top: clamp(44px, 5vw, 72px);
+    padding-bottom: clamp(44px, 5vw, 72px);
+  }
+
+  .factoid-card {
+    padding: clamp(24px, 3.5vw, 48px);
+    gap: clamp(28px, 4.5vw, 64px);
+  }
+
+  .factoid-num {
+    font-size: clamp(42px, 5.2vw, 76px);
+  }
+
+  .factoid-story__title {
+    font-size: clamp(20px, 2.2vw, 32px);
+    margin-bottom: 12px;
+  }
+
+  .foot-grid {
+    padding-block: clamp(44px, 5vw, 64px);
+    gap: clamp(24px, 3.5vw, 56px);
+  }
+}
+
+/* ------------------------------------------------------------
+   2. Ajustes para Telas de Altura Compacta (Laptops <= 850px de altura)
+   Garante que o conteúdo vertical caiba confortavelmente na tela
+   ------------------------------------------------------------ */
+@media (max-height: 850px) {
+  .header_c {
+    padding-block: 10px;
+  }
+
+  .header .btn-cta {
+    padding: 9px 18px;
+    font-size: 0.72rem;
+  }
+
+  .sticky-stage {
+    height: 100vh;
+  }
+
+  .tech-stage {
+    padding-block: 72px 12px;
+  }
+
+  .tech-title {
+    font-size: clamp(28px, 2.8vw, 40px);
+    line-height: 1;
+  }
+
+  .tech-card {
+    width: clamp(300px, 32vw, 400px);
+  }
+
+  .tech-card_media {
+    height: 110px;
+  }
+
+  .tech-card_info {
+    padding: 10px 15px;
+  }
+
+  .tech-card_title {
+    font-size: 1.05rem;
+  }
+
+  .tech-card_desc {
+    margin-top: 4px;
+    line-height: 1.35;
+    font-size: 0.78rem;
+  }
+
+  .tech-card_specs {
+    margin-top: 6px;
+    padding-top: 6px;
+    gap: 2px;
+  }
+
+  .tech-card_specs .tech-spec-row:nth-child(n + 3) {
+    display: none;
+  }
+
+  .prod-screen {
+    padding-top: 72px;
+    padding-bottom: 18px;
+  }
+
+  .prod-spec-grid {
+    padding-top: 0;
+  }
+
+  .prod-spec-card {
+    padding: 14px 18px;
+  }
+
+  .spec-row {
+    padding-block: 6px;
+  }
+
+  .cov-cities {
+    padding-top: 76px;
+  }
+}
+
+/* ------------------------------------------------------------
+   3. Telas com Altura Muito Baixa (<= 700px de altura)
+   (Notebooks com 768px de altura - barra do Windows - abas)
+   ------------------------------------------------------------ */
+@media (max-height: 700px) {
+  .header_c {
+    padding-block: 8px;
+  }
+
+  .tech-stage {
+    padding-block: 64px 8px;
+  }
+
+  .tech-card_media {
+    height: 90px;
+  }
+
+  .prod-screen {
+    padding-top: 64px;
+    padding-bottom: 12px;
+  }
+
+  .prod-spec-card {
+    padding: 12px 14px;
+  }
+
+  .prod-blueprint {
+    max-height: 320px;
+  }
+}

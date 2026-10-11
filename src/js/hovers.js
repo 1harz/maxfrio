@@ -29,27 +29,26 @@ export function initLinkHovers() {
   });
 }
 
-/* botão CTA: rótulo rola + ícone troca em diagonal */
+/* botão CTA: rótulo rola + ícone gira suavemente */
 export function initCtaHovers() {
   onDesktop(() => {
     document.querySelectorAll('[data-hover="cta"]').forEach((el) => {
       const labels = el.querySelectorAll('[data-hover-text]');
-      const icons = el.querySelectorAll('[data-hover-ico]');
+      const icon = el.querySelector('[data-hover-ico]');
       if (labels.length < 2) return;
       const a = splitEl(labels[0], 'words,chars');
       const b = splitEl(labels[1], 'words,chars');
       if (!a.chars || !b.chars || !a.chars.length) return;
 
-      const [ico1, ico2] = icons;
       gsap.set(labels[1], { opacity: 1 });
       gsap.set(b.chars, { yPercent: 110, opacity: 0 });
-      if (ico2) gsap.set(ico2, { xPercent: -160, yPercent: 90, opacity: 0 });
 
       const tl = gsap.timeline({ paused: true });
-      tl.to(a.chars, { yPercent: -110, opacity: 0, duration: 0.5, stagger: 0.008, ease: 'mf-out' }, 0);
-      tl.to(b.chars, { yPercent: 0, opacity: 1, duration: 0.5, stagger: 0.008, ease: 'mf-out' }, 0.03);
-      if (ico1) tl.to(ico1, { xPercent: 160, yPercent: -90, duration: 0.5, ease: 'mf-inout' }, 0);
-      if (ico2) tl.to(ico2, { xPercent: 0, yPercent: 0, opacity: 1, duration: 0.5, ease: 'mf-inout' }, 0);
+      tl.to(a.chars, { yPercent: -110, opacity: 0, duration: 0.45, stagger: 0.008, ease: 'mf-out' }, 0);
+      tl.to(b.chars, { yPercent: 0, opacity: 1, duration: 0.45, stagger: 0.008, ease: 'mf-out' }, 0.03);
+      if (icon) {
+        tl.to(icon, { rotate: 90, duration: 0.5, ease: 'power2.out' }, 0);
+      }
 
       el.addEventListener('mouseenter', () => tl.play());
       el.addEventListener('mouseleave', () => tl.reverse());
@@ -82,46 +81,7 @@ export function initNavHovers() {
   });
 }
 
-/* efeito magnético (botões chamada) */
+/* efeito magnético desativado */
 export function initMagnetic() {
-  onDesktop(() => {
-    if (window.matchMedia('(hover: none)').matches) return;
-    document.querySelectorAll('[data-magnetic]').forEach((el) => {
-      const strength = parseFloat(el.getAttribute('data-magnetic')) || 22;
-      const inner = el.querySelector('[data-magnetic-inner]');
-
-      const reset = (instant) => {
-        gsap.killTweensOf(el);
-        gsap.to(el, {
-          x: 0,
-          y: 0,
-          duration: instant ? 0 : 1.4,
-          ease: 'elastic.out(1, 0.3)',
-          clearProps: instant ? 'all' : '',
-        });
-      };
-
-      el.addEventListener('mousemove', (e) => {
-        const r = el.getBoundingClientRect();
-        const dx = (e.clientX - r.left) / r.width - 0.5;
-        const dy = (e.clientY - r.top) / r.height - 0.5;
-        gsap.to(el, {
-          x: dx * strength,
-          y: dy * strength,
-          rotate: '0.001deg',
-          duration: 1.2,
-          ease: 'power4.out',
-        });
-        if (inner) {
-          gsap.to(inner, {
-            x: dx * strength * 0.5,
-            y: dy * strength * 0.5,
-            duration: 1.4,
-            ease: 'power4.out',
-          });
-        }
-      });
-      el.addEventListener('mouseleave', () => reset(false));
-    });
-  });
+  // Desativado a pedido do usuário: botões mantêm posição estável
 }

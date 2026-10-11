@@ -100,7 +100,7 @@
 }
 
 /* ------------------------------------------------------------
-   Espaçadores verticais (unidades fixas como no original)
+   Espaçadores verticais
    ------------------------------------------------------------ */
 
 .u-8 {
@@ -129,6 +129,51 @@
 
 .u-156 {
   height: 156px;
+}
+
+/* Redução proporcional de espaçadores para notebooks e telas menores */
+@media (max-width: 1440px) {
+  .u-156 {
+    height: clamp(56px, 7.5vh, 84px);
+  }
+
+  .u-96 {
+    height: clamp(36px, 4.8vh, 52px);
+  }
+
+  .u-60 {
+    height: clamp(24px, 3.2vh, 34px);
+  }
+
+  .u-36 {
+    height: 22px;
+  }
+
+  .u-24 {
+    height: 16px;
+  }
+
+  .u-12 {
+    height: 8px;
+  }
+
+  .u-8 {
+    height: 6px;
+  }
+}
+
+@media (max-height: 850px) {
+  .u-156 {
+    height: clamp(44px, 6.2vh, 72px);
+  }
+
+  .u-96 {
+    height: clamp(26px, 3.8vh, 42px);
+  }
+
+  .u-60 {
+    height: clamp(18px, 2.6vh, 28px);
+  }
 }
 
 /* ------------------------------------------------------------
@@ -164,9 +209,8 @@
 
 .data-item {
   display: flex;
-  justify-content: space;
-  align-items: baseline;
   justify-content: space-between;
+  align-items: baseline;
   gap: 24px;
   padding-block: 14px;
 }

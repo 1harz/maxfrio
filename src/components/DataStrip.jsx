@@ -8,7 +8,7 @@ export default function DataStrip() {
           <div className="g-col-4 data-item-v">
             <div className="l1 text-dim">Experiência</div>
             <div className="h3" style={{ marginTop: '10px' }}>
-              Mais de 20 anos
+              Mais de 30 anos (desde 1994)
             </div>
           </div>
           <div className="g-col-4 data-item-v">
