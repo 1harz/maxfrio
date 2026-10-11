@@ -206,8 +206,13 @@ export function initProductsScene() {
   });
 
   onMobile(() => {
+    const heroScreen = document.querySelector('.prod-screen--hero');
     const specScreen = document.querySelector('.prod-screen--spec');
-    if (specScreen) gsap.set(specScreen, { yPercent: 0, opacity: 1 });
+    const unit = document.querySelector('[data-prod-unit]');
+    if (heroScreen) gsap.set(heroScreen, { clearProps: 'all' });
+    if (specScreen) gsap.set(specScreen, { clearProps: 'all', opacity: 1 });
+    if (unit) gsap.set(unit, { clearProps: 'all' });
+
     const blueprint = document.querySelector('[data-blueprint]');
     if (!blueprint) return;
     const paths = blueprint.querySelectorAll('path, ellipse, rect, circle');

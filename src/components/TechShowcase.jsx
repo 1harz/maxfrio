@@ -107,7 +107,7 @@ export default function TechShowcase() {
                   Soluções completas para <span className="text-frost">seu conforto</span>
                 </h2>
               </div>
-              <div className="a-right tech-header-meta">
+              <div className="a-right tech-header-meta" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>
                 <div className="font-mono l1 text-dim">RESIDENCIAL · COMERCIAL · INDUSTRIAL</div>
                 <div className="p7 text-frost" style={{ marginTop: '4px' }}>
                   <span className="tech-hint-scroll">Role para conhecer todos os serviços</span>

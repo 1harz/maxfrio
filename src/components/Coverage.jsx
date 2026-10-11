@@ -142,6 +142,7 @@ export default function Coverage() {
           {/* wordmark + esfera sobem durante o pin */}
           <div className="cov-title" data-cov-title aria-hidden="true">
             <Wordmark />
+            <div className="cov-wordmark-sub">AR-CONDICIONADO</div>
           </div>
           <div className="cov-bot">
             <div className="cov-sphere-w" data-cov-sphere>
@@ -185,7 +186,17 @@ export default function Coverage() {
           </div>
           <div className="foot-grid">
             <div>
-              <SnowIcon size={40} />
+              <div className="foot-brand">
+                <SnowIcon size={38} />
+                <div className="brand-lockup">
+                  <span className="brand-lockup__name" style={{ fontSize: '1.45rem', lineHeight: 1 }}>
+                    Max<span className="text-frost">Frio</span>
+                  </span>
+                  <span className="brand-lockup__sub" style={{ fontSize: '0.62rem', letterSpacing: '0.22em' }}>
+                    ar-condicionado
+                  </span>
+                </div>
+              </div>
               <div className="u-24" />
               <h2 className="h3 foot-title" data-reveal="lines" data-prevent-flicker="true">
                 Precisa instalar ou cuidar do seu ar-condicionado?
@@ -215,7 +226,7 @@ export default function Coverage() {
           </div>
           <div className="foot-legal">
             <div className="l1">
-              © <span data-year>2026</span> MaxFrio Climatização. Todos os direitos reservados.
+              © <span data-year>2026</span> MaxFrio Ar-Condicionado. Todos os direitos reservados.
             </div>
             <HoverLink href="#" textClass="l1">
               Brasília, DF e Entorno

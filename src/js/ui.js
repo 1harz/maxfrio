@@ -307,4 +307,7 @@ export function initMenu() {
 
   btn.addEventListener('click', () => (isOpen ? closeMenu() : openMenu()));
   menu.querySelectorAll('[data-menu-close]').forEach((el) => el.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) closeMenu();
+  });
 }

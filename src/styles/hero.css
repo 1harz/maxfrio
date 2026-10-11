@@ -175,6 +175,23 @@
   letter-spacing: -0.025em;
 }
 
+.hero-editorial__highlight {
+  display: inline;
+  color: #17658f;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #3187bd;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 4px;
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.hero-editorial__highlight:hover {
+  color: #0d4b6d;
+  text-decoration-color: #185a82;
+}
+
 .hero-editorial__actions {
   display: flex;
   align-items: center;

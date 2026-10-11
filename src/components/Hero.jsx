@@ -34,7 +34,10 @@ export default function Hero() {
         <div className="hero-editorial__base">
           <p>
             Instalação, manutenção e higienização de ar-condicionado com cuidado
-            técnico do começo ao fim.
+            técnico do começo ao fim.{' '}
+            <strong className="hero-editorial__highlight">
+              Todas as marcas. Todos os modelos.
+            </strong>
           </p>
           <div className="hero-editorial__actions">
             <a className="hero-editorial__primary" href="#contato" data-pop-open="quote">

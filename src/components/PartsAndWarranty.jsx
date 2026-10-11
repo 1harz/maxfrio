@@ -12,7 +12,7 @@ export default function PartsAndWarranty() {
           <div>
             <div className="parts-head__tag">
               <span className="parts-head__tag-dot" aria-hidden="true" />
-              <span>Seminovos Revisados & Peças Usadas Testadas</span>
+              <span>Seminovos Revisados & Peças Originais Testadas</span>
             </div>
             <div className="u-12" />
             <h2 id="parts-title" className="parts-head__title">
@@ -21,13 +21,13 @@ export default function PartsAndWarranty() {
           </div>
           <p className="parts-head__desc">
             Economia inteligente com procedência comprovada: comercializamos aparelhos de ar-condicionado
-            seminovos completamente revisados e peças originais usadas rigorosamente testadas em bancada pela equipe técnica da MaxFrio.
+            seminovos completamente revisados e peças originais rigorosamente testadas em bancada pela equipe técnica da MaxFrio.
           </p>
         </div>
 
-        {/* Grid de 2 Cards Principais: Aparelhos Seminovos & Peças Usadas */}
+        {/* Grid de 2 Cards Principais: Aparelhos Seminovos & Peças Originais */}
         <div className="parts-grid">
-          {/* Card 1: Venda de Aparelhos Seminovos e Usados com Garantia */}
+          {/* Card 1: Venda de Aparelhos Seminovos com Garantia */}
           <article className="parts-card">
             <div className="parts-card__header">
               <div className="parts-card__badge">
@@ -47,7 +47,7 @@ export default function PartsAndWarranty() {
 
             <h3 className="parts-card__title">Aparelhos de Ar-Condicionado Seminovos</h3>
             <p className="parts-card__text">
-              Equipamentos seminovos e usados criteriosamente selecionados, submetidos a checklist técnico completo,
+              Equipamentos seminovos criteriosamente selecionados, submetidos a checklist técnico completo,
               higienização profunda e testes em bancada. Alto rendimento com economia de até 60% e garantia real de funcionamento.
             </p>
 
@@ -122,7 +122,7 @@ export default function PartsAndWarranty() {
             </div>
           </article>
 
-          {/* Card 2: Peças Originais Usadas / Seminovas */}
+          {/* Card 2: Peças Originais Seminovas & Testadas */}
           <article className="parts-card parts-card--alt">
             <div className="parts-card__header">
               <div className="parts-card__badge parts-card__badge--green">
@@ -139,9 +139,9 @@ export default function PartsAndWarranty() {
               </div>
             </div>
 
-            <h3 className="parts-card__title">Peças Originais Usadas e Seminovas</h3>
+            <h3 className="parts-card__title">Peças Originais Seminovas & Testadas</h3>
             <p className="parts-card__text">
-              Componentes genuínos de reposição retirados de aparelhos selecionados e 100% testados em bancada.
+              Componentes genuínos de reposição criteriosamente revisados e 100% testados em bancada.
               A solução definitiva para recuperar seu equipamento com a confiabilidade da peça original do fabricante, sem adaptações paralelas e por um valor justo.
             </p>
 
@@ -228,7 +228,7 @@ export default function PartsAndWarranty() {
             </div>
             <h4 className="parts-pillar__title">Garantia Técnica MaxFrio</h4>
             <p className="parts-pillar__text">
-              Aparelhos seminovos e peças usadas com garantia formal de funcionamento emitida pela nossa assistência.
+              Aparelhos e peças seminovos com garantia formal de funcionamento emitida pela nossa assistência.
             </p>
           </div>
 
@@ -276,7 +276,7 @@ export default function PartsAndWarranty() {
         {/* Banner CTA */}
         <div className="parts-banner">
           <div className="parts-banner__info">
-            <h4>Precisa de um ar-condicionado seminovo ou de uma peça usada com garantia?</h4>
+            <h4>Precisa de um ar-condicionado seminovo ou de uma peça original com garantia?</h4>
             <p>
               Consulte nosso estoque de aparelhos revisados e peças originais testadas para pronta entrega em Brasília e DF.
             </p>
@@ -290,7 +290,7 @@ export default function PartsAndWarranty() {
               Solicitar Orçamento
             </button>
             <a
-              href="https://wa.me/556132736005?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20aparelhos%20seminovos%20e%20pe%C3%A7as%20usadas%20com%20garantia"
+              href="https://wa.me/556132736005?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20aparelhos%20seminovos%20e%20pe%C3%A7as%20com%20garantia"
               target="_blank"
               rel="noopener noreferrer"
               className="parts-banner__btn-whatsapp"

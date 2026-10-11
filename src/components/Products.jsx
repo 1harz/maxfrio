@@ -67,7 +67,7 @@ export default function Products() {
           <div className="prod-switch">
             {/* tela 1: título gigante + unidade flutuante */}
             <div className="prod-screen prod-screen--hero">
-              <div className="container" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div className="container prod-screen-c prod-screen-c--hero">
                 <div className="u-96" />
                 <div className="prod-title">
                   <h2 className="h1" data-reveal="chars" data-prevent-flicker="true">
@@ -110,7 +110,7 @@ export default function Products() {
 
             {/* tela 2: ficha técnica com blueprint */}
             <div className="prod-screen prod-screen--spec">
-              <div className="container" style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div className="container prod-screen-c prod-screen-c--spec">
                 <div className="u-36" />
                 <div className="prod-spec-grid">
                   <div className="prod-spec-card">

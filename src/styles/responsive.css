@@ -127,8 +127,8 @@
 
   /* Seção Equipamentos / Products */
   .prod-screen {
-    padding-top: 84px;
-    padding-bottom: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .prod-spec-grid {
@@ -297,8 +297,8 @@
   }
 
   .prod-screen {
-    padding-top: 72px;
-    padding-bottom: 18px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .prod-spec-grid {

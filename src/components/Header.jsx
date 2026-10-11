@@ -7,9 +7,12 @@ export default function Header() {
         <div className="header_c">
           <a href="#hero" className="header_logo" data-menu-close>
             <SnowIcon />
-            <span>
-              Max<span className="text-frost">Frio</span>
-            </span>
+            <div className="brand-lockup">
+              <span className="brand-lockup__name">
+                Max<span className="text-frost">Frio</span>
+              </span>
+              <span className="brand-lockup__sub">ar-condicionado</span>
+            </div>
           </a>
 
           <div className="header_side">

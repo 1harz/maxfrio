@@ -209,7 +209,7 @@ export default function RemoteControl() {
                 <span key={i} className="evap-flow-line" style={{ '--li': i }} />
               ))}
             </div>
-            <div className="evap-label font-mono">CLIMATIZAÇÃO · MAXFRIO</div>
+            <div className="evap-label font-mono">MAXFRIO · AR-CONDICIONADO</div>
           </div>
 
           {/* 3-D Remote control body */}

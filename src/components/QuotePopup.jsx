@@ -41,8 +41,8 @@ export default function QuotePopup() {
                 Tipo de interesse
               </label>
               <select id="q-amb" name="ambiente" defaultValue="Residencial">
-                <option value="Aparelho Seminovo com Garantia">Aparelho Seminovo / Usado (com garantia)</option>
-                <option value="Peças Originais Usadas / Seminovas">Peças Originais Usadas / Seminovas (Testadas)</option>
+                <option value="Aparelho Seminovo com Garantia">Aparelho Seminovo (com garantia)</option>
+                <option value="Peças Originais Seminovas">Peças Originais Seminovas (Testadas em Bancada)</option>
                 <option value="Instalação Residencial">Instalação Residencial</option>
                 <option value="Instalação Comercial">Instalação Comercial / Corporativa</option>
                 <option value="Manutenção e Conserto">Manutenção ou Conserto de Ar-Condicionado</option>
@@ -53,7 +53,7 @@ export default function QuotePopup() {
               <label className="l1" htmlFor="q-msg">
                 Mensagem
               </label>
-              <textarea id="q-msg" name="mensagem" placeholder="Conte sobre o que precisa: aparelho seminovo, peça original usada ou serviço no seu ambiente..." style={{ resize: 'none' }} />
+              <textarea id="q-msg" name="mensagem" placeholder="Conte sobre o que precisa: aparelho seminovo, peça original revisada ou serviço no seu ambiente..." style={{ resize: 'none' }} />
             </div>
           </div>
 
