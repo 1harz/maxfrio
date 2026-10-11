@@ -1,4 +1,4 @@
-/* Blueprint técnico inline — os traços precisam estar no DOM
+/* Blueprint técnico inline: os traços precisam estar no DOM
    para a animação de desenho (stroke-dashoffset via pathLength=1). */
 export default function BlueprintSvg() {
   return (

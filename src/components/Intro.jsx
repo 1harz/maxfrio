@@ -20,10 +20,10 @@ export default function Intro() {
       {/* marquee fantasma ao fundo */}
       <div className="ghost" aria-hidden="true" data-parallax-bg>
         <div className="ghost_row">
-          MaxFrio — Climatização — MaxFrio — Climatização — MaxFrio — Climatização — MaxFrio —
-          Climatização —&nbsp;
-          MaxFrio — Climatização — MaxFrio — Climatização — MaxFrio — Climatização — MaxFrio —
-          Climatização —&nbsp;
+          MaxFrio · Climatização · MaxFrio · Climatização · MaxFrio · Climatização · MaxFrio ·
+          Climatização ·&nbsp;
+          MaxFrio · Climatização · MaxFrio · Climatização · MaxFrio · Climatização · MaxFrio ·
+          Climatização ·&nbsp;
         </div>
       </div>
 

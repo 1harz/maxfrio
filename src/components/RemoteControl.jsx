@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { climateState } from '../js/core.js';
 
-/* ─── Bottom Blur Transition ─── */
+/* Bottom Blur Transition */
 function BottomBlurTransition() {
   return (
     <div className="section-bottom-blur" aria-hidden="true">
@@ -13,7 +13,7 @@ function BottomBlurTransition() {
   );
 }
 
-/* ─── Wind canvas that fires when AC is activated ─── */
+/* Wind canvas that fires when AC is activated */
 function WindCanvas({ active }) {
   const canvasRef = useRef(null);
   const stateRef = useRef({ active: false, raf: 0, running: false });
@@ -114,7 +114,7 @@ function WindCanvas({ active }) {
   return <canvas ref={canvasRef} className="remote-wind-canvas" aria-hidden="true" />;
 }
 
-/* ─── IR Beam SVG fired toward the evaporator ─── */
+/* IR Beam SVG fired toward the evaporator */
 function IrBeam({ firing }) {
   return (
     <svg
@@ -169,7 +169,7 @@ export default function RemoteControl() {
       data-remote-section
       style={{ zIndex: 10, position: 'relative' }}
     >
-      {/* Wind layer — full section */}
+      {/* Wind layer: full section */}
       <WindCanvas active={climate.isOn} />
 
       <div className="container remote-layout">
@@ -225,8 +225,8 @@ export default function RemoteControl() {
             {/* OLED screen */}
             <div className="r3d-screen">
               <div className="r3d-screen__header font-mono">
-                <span>{climate.isOn ? (climate.mode === 'turbo' ? '⚡ TURBO' : climate.mode === 'eco' ? '🌿 ECO' : '❄ COOL') : 'STANDBY'}</span>
-                <span className={`r3d-sig ${climate.isOn ? 'is-on' : ''}`}>●</span>
+                <span>{climate.isOn ? (climate.mode === 'turbo' ? 'TURBO' : climate.mode === 'eco' ? 'ECO' : 'FRIO') : 'STANDBY'}</span>
+                <span className={`r3d-sig ${climate.isOn ? 'is-on' : ''}`} aria-hidden="true" />
               </div>
               <div className="r3d-screen__main font-display">
                 {climate.isOn
@@ -264,7 +264,7 @@ export default function RemoteControl() {
                 onClick={() => climateState.setTemp(climate.temp + 1)}
                 disabled={!climate.isOn || climate.temp >= 26}
                 aria-label="Aumentar temperatura"
-              >▲</button>
+              >+</button>
               <span className="r3d-temp-disp font-mono">{climate.temp}°</span>
               <button
                 type="button"
@@ -272,7 +272,7 @@ export default function RemoteControl() {
                 onClick={() => climateState.setTemp(climate.temp - 1)}
                 disabled={!climate.isOn || climate.temp <= 16}
                 aria-label="Diminuir temperatura"
-              >▼</button>
+              >-</button>
             </div>
 
             <div className="r3d-mode-row font-mono">
@@ -283,8 +283,9 @@ export default function RemoteControl() {
                   className={`r3d-mode-btn ${climate.mode === m && climate.isOn ? 'is-active' : ''}`}
                   onClick={() => climateState.setMode(m)}
                   disabled={!climate.isOn}
+                  aria-label={m === 'cool' ? 'Modo frio' : m === 'turbo' ? 'Modo turbo' : 'Modo econômico'}
                 >
-                  {m === 'cool' ? '❄' : m === 'turbo' ? '⚡' : '🌿'}
+                  {m === 'cool' ? 'FRIO' : m === 'turbo' ? 'TURBO' : 'ECO'}
                 </button>
               ))}
             </div>

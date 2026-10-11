@@ -75,6 +75,9 @@ export default function Products() {
                     certo.
                   </h2>
                 </div>
+                <div className="prod-unit-mobile">
+                  <img src="/assets/ac-hero.svg" alt="Ilustração de uma unidade interna split hi-wall" />
+                </div>
                 <div className="prod-hero-bot">
                   <div className="grid">
                     <div className="g-col-6">

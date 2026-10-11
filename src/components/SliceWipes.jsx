@@ -1,5 +1,5 @@
 /* ============================================================
-   SLICE WIPE TRANSITION — Estilo Adidas
+   SLICE WIPE TRANSITION: Estilo Adidas
    Fatias diagonais que cobrem e revelam entre seções.
    Instâncias renderizadas pelo App.jsx, ancoradas ao topo do
    documento e ativadas via ScrollTrigger em scenes.js.

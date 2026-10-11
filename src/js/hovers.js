@@ -1,5 +1,5 @@
 /* ============================================================
-   MaxFrio — hovers.js
+   MaxFrio: hovers.js
    Micro-interações: roll de caracteres em links, botão CTA,
    itens de navegação e efeito magnético.
    ============================================================ */
@@ -16,6 +16,7 @@ export function initLinkHovers() {
       const b = splitEl(labels[1], 'words,chars');
       if (!a.chars || !b.chars || !a.chars.length) return;
 
+      gsap.set(labels[1], { opacity: 1 });
       gsap.set(b.chars, { yPercent: 110, opacity: 0 });
 
       const tl = gsap.timeline({ paused: true });
@@ -40,6 +41,7 @@ export function initCtaHovers() {
       if (!a.chars || !b.chars || !a.chars.length) return;
 
       const [ico1, ico2] = icons;
+      gsap.set(labels[1], { opacity: 1 });
       gsap.set(b.chars, { yPercent: 110, opacity: 0 });
       if (ico2) gsap.set(ico2, { xPercent: -160, yPercent: 90, opacity: 0 });
 

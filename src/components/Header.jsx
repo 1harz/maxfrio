@@ -2,7 +2,7 @@ import { SnowIcon, CtaButton } from './bits.jsx';
 
 export default function Header() {
   return (
-    <header className="header" data-prevent-flicker="true">
+    <header className="header theme-light" data-prevent-flicker="true">
       <div className="container">
         <div className="header_c">
           <a href="#hero" className="header_logo" data-menu-close>

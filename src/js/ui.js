@@ -1,5 +1,5 @@
 /* ============================================================
-   MaxFrio — ui.js
+   MaxFrio: ui.js
    Popups, menu mobile, acordeão de benefícios, palavras em
    loop, relógio ao vivo, troca de tema do header e utilidades.
    ============================================================ */

@@ -1,16 +1,13 @@
 /* ============================================================
-   MaxFrio — site.js
-   Orquestrador: preloader → tudo inicializa quando a frente
-   fria começa a varrer a tela.
+   MaxFrio: site.js
+   Orquestrador das cenas e interações do site.
    ============================================================ */
 
 import { initCore } from './core.js';
 import { initScrollReveals, initHighlight, initParallax, initBlockReveal } from './reveals.js';
 import { initLinkHovers, initCtaHovers, initNavHovers, initMagnetic } from './hovers.js';
-import { initTheme, initClock, initLoopingWords, initAccordion, initPopups, initMenu } from './ui.js';
+import { initTheme, initClock, initLoopingWords, initPopups, initMenu } from './ui.js';
 import {
-  runPreloader,
-  initHeroWindowScene,
   initRemoteScene,
   initIntroParallax,
   initTechScene,
@@ -19,10 +16,12 @@ import {
   initSlideReveals,
   initFooterCta,
 } from './scenes.js';
-import { initSnow, initSphere } from './canvas.js';
+import { initSphere } from './canvas.js';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+let initialized = false;
 
 function initAll() {
-  initHeroWindowScene();
   initBlockReveal();
   initTheme();
   initClock();
@@ -42,17 +41,27 @@ function initAll() {
   initMagnetic();
   initPopups();
   initMenu();
-  initAccordion();
   initLoopingWords();
+
+  requestAnimationFrame(() => {
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
+  });
+
+  document.fonts?.ready.then(() => {
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
+  });
 }
 
 
 export function initSite() {
+  if (initialized) return;
+  initialized = true;
   initCore();
 
-  // canvases rodam desde já (ficam atrás do preloader)
-  initSnow(document.querySelector('[data-snow]'));
+  // Inicializa a esfera da seção de cobertura.
   initSphere(document.querySelector('[data-sphere]'));
 
-  runPreloader(initAll);
+  initAll();
 }

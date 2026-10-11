@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "MaxFrio Climatização — site institucional com animações de alta performance",
+  "description": "MaxFrio Climatização: site institucional com animações de alta performance",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -62,7 +62,7 @@
     <text x="560" y="46" text-anchor="middle" font-weight="700">912 mm</text>
     <text x="1160" y="266" text-anchor="middle" transform="rotate(90 1160 266)" font-weight="700">320 mm</text>
     <text x="38" y="266" text-anchor="middle" transform="rotate(-90 38 266)" font-weight="700">282</text>
-    <text x="560" y="590" text-anchor="middle" opacity=".8" letter-spacing="4">UNIDADE INTERNA — ARTIC 24 · ESCALA 1:10</text>
+    <text x="560" y="590" text-anchor="middle" opacity=".8" letter-spacing="4">UNIDADE INTERNA | ARTIC 24 · ESCALA 1:10</text>
   </g>
   <g font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="2" fill="#4FA8DC">
     <text x="180" y="552">FLUXO 8,4 m³/min</text>

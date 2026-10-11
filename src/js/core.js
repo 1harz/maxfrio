@@ -1,5 +1,5 @@
 /* ============================================================
-   MaxFrio — core.js
+   MaxFrio: core.js
    Lenis + GSAP + eases + utilidades compartilhadas.
    ============================================================ */
 

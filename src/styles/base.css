@@ -1,5 +1,5 @@
 /* ============================================================
-   MaxFrio — base.css
+   MaxFrio: base.css
    Tokens, reset, tipografia e utilitários primitivos.
    Identidade própria: gelo + navy, grotesque expandida.
    ============================================================ */
@@ -33,7 +33,7 @@
   --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-inout: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* tema — sobrescrito por .bg-dark / .bg-light */
+  /* tema: sobrescrito por .bg-dark / .bg-light */
   --bg: var(--ice-50);
   --fg: var(--navy-950);
   --fg-dim: var(--slate-400);
@@ -54,6 +54,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: auto;
+  overflow-x: clip;
 }
 
 html.lenis,
@@ -278,20 +279,6 @@ body::after {
 
 .d-none {
   display: none;
-}
-
-/* landscape cover para telas pequenas */
-.landscape-cover {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 400;
-  background: var(--navy-950);
-}
-@media screen and (orientation: landscape) and (max-height: 500px) {
-  .landscape-cover {
-    display: block;
-  }
 }
 
 /* acessibilidade */

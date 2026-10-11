@@ -1,237 +1,14 @@
 /* ============================================================
-   MaxFrio — scenes.js
-   Coreografias de rolagem: preloader, zoom do hero, parallax
-   da intro, transição de produtos com blueprint e cobertura.
+   MaxFrio: scenes.js
+   Coreografias de rolagem: parallax da intro, transição de
+   produtos com blueprint e cobertura.
    ============================================================ */
 
-import { gsap, lockScroll, onDesktop, onMobile, splitEl } from './core.js';
+import { gsap, onDesktop, onMobile } from './core.js';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { blurIn, blurOut } from './reveals.js';
-import { airTunnelIntensity } from './canvas.js';
 
 /* ------------------------------------------------------------
-   PRELOADER — CRT mínimo + snowflake explodindo em logo
-   ------------------------------------------------------------ */
-export function runPreloader(onReveal) {
-  const pre = document.querySelector('[data-preloader]');
-  if (!pre) {
-    onReveal && onReveal();
-    return;
-  }
-
-  let visited = false;
-  try {
-    visited = !!sessionStorage.getItem('maxfrio_visited');
-    sessionStorage.setItem('maxfrio_visited', 'true');
-  } catch (e) {
-    /* storage bloqueado */
-  }
-
-  const hold = visited ? 0.9 : 2.6;
-
-  lockScroll(true);
-  window.scrollTo(0, 0);
-
-  const snowflake = pre.querySelector('.pre-snowflake');
-  const wordmark = pre.querySelector('.pre-wordmark');
-  const sub = pre.querySelector('.pre-sub');
-  const shards = pre.querySelectorAll('.pre-burst__shard');
-  const bg = pre.querySelector('[data-preloader-bg]');
-
-  // --- Estado inicial ---
-  gsap.set(pre, { autoAlpha: 1 });
-  gsap.set(wordmark, { autoAlpha: 0, scale: 0.88, filter: 'blur(12px)' });
-  gsap.set(sub, { autoAlpha: 0, y: 8 });
-  if (shards.length) gsap.set(shards, { scale: 0, autoAlpha: 0 });
-
-  const tl = gsap.timeline();
-
-  if (!visited) {
-    // 0. Snowflake entra girando
-    if (snowflake) {
-      gsap.set(snowflake, { scale: 0.3, autoAlpha: 0, rotate: -90 });
-      tl.to(snowflake, { scale: 1, autoAlpha: 1, rotate: 0, duration: 0.8, ease: 'back.out(1.6)' }, 0.1);
-    }
-
-    // 1. Partículas explodem para fora (burst)
-    if (shards.length) {
-      tl.to(
-        shards,
-        {
-          scale: 1,
-          autoAlpha: 0.9,
-          duration: 0.35,
-          stagger: 0.03,
-          ease: 'back.out(2)',
-        },
-        0.55
-      );
-      tl.to(
-        shards,
-        {
-          scale: 2.8,
-          autoAlpha: 0,
-          duration: 0.55,
-          stagger: 0.03,
-          ease: 'power3.in',
-        },
-        0.75
-      );
-    }
-
-    // 2. Snowflake encolhe e vira logo
-    if (snowflake) {
-      tl.to(snowflake, { scale: 0.6, autoAlpha: 0, duration: 0.4, ease: 'power2.in' }, 0.8);
-    }
-
-    // 3. Wordmark emerge do centro com blur
-    if (wordmark) {
-      tl.to(
-        wordmark,
-        { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 0.7, ease: 'power3.out' },
-        0.95
-      );
-    }
-
-    // 4. Sub-texto sobe
-    if (sub) {
-      tl.to(sub, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 1.15);
-    }
-
-    // 5. Logo blur-out antes de sair
-    if (wordmark) {
-      tl.to(
-        wordmark,
-        { autoAlpha: 0, scale: 1.05, filter: 'blur(8px)', duration: 0.4, ease: 'power2.in' },
-        hold - 0.55
-      );
-    }
-    if (sub) {
-      tl.to(sub, { autoAlpha: 0, y: -6, duration: 0.3, ease: 'power2.in' }, hold - 0.5);
-    }
-  }
-
-  // Cold-wipe sai varrendo de baixo para cima
-  if (bg) {
-    gsap.fromTo(
-      bg,
-      { '--mask-size': '100% 200%', '--mask-y': '0%' },
-      { '--mask-size': '100% 200%', '--mask-y': '200%', duration: 1.1, delay: hold - 0.55, ease: 'mf-inout' }
-    );
-  }
-
-  // O site acorda ligeiramente antes do wipe
-  setTimeout(() => onReveal && onReveal(), Math.max(0, (hold - 0.5) * 1000));
-
-  gsap.to(pre, {
-    autoAlpha: 0,
-    duration: 0.6,
-    delay: hold + 0.2,
-    ease: 'mf-out',
-    onComplete: () => {
-      pre.style.display = 'none';
-      lockScroll(false);
-    },
-  });
-}
-
-/* ------------------------------------------------------------
-   HERO — Zoom imersivo: Janela exterior → Quarto climatizado (JeskoJets Style)
-   ------------------------------------------------------------ */
-export function initHeroWindowScene() {
-  const track = document.querySelector('[data-hero-track]');
-  const stage = document.querySelector('[data-hero-stage]');
-  const windowWall = document.querySelector('[data-hero-window-wall]');
-  const roomBg = document.querySelector('[data-hero-room]');
-  const textGrid = document.querySelector('[data-hero-text-grid]');
-  const leftText = document.querySelector('[data-hero-left]');
-  const rightText = document.querySelector('[data-hero-right]');
-  const botBar = document.querySelector('[data-hero-bot]');
-  const roomContent = document.querySelector('[data-hero-room-content]');
-
-  if (!track || !stage) return;
-
-  const resetHeroState = () => {
-    if (windowWall) gsap.set(windowWall, { scale: 1, opacity: 1 });
-    if (roomBg) gsap.set(roomBg, { scale: 1, opacity: 1, filter: 'none' });
-    if (textGrid) gsap.set(textGrid, { opacity: 1 });
-    if (leftText) gsap.set(leftText, { x: '0vw', opacity: 1 });
-    if (rightText) gsap.set(rightText, { x: '0vw', opacity: 1 });
-    if (botBar) gsap.set(botBar, { opacity: 1, y: 0 });
-    if (roomContent) gsap.set(roomContent, { opacity: 0, y: 40, pointerEvents: 'none' });
-  };
-
-  resetHeroState();
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: track,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 1,
-      invalidateOnRefresh: true,
-    },
-  });
-
-  // 1. Zoom na parede com janela única (0.00 -> 0.48)
-  if (windowWall) {
-    tl.fromTo(
-      windowWall,
-      { scale: 1, opacity: 1 },
-      { scale: 7.5, opacity: 1, ease: 'power2.inOut', duration: 0.48 },
-      0
-    ).to(windowWall, { opacity: 0, ease: 'power1.out', duration: 0.04 }, 0.46);
-  }
-
-  // 2. Separação lateral da tipografia (0.00 -> 0.38)
-  if (leftText) {
-    tl.to(leftText, { x: '-50vw', opacity: 0, ease: 'power2.in', duration: 0.38 }, 0);
-  }
-  if (rightText) {
-    tl.to(rightText, { x: '50vw', opacity: 0, ease: 'power2.in', duration: 0.38 }, 0);
-  }
-  if (botBar) {
-    tl.to(botBar, { y: 30, opacity: 0, ease: 'power2.in', duration: 0.22 }, 0);
-  }
-
-  // 3. Fundo do quarto avança com parallax suave (0.00 -> 0.48)
-  if (roomBg) {
-    tl.fromTo(
-      roomBg,
-      { scale: 0.96 },
-      { scale: 1.04, ease: 'power1.out', duration: 0.48 },
-      0
-    );
-  }
-
-  // 4. Revelação do conteúdo do quarto (0.40 -> 0.68)
-  if (roomContent) {
-    tl.fromTo(
-      roomContent,
-      { opacity: 0, y: 30, pointerEvents: 'none' },
-      { opacity: 1, y: 0, pointerEvents: 'auto', ease: 'power2.out', duration: 0.28 },
-      0.40
-    );
-  }
-
-  // 5. Transição contínua e suave para a próxima seção (0.70 -> 1.00)
-  // O conteúdo e o fundo do quarto desvanecem totalmente para o fundo escuro antes da seção subir
-  if (roomContent) {
-    tl.to(roomContent, { opacity: 0, y: -40, ease: 'power2.in', duration: 0.28 }, 0.70);
-  }
-  if (roomBg) {
-    tl.to(
-      roomBg,
-      { scale: 1.15, opacity: 0, ease: 'power2.inOut', duration: 0.30 },
-      0.70
-    );
-  }
-}
-
-
-
-/* ------------------------------------------------------------
-   CONTROLE REMOTO — entra da direita, sai para a esquerda
+   CONTROLE REMOTO: entra da direita, sai para a esquerda
    ------------------------------------------------------------ */
 export function initRemoteScene() {
   const section = document.querySelector('[data-remote-section]');
@@ -289,7 +66,7 @@ export function initRemoteScene() {
 }
 
 /* ------------------------------------------------------------
-   ENGENHARIA — scroll horizontal (Jesko Style)
+   ENGENHARIA: scroll horizontal (Jesko Style)
    ------------------------------------------------------------ */
 export function initTechScene() {
   const track = document.querySelector('[data-tech-track]');
@@ -297,8 +74,47 @@ export function initTechScene() {
   const progress = document.querySelector('[data-tech-progress]');
   if (!track || !strip) return;
 
-  onDesktop(() => {
-    const totalDist = () => Math.max(0, strip.scrollWidth - window.innerWidth + 120);
+  const wrap = track.querySelector('.tech-horizontal-wrap');
+  const previous = track.querySelector('[data-tech-prev]');
+  const next = track.querySelector('[data-tech-next]');
+  const nativeScroll = window.matchMedia('(max-width: 991px), (max-height: 559px)');
+
+  if (wrap) {
+    const updateControls = () => {
+      const max = Math.max(0, wrap.scrollWidth - wrap.clientWidth);
+      if (previous) previous.disabled = wrap.scrollLeft <= 2;
+      if (next) next.disabled = wrap.scrollLeft >= max - 2;
+    };
+
+    const syncScrollMode = () => {
+      wrap.toggleAttribute('data-lenis-prevent', nativeScroll.matches);
+      if (!nativeScroll.matches) wrap.scrollLeft = 0;
+      requestAnimationFrame(updateControls);
+    };
+
+    wrap.addEventListener('wheel', (event) => {
+      if (!nativeScroll.matches || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+      const max = wrap.scrollWidth - wrap.clientWidth;
+      const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? wrap.clientWidth : 1);
+      const canMove = delta > 0 ? wrap.scrollLeft < max - 2 : wrap.scrollLeft > 2;
+      if (!canMove) return;
+      event.preventDefault();
+      event.stopPropagation();
+      wrap.scrollLeft += delta;
+    }, { passive: false, capture: true });
+
+    const step = () => Math.max(280, wrap.clientWidth * 0.72);
+    previous?.addEventListener('click', () => wrap.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next?.addEventListener('click', () => wrap.scrollBy({ left: step(), behavior: 'smooth' }));
+    wrap.addEventListener('scroll', updateControls, { passive: true });
+    nativeScroll.addEventListener('change', syncScrollMode);
+    window.addEventListener('resize', updateControls);
+    syncScrollMode();
+  }
+
+  const media = gsap.matchMedia();
+  media.add('(min-width: 992px) and (min-height: 560px)', () => {
+    const totalDist = () => Math.max(0, strip.scrollWidth - window.innerWidth);
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -319,7 +135,7 @@ export function initTechScene() {
 }
 
 /* ------------------------------------------------------------
-   INTRO — parallax sutil
+   INTRO: parallax sutil
    ------------------------------------------------------------ */
 export function initIntroParallax() {
   onDesktop(() => {
@@ -338,7 +154,7 @@ export function initIntroParallax() {
 }
 
 /* ------------------------------------------------------------
-   PRODUTOS — transição contínua sem tela branca
+   PRODUTOS: transição contínua sem tela branca
    ------------------------------------------------------------ */
 export function initProductsScene() {
   const track = document.querySelector('[data-prod-track]');
@@ -402,7 +218,7 @@ export function initProductsScene() {
 }
 
 /* ------------------------------------------------------------
-   COBERTURA — wordmark sobe, esfera, bairros saem
+   COBERTURA: wordmark sobe, esfera, bairros saem
    ------------------------------------------------------------ */
 export function initCoverageScene() {
   const track = document.querySelector('[data-cov-track]');
@@ -455,7 +271,7 @@ export function initCoverageScene() {
 }
 
 /* ------------------------------------------------------------
-   PARALLAX LATERAL — seções deslizam para o lado no scroll
+   PARALLAX LATERAL: seções deslizam para o lado no scroll
    (aplicado onde data-slide-reveal existe)
    ------------------------------------------------------------ */
 export function initSlideReveals() {
@@ -559,7 +375,7 @@ export function initSlideReveals() {
 }
 
 /* ------------------------------------------------------------
-   FOOTER — CTA sobe flutuando
+   FOOTER: CTA sobe flutuando
    ------------------------------------------------------------ */
 export function initFooterCta() {
   onDesktop(() => {

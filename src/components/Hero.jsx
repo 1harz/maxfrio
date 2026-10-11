@@ -1,244 +1,60 @@
-import { useState, useEffect } from 'react';
-import { climateState } from '../js/core.js';
-
 export default function Hero() {
-  const [climate, setClimate] = useState({
-    isOn: climateState.isOn,
-    temp: climateState.temp,
-    mode: climateState.mode,
-  });
-
-  useEffect(() => {
-    const unsub = climateState.subscribe((st) => {
-      setClimate({ isOn: st.isOn, temp: st.temp, mode: st.mode });
-    });
-    return unsub;
-  }, []);
-
-  const handlePowerToggle = () => {
-    climateState.togglePower();
-  };
-
   return (
-    <section id="hero" className="hero-scroll-area" data-hero-track>
-      <div className="hero-w" data-hero-stage>
-        {/* ── 1. FUNDO CONTÍNUO: O QUARTO CLIMATIZADO (visível pela janela e após o zoom) ── */}
-        <div className="hero-w_bg_back" data-hero-room>
-          <img
-            src="/assets/maxfrio-hero-brasilia-v2.jpg"
-            alt="Sala climatizada em Brasília com ar-condicionado split instalado pela MaxFrio"
-            className="hero-room-img"
-            loading="eager"
-          />
-
-          {/* Brilho e correntes de ar do AC em funcionamento */}
-          <div className={`hero-ac-glow ${climate.isOn ? 'is-on' : ''}`} />
-          <svg
-            className={`hero-air-breeze ${climate.isOn ? 'is-active' : ''}`}
-            viewBox="0 0 1000 600"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="breezeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#7FE3FF" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#31B6E4" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#A8DDF9" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 100,70 C 240,130 380,230 640,360 C 760,420 860,470 1000,510"
-              fill="none"
-              stroke="url(#breezeGrad)"
-              strokeWidth="3.5"
-              className="breeze-p1"
-            />
-            <path
-              d="M 120,80 C 270,160 400,280 610,410 C 720,470 820,520 960,560"
-              fill="none"
-              stroke="url(#breezeGrad)"
-              strokeWidth="2.2"
-              className="breeze-p2"
-            />
-            <path
-              d="M 140,95 C 300,180 440,310 580,430 C 680,490 780,540 920,580"
-              fill="none"
-              stroke="url(#breezeGrad)"
-              strokeWidth="2.8"
-              className="breeze-p3"
-            />
-          </svg>
-          <div className="hero-room-vignette" />
+    <section id="hero" className="hero-editorial" data-bg="light" aria-labelledby="hero-title">
+      <div className="container hero-editorial__container">
+        <div className="hero-editorial__rail">
+          <span className="hero-editorial__location">
+            <span aria-hidden="true" />
+            CLIMATIZAÇÃO EM BRASÍLIA E ENTORNO
+          </span>
+          <span>RESIDENCIAL / COMERCIAL</span>
         </div>
 
-        {/* ── 2. PAREDE COM 1 JANELA QUADRADA CENTRAL (Mascara a cena e dá zoom no scroll) ── */}
-        <div className="hero-w_bg_front" data-hero-window-wall>
-          <svg
-            className="hero-wall-svg"
-            viewBox="0 0 1920 1080"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              {/* Recorte transparente da janela quadrada central */}
-              <mask id="windowPortalMask">
-                <rect width="1920" height="1080" fill="white" />
-                <rect x="670" y="160" width="580" height="760" rx="16" fill="black" />
-              </mask>
-              <linearGradient id="wallGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0d1826" />
-                <stop offset="45%" stopColor="#08101a" />
-                <stop offset="100%" stopColor="#04080e" />
-              </linearGradient>
-            </defs>
+        <div className="hero-editorial__body">
+          <h1 id="hero-title" className="hero-editorial__title">
+            Brasília<br />
+            esquenta.<br />
+            <span>A gente resolve.</span>
+          </h1>
 
-            {/* Parede com o recorte da janela */}
-            <rect width="1920" height="1080" fill="url(#wallGrad)" mask="url(#windowPortalMask)" />
-
-            {/* Moldura da janela quadrada com acabamento arquitetônico nítido */}
-            <rect
-              x="656"
-              y="146"
-              width="608"
-              height="788"
-              rx="24"
-              fill="none"
-              stroke="#1a293b"
-              strokeWidth="16"
-            />
-            <rect
-              x="668"
-              y="158"
-              width="584"
-              height="764"
-              rx="18"
-              fill="none"
-              stroke="rgba(127, 227, 255, 0.45)"
-              strokeWidth="2.5"
-            />
-            <rect
-              x="670"
-              y="160"
-              width="580"
-              height="760"
-              rx="16"
-              fill="none"
-              stroke="rgba(255, 255, 255, 0.12)"
-              strokeWidth="1"
-            />
-          </svg>
         </div>
 
-        {/* ── 3. TIPOGRAFIA LATERAL (Estilo Jesko Jets: Separa para os lados no scroll) ── */}
-        <div className="hero-s" data-hero-text-grid>
-          <div className="container hero-s_inner">
-            {/* Grid Superior: Textos à esquerda e direita da janela */}
-            <div className="hero-s_top_grid">
-              <div className="hero-s_title-l" data-hero-left>
-                <div className="hero-eyebrow">MAXFRIO AR-CONDICIONADO</div>
-                <h1 className="hero-h1-main">
-                  SERVIÇOS<br />COMPLETOS
-                </h1>
-                <p className="hero-sub-text">
-                  Instalação, manutenção, higienização e reparos.
-                </p>
-              </div>
+        <aside className="hero-editorial__aside" aria-label="Experiência MaxFrio">
+          <div className="hero-editorial__aside-top">
+            <span>EXPERIÊNCIA MAXFRIO</span>
+            <span>BRASÍLIA / DF</span>
+          </div>
+          <div className="hero-editorial__experience">
+            <strong>20<span>+</span></strong>
+            <p>ANOS DE EXPERIÊNCIA</p>
+          </div>
+          <p className="hero-editorial__aside-note">O seu ambiente, no ponto certo.</p>
+        </aside>
 
-              <div className="hero-s_title-r" data-hero-right>
-                <div className="hero-eyebrow a-right">BRASÍLIA E ENTORNO</div>
-                <h2 className="hero-h1-main a-right">
-                  MAIS DE<br />20 ANOS
-                </h2>
-                <p className="hero-sub-text a-right">
-                  Equipe técnica capacitada.
-                </p>
-              </div>
-            </div>
-
-            {/* Grid Inferior: CTAs */}
-            <div className="hero-s_bot" data-hero-bot>
-              <div className="hero-s_bot_left">
-                <a href="#contato" className="hero-cta-btn" data-pop-open="quote">
-                  <span>Solicitar Orçamento</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-
-              <div className="hero-s_bot_right">
-                <div className="hero-pill-info font-mono">
-                  <span className="pill-val">20+ ANOS</span>
-                  <span className="pill-lbl text-dim">DE EXPERIÊNCIA</span>
-                </div>
-              </div>
-            </div>
+        <div className="hero-editorial__base">
+          <p>
+            Instalação, manutenção e higienização de ar-condicionado com cuidado
+            técnico do começo ao fim.
+          </p>
+          <div className="hero-editorial__actions">
+            <a className="hero-editorial__primary" href="#contato" data-pop-open="quote">
+              Solicitar orçamento
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <path d="M4 12h15m-6-6 6 6-6 6" />
+              </svg>
+            </a>
+            <a className="hero-editorial__secondary" href="#servicos">
+              Conhecer serviços <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
 
-        {/* ── 4. CONTEÚDO REVELADO NO QUARTO (Pura tipografia minimalista sobre a cena) ── */}
-        <div className="hero-room-content" data-hero-room-content>
-          <div className="container">
-            <div className="hero-room-minimal">
-              <div className="l1 font-mono text-frost room-min-tag">[ MAXFRIO AR-CONDICIONADO ]</div>
-              <h2 className="h2 room-min-title">
-                Climatização para sua casa ou empresa.<br />
-                <span className="text-frost">Instalação, manutenção e higienização.</span>
-              </h2>
-              <p className="p6 room-min-desc">
-                Atendimento para as principais marcas e modelos, com profissionais capacitados e 12 meses de garantia no serviço realizado.
-              </p>
-
-              <div className="room-min-stats font-mono">
-                <div className="min-stat-item">
-                  <span className="min-stat-num">2002</span>
-                  <span className="min-stat-lbl text-dim">DESDE</span>
-                </div>
-                <div className="min-stat-divider" />
-                <div className="min-stat-item">
-                  <span className="min-stat-num">20+ ANOS</span>
-                  <span className="min-stat-lbl text-dim">DE MERCADO</span>
-                </div>
-                <div className="min-stat-divider" />
-                <div className="min-stat-item">
-                  <span className="min-stat-num">12 MESES</span>
-                  <span className="min-stat-lbl text-dim">GARANTIA DO SERVIÇO</span>
-                </div>
-              </div>
-
-              <div className="room-min-actions">
-                <a href="#contato" className="hero-cta-btn" data-pop-open="quote">
-                  <span>Solicitar Orçamento</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-
-                <button
-                  type="button"
-                  className={`hero-ac-toggle-btn ${climate.isOn ? 'is-active' : ''}`}
-                  onClick={handlePowerToggle}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10" />
-                  </svg>
-                  <span>{climate.isOn ? `Ar-condicionado ligado // ${climate.temp}°C` : 'Ligar ar-condicionado'}</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Linha de telemetria para a transição com a próxima seção */}
-          <div className="hero-next-cue">
-            <div className="container">
-              <div className="line-h on-color" style={{ opacity: 0.2 }} />
-              <div className="hero-next-cue_meta font-mono">
-                <span className="l1 text-frost">[ SERVIÇOS MAXFRIO ]</span>
-                <span className="p7 text-dim">Próxima Seção ↓</span>
-              </div>
-            </div>
-          </div>
+        <div className="hero-editorial__service-line" aria-label="Principais serviços">
+          <span>01 / INSTALAÇÃO</span>
+          <span>02 / MANUTENÇÃO</span>
+          <span>03 / HIGIENIZAÇÃO</span>
         </div>
       </div>
     </section>
   );
 }
-

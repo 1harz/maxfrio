@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 360" fill="none">
   <!--
-    MAXFRIO — wordmark monoline para a seção de cobertura.
+    MAXFRIO: wordmark monoline para a seção de cobertura.
     Cada letra tem pathLength="1" para draw-in animado via stroke-dashoffset.
   -->
   <defs>

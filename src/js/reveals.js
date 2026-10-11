@@ -1,12 +1,12 @@
 /* ============================================================
-   MaxFrio — reveals.js
+   MaxFrio: reveals.js
    Sistema de revelação por blur com suporte total a scroll
    bidirecional (nunca deixa textos invisíveis no scroll reverso).
    ============================================================ */
 
 import { gsap, ScrollTrigger, splitEl, onDesktop, onMobile } from './core.js';
 
-/* Revela um conjunto de alvos com blur — a assinatura visual do site */
+/* Revela um conjunto de alvos com blur: a assinatura visual do site */
 export function blurIn(targets, { stagger = 0.06, delay = 0.15, duration = 0.8 } = {}) {
   if (!targets || !targets.length) return;
   gsap.set(targets, { visibility: 'visible' });

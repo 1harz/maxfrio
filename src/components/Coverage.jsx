@@ -154,17 +154,24 @@ export default function Coverage() {
       {/* cartão de serviço */}
       <div className="container cov-factoid">
         <div className="factoid-card" data-reveal="children" data-prevent-flicker="true">
-          <div className="factoid-num">
-            20+ anos
-            <Barcode className="barcode" />
+          <div className="factoid-stat">
+            <div className="l1 text-frost">MAXFRIO EM BRASÍLIA</div>
+            <div className="factoid-num">
+              20+ <span>anos</span>
+              <Barcode className="barcode" />
+            </div>
+            <div className="l1 text-frost">Experiência, honestidade e confiança desde 2002</div>
           </div>
-          <div className="u-12" />
-          <div className="l1 text-frost">Experiência, honestidade e confiança desde 2002</div>
-          <div className="u-36" />
-          <p className="p7" style={{ maxWidth: '56ch' }}>
-            Uma trajetória dedicada à instalação, manutenção, higienização e reparo de aparelhos de
-            ar-condicionado para clientes residenciais, comerciais e industriais.
-          </p>
+          <div className="factoid-story">
+            <p className="factoid-story__title">Cuidado técnico que atravessa gerações.</p>
+            <p className="p7">
+              Instalação, manutenção, higienização e reparo de ar-condicionado para casas,
+              empresas e indústrias do Distrito Federal.
+            </p>
+            <div className="factoid-story__services" aria-label="Áreas de atuação">
+              <span>Residencial</span><span>Comercial</span><span>Industrial</span>
+            </div>
+          </div>
         </div>
       </div>
 

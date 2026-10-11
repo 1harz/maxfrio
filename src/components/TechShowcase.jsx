@@ -4,7 +4,7 @@ const TECH_ITEMS = [
     tag: 'RESIDENCIAL // COMERCIAL // INDUSTRIAL',
     title: 'Instalação e venda',
     subtitle: 'Todas as marcas e modelos',
-    img: '/assets/servico-instalacao-v2.jpg',
+    img: '/assets/servico-instalacao-uniforme.webp',
     alt: 'Técnico capacitado instalando ar-condicionado split em residência de Brasília',
     specs: [
       { k: 'Visita técnica', v: 'Marcação e orientação' },
@@ -19,7 +19,7 @@ const TECH_ITEMS = [
     tag: 'PREVENÇÃO // DIAGNÓSTICO',
     title: 'Manutenção preventiva e corretiva',
     subtitle: 'Eficiência e vida útil do equipamento',
-    img: '/assets/servico-manutencao-v2.jpg',
+    img: '/assets/servico-manutencao-uniforme.webp',
     alt: 'Técnico realizando diagnóstico em condensadora de ar-condicionado',
     specs: [
       { k: 'Avaliação', v: 'Componentes e funcionamento' },
@@ -34,7 +34,7 @@ const TECH_ITEMS = [
     tag: 'LIMPEZA // QUALIDADE DO AR',
     title: 'Higienização completa',
     subtitle: 'Cuidado com o aparelho e com o ambiente',
-    img: '/assets/servico-higienizacao-v2.jpg',
+    img: '/assets/servico-higienizacao-uniforme.webp',
     alt: 'Higienização profissional de evaporadora de ar-condicionado',
     specs: [
       { k: 'Limpeza', v: 'Filtros e componentes' },
@@ -49,8 +49,8 @@ const TECH_ITEMS = [
     tag: 'CONSERTO // PEÇAS DE QUALIDADE',
     title: 'Consertos e reparos',
     subtitle: 'Diagnóstico rápido e solução responsável',
-    img: '/assets/servico-manutencao-v2.jpg',
-    alt: 'Diagnóstico técnico de ar-condicionado em Brasília',
+    img: '/assets/servico-reparos-uniforme.webp',
+    alt: 'Técnico verificando componentes internos de um ar-condicionado split',
     specs: [
       { k: 'Inspeção', v: 'Falha e causa do problema' },
       { k: 'Peças', v: 'Originais ou de primeira linha' },
@@ -64,8 +64,8 @@ const TECH_ITEMS = [
     tag: 'CARGA // TESTE DE VAZAMENTO',
     title: 'Recarga de gás refrigerante',
     subtitle: 'Pressão correta e funcionamento seguro',
-    img: '/assets/servico-manutencao-v2.jpg',
-    alt: 'Técnico verificando pressão do sistema de ar-condicionado',
+    img: '/assets/servico-gas-uniforme.webp',
+    alt: 'Manômetros conectados à condensadora para verificação da pressão do sistema',
     specs: [
       { k: 'Antes da carga', v: 'Diagnóstico do sistema' },
       { k: 'Verificação', v: 'Possíveis vazamentos' },
@@ -79,8 +79,8 @@ const TECH_ITEMS = [
     tag: 'ECONOMIA // RESPONSABILIDADE',
     title: 'Soluções mais econômicas',
     subtitle: 'Tecnologia inverter e gases adequados',
-    img: '/assets/servico-comercial-v2.jpg',
-    alt: 'Manutenção de sistema de climatização em ambiente comercial',
+    img: '/assets/servico-eficiencia-real.webp',
+    alt: 'Escritório climatizado com ar-condicionado split instalado na parede',
     specs: [
       { k: 'Dimensionamento', v: 'Capacidade para cada ambiente' },
       { k: 'Tecnologia', v: 'Opções inverter' },
@@ -93,10 +93,10 @@ const TECH_ITEMS = [
 
 export default function TechShowcase() {
   return (
-    <section id="servicos" className="tech-showcase section bg-dark clip" data-bg="dark" style={{ position: 'relative', zIndex: 2 }}>
+    <section id="servicos" className="tech-showcase section bg-dark" data-bg="dark" style={{ position: 'relative', zIndex: 2 }}>
       <div className="tech-track" data-tech-track style={{ position: 'relative', zIndex: 1 }}>
         <div className="sticky-stage tech-stage">
-          {/* Header da seção com telemetria — 100% legível e nítido */}
+          {/* Header da seção com telemetria: 100% legível e nítido */}
           <div className="container tech-header" style={{ position: 'relative', zIndex: 10 }}>
             <div className="tech-header-grid">
               <div>
@@ -108,7 +108,16 @@ export default function TechShowcase() {
               <div className="a-right tech-header-meta">
                 <div className="font-mono l1 text-dim">RESIDENCIAL · COMERCIAL · INDUSTRIAL</div>
                 <div className="p7 text-frost" style={{ marginTop: '4px' }}>
-                  Role para conhecer todos os serviços
+                  <span className="tech-hint-scroll">Role para conhecer todos os serviços</span>
+                  <span className="tech-hint-swipe">Deslize para conhecer os serviços</span>
+                </div>
+                <div className="tech-controls" aria-label="Navegação dos serviços">
+                  <button type="button" data-tech-prev aria-label="Serviço anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M20 12H4m6-6-6 6 6 6" /></svg>
+                  </button>
+                  <button type="button" data-tech-next aria-label="Próximo serviço">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -116,7 +125,7 @@ export default function TechShowcase() {
           </div>
 
           {/* Faixa que desliza horizontalmente com o scroll */}
-          <div className="tech-horizontal-wrap">
+          <div className="tech-horizontal-wrap" tabIndex={0} role="region" aria-label="Serviços MaxFrio">
             <div className="tech-strip" data-tech-strip>
               {TECH_ITEMS.map((item, index) => (
                 <article className="tech-card" key={item.id}>

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Preloader from './components/Preloader.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import RemoteControl from './components/RemoteControl.jsx';
@@ -22,7 +21,6 @@ export default function App() {
 
   return (
     <>
-      <Preloader />
       <Header />
       <main>
         <Hero />
@@ -38,13 +36,6 @@ export default function App() {
       </main>
       <QuotePopup />
       <MenuPopup />
-      <div className="landscape-cover">
-        <div className="a-center p6" style={{ color: 'var(--ice-50)', padding: '40px' }}>
-          Gire o dispositivo
-          <br />
-          para uma experiência mais fria.
-        </div>
-      </div>
     </>
   );
 }

@@ -22,11 +22,11 @@ export default function InstallationTerms() {
         <div className="terms-head">
           <div className="l1 text-frost font-mono">[ INSTALAÇÃO SEM SURPRESAS ]</div>
           <h2 className="h2" data-reveal="lines" data-prevent-flicker="true">
-            O que você precisa saber<br />antes da instalação.
+            Tudo claro antes da instalação.
           </h2>
           <p className="p7 text-dim">
-            Condições claras para você preparar o ambiente, alinhar necessidades específicas e
-            entender exatamente o que está contemplado no serviço padrão.
+            Saiba o que está incluído, prepare o ambiente e alinhe qualquer necessidade específica
+            com a nossa equipe antes do serviço.
           </p>
         </div>
 
@@ -35,7 +35,12 @@ export default function InstallationTerms() {
             <div className="terms-card-label font-mono">INCLUÍDO NO SERVIÇO</div>
             <h3 className="h4">Instalação essencial</h3>
             <ul>
-              {INCLUDED.map((item) => <li key={item}><span aria-hidden="true">✓</span>{item}</li>)}
+              {INCLUDED.map((item) => (
+                <li key={item}>
+                  <span aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="m2.5 7 3 3 6-6" /></svg></span>
+                  {item}
+                </li>
+              ))}
             </ul>
           </article>
           <article className="terms-card terms-card--attention">

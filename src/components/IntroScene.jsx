@@ -36,7 +36,7 @@ function useIsMobile(breakpoint = 768) {
 /* Largura aproximada dos caracteres */
 function getCharWidth(ch, size, tracking = 0, bold = false) {
   if (ch === ' ') return size * 0.40 + tracking;
-  if (ch === '°' || ch === '-' || ch === '—') return size * 0.58 + tracking;
+  if (ch === '°' || ch === '-') return size * 0.58 + tracking;
   if (['I', '1', 'l', '!', '/', '|', ':', '.', ','].includes(ch)) return size * 0.36 + tracking;
   if (['M', 'W', 'Q', 'O', 'G', 'D', '0'].includes(ch)) return size * (bold ? 0.90 : 0.82) + tracking;
   return size * (bold ? 0.72 : 0.66) + tracking;
@@ -177,7 +177,7 @@ function SecondModel({ isMobile }) {
     [sphereTex]
   );
 
-  /* Animação dos textos — estilo Adidas com pop-in dinâmico em cascata */
+  /* Animação dos textos: estilo Adidas com pop-in dinâmico em cascata */
   const animateTexts = () => {
     const tl = gsap.timeline();
     let idx = 0;
@@ -204,12 +204,19 @@ function SecondModel({ isMobile }) {
           end: '600% top',
           scrub: 1,
           pin: true,
+          refreshPriority: 1,
         },
       })
       .to(groupRef.current.rotation, { y: -Math.PI * 2, duration: 1 }, 0)
       .add(animateTexts().duration(0.55), 0);
 
+    const refreshFrame = requestAnimationFrame(() => {
+      ScrollTrigger.sort();
+      ScrollTrigger.refresh();
+    });
+
     return () => {
+      cancelAnimationFrame(refreshFrame);
       tl.kill();
       ScrollTrigger.refresh();
     };

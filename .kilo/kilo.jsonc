@@ -1,0 +1,6 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "commit_message": {
+    "prompt": "Os commits devem ser sempre em português do Brasil, seguindo o padrão Conventional Commits (ex: feat, fix, chore, ci). Algumas palavras técnicas não precisam ser traduzidas, por exemplo: Feat, Lint, Build, pois são termos padrão na programação. \n\nVocê deve usar o formato Markdown (.md) para a estrutura da mensagem de commit.\n\nREGRA PARA OS VERBOS:\nTodas as descrições (tanto no título quanto nos itens da lista) devem obrigatoriamente iniciar com um verbo no **modo imperativo afirmativo na 3ª pessoa do singular (indicando ação direta, como se estivesse ordenando o código)**. \n- Use sempre: **Adiciona**, **Atualiza**, **Renomeia**, **Cria**, **Remove**, **Corrige**, **Padroniza**, **Implementa**.\n- PROIBIDO usar verbos no infinitivo (adicionar, atualizar) ou no imperativo formal/subjetivo (adicione, atualize, renomeie).\n"
+  }
+}
