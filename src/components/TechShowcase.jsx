@@ -1,10 +1,12 @@
+const BASE = import.meta.env.BASE_URL;
+
 const TECH_ITEMS = [
   {
     id: 'instalacao',
     tag: 'RESIDENCIAL // COMERCIAL // INDUSTRIAL',
     title: 'Instalação e venda',
     subtitle: 'Todas as marcas e modelos',
-    img: '/assets/servico-instalacao-uniforme.webp',
+    img: `${BASE}assets/servico-instalacao-uniforme.webp`,
     alt: 'Técnico capacitado instalando ar-condicionado split em residência de Brasília',
     specs: [
       { k: 'Visita técnica', v: 'Marcação e orientação' },
@@ -19,7 +21,7 @@ const TECH_ITEMS = [
     tag: 'PREVENÇÃO // DIAGNÓSTICO',
     title: 'Manutenção preventiva e corretiva',
     subtitle: 'Eficiência e vida útil do equipamento',
-    img: '/assets/servico-manutencao-uniforme.webp',
+    img: `${BASE}assets/servico-manutencao-uniforme.webp`,
     alt: 'Técnico realizando diagnóstico em condensadora de ar-condicionado',
     specs: [
       { k: 'Avaliação', v: 'Componentes e funcionamento' },
@@ -34,7 +36,7 @@ const TECH_ITEMS = [
     tag: 'LIMPEZA // QUALIDADE DO AR',
     title: 'Higienização completa',
     subtitle: 'Cuidado com o aparelho e com o ambiente',
-    img: '/assets/servico-higienizacao-uniforme.webp',
+    img: `${BASE}assets/servico-higienizacao-uniforme.webp`,
     alt: 'Higienização profissional de evaporadora de ar-condicionado',
     specs: [
       { k: 'Limpeza', v: 'Filtros e componentes' },
@@ -49,7 +51,7 @@ const TECH_ITEMS = [
     tag: 'CONSERTO // PEÇAS DE QUALIDADE',
     title: 'Consertos e reparos',
     subtitle: 'Diagnóstico rápido e solução responsável',
-    img: '/assets/servico-reparos-uniforme.webp',
+    img: `${BASE}assets/servico-reparos-uniforme.webp`,
     alt: 'Técnico verificando componentes internos de um ar-condicionado split',
     specs: [
       { k: 'Inspeção', v: 'Falha e causa do problema' },
@@ -64,7 +66,7 @@ const TECH_ITEMS = [
     tag: 'CARGA // TESTE DE VAZAMENTO',
     title: 'Recarga de gás refrigerante',
     subtitle: 'Pressão correta e funcionamento seguro',
-    img: '/assets/servico-gas-uniforme.webp',
+    img: `${BASE}assets/servico-gas-uniforme.webp`,
     alt: 'Manômetros conectados à condensadora para verificação da pressão do sistema',
     specs: [
       { k: 'Antes da carga', v: 'Diagnóstico do sistema' },
@@ -79,7 +81,7 @@ const TECH_ITEMS = [
     tag: 'ECONOMIA // RESPONSABILIDADE',
     title: 'Soluções mais econômicas',
     subtitle: 'Tecnologia inverter e gases adequados',
-    img: '/assets/servico-eficiencia-real.webp',
+    img: `${BASE}assets/servico-eficiencia-real.webp`,
     alt: 'Escritório climatizado com ar-condicionado split instalado na parede',
     specs: [
       { k: 'Dimensionamento', v: 'Capacidade para cada ambiente' },

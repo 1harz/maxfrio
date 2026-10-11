@@ -1,5 +1,7 @@
 import BlueprintSvg from './BlueprintSvg.jsx';
 
+const BASE = import.meta.env.BASE_URL;
+
 const SPECS = [
   ['Atendimento', 'todas as marcas'],
   ['Tecnologias', 'convencional e inverter'],
@@ -17,7 +19,7 @@ const MINI = [
 
 const MODELS = [
   {
-    img: '/assets/produto-split-hiwall-v2.jpg',
+    img: `${BASE}assets/produto-split-hiwall-v2.jpg`,
     alt: 'Ar-condicionado split hi-wall branco',
     tag: 'Residencial e comercial',
     name: 'Split Hi-Wall',
@@ -29,7 +31,7 @@ const MODELS = [
     ],
   },
   {
-    img: '/assets/produto-cassete-v2.jpg',
+    img: `${BASE}assets/produto-cassete-v2.jpg`,
     alt: 'Ar-condicionado cassete de quatro vias branco',
     tag: 'Ambientes comerciais',
     name: 'Cassete 4 Vias',
@@ -41,7 +43,7 @@ const MODELS = [
     ],
   },
   {
-    img: '/assets/produto-pisoteto-v2.jpg',
+    img: `${BASE}assets/produto-pisoteto-v2.jpg`,
     alt: 'Ar-condicionado piso-teto branco',
     tag: 'Grandes ambientes',
     name: 'Piso-Teto',
@@ -76,7 +78,7 @@ export default function Products() {
                   </h2>
                 </div>
                 <div className="prod-unit-mobile">
-                  <img src="/assets/ac-hero.svg" alt="Ilustração de uma unidade interna split hi-wall" />
+                  <img src={`${BASE}assets/ac-hero.svg`} alt="Ilustração de uma unidade interna split hi-wall" />
                 </div>
                 <div className="prod-hero-bot">
                   <div className="grid">
@@ -158,7 +160,7 @@ export default function Products() {
 
           {/* a unidade: encolhe e doca suavemente conforme o scroll */}
           <div className="prod-unit" data-prod-unit>
-            <img src="/assets/ac-hero.svg" alt="Ilustração de uma unidade interna split hi-wall" />
+            <img src={`${BASE}assets/ac-hero.svg`} alt="Ilustração de uma unidade interna split hi-wall" />
           </div>
         </div>
       </div>

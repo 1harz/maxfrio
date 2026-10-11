@@ -1,12 +1,14 @@
+const BASE = import.meta.env.BASE_URL;
+
 const CLIENTS = [
-  { src: '/assets/clients/ACNUR.png', alt: 'ACNUR' },
-  { src: '/assets/clients/PSB.png', alt: 'Partido Socialista Brasileiro' },
-  { src: '/assets/clients/ambr.png', alt: 'Associação Médica de Brasília' },
-  { src: '/assets/clients/cebgas.png', alt: 'CEBGas' },
-  { src: '/assets/clients/clinicabrasilia.png', alt: 'Clínica Brasília' },
-  { src: '/assets/clients/hospitalpai.png', alt: 'Hospital PAI' },
-  { src: '/assets/clients/meneportella.png', alt: 'Mene Portella' },
-  { src: '/assets/clients/opas.png', alt: 'Organização Pan-Americana da Saúde' },
+  { src: `${BASE}assets/clients/ACNUR.png`, alt: 'ACNUR' },
+  { src: `${BASE}assets/clients/PSB.png`, alt: 'Partido Socialista Brasileiro' },
+  { src: `${BASE}assets/clients/ambr.png`, alt: 'Associação Médica de Brasília' },
+  { src: `${BASE}assets/clients/cebgas.png`, alt: 'CEBGas' },
+  { src: `${BASE}assets/clients/clinicabrasilia.png`, alt: 'Clínica Brasília' },
+  { src: `${BASE}assets/clients/hospitalpai.png`, alt: 'Hospital PAI' },
+  { src: `${BASE}assets/clients/meneportella.png`, alt: 'Mene Portella' },
+  { src: `${BASE}assets/clients/opas.png`, alt: 'Organização Pan-Americana da Saúde' },
 ];
 
 export default function Clients() {

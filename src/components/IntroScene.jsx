@@ -8,8 +8,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /* Fontes locais */
-const FONT_BOLD = '/fonts/EncodeSansExpanded-800.ttf';
-const FONT_SEMI = '/fonts/EncodeSansExpanded-600.ttf';
+const BASE = import.meta.env.BASE_URL;
+const FONT_BOLD = `${BASE}fonts/EncodeSansExpanded-800.ttf`;
+const FONT_SEMI = `${BASE}fonts/EncodeSansExpanded-600.ttf`;
 
 /* 5 Frases oficiais MaxFrio perfeitamente distribuídas a cada 72° nos 360° */
 const PHRASES = [
@@ -139,8 +140,8 @@ function PhraseGroup({ phrase, phraseIndex, groupRef, R, isMobile, onMountRef })
 
 /* Modelo 3D centralizado e perfeitamente legível */
 function SecondModel({ isMobile }) {
-  const { nodes } = useGLTF('/assets/ShirtScrolling.glb');
-  const acGLTF = useGLTF('/assets/air.glb');
+  const { nodes } = useGLTF(`${BASE}assets/ShirtScrolling.glb`);
+  const acGLTF = useGLTF(`${BASE}assets/air.glb`);
 
   const groupRef = useRef(null);
   const phraseRefs = useRef([]);
@@ -293,6 +294,6 @@ export default function IntroScene() {
   );
 }
 
-useGLTF.preload('/assets/ShirtScrolling.glb');
-useGLTF.preload('/assets/air.glb');
+useGLTF.preload(`${BASE}assets/ShirtScrolling.glb`);
+useGLTF.preload(`${BASE}assets/air.glb`);
 
