@@ -14,9 +14,9 @@ const FONT_SEMI = '/fonts/EncodeSansExpanded-600.ttf';
 /* 5 Frases oficiais MaxFrio perfeitamente distribuídas a cada 72° nos 360° */
 const PHRASES = [
   { label: 'INSTALAÇÃO', angle: 0, y: -0.16, size: 0.056, bold: true, color: '#f2fafe' },
-  { label: 'MANUTENÇÃO', angle: 72, y: 0.16, size: 0.052, bold: false, color: '#7cc8f0' },
+  { label: 'MANUTENÇÃO', angle: 72, y: 0.04, size: 0.052, bold: false, color: '#7cc8f0' },
   { label: 'HIGIENIZAÇÃO', angle: 144, y: -0.16, size: 0.048, bold: false, color: '#a8ddf9' },
-  { label: 'CONSERTO E REPARO', angle: 216, y: 0.16, size: 0.044, bold: false, color: '#85b8dd' },
+  { label: 'CONSERTO E REPARO', angle: 216, y: 0.04, size: 0.044, bold: false, color: '#85b8dd' },
   { label: 'BRASÍLIA E ENTORNO', angle: 288, y: 0.16, size: 0.042, bold: true, color: '#a8ddf9' },
 ];
 
@@ -35,10 +35,11 @@ function useIsMobile(breakpoint = 768) {
 
 /* Largura aproximada dos caracteres */
 function getCharWidth(ch, size, tracking = 0, bold = false) {
+  const letter = ch.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   if (ch === ' ') return size * 0.40 + tracking;
   if (ch === '°' || ch === '-') return size * 0.58 + tracking;
-  if (['I', '1', 'l', '!', '/', '|', ':', '.', ','].includes(ch)) return size * 0.36 + tracking;
-  if (['M', 'W', 'Q', 'O', 'G', 'D', '0'].includes(ch)) return size * (bold ? 0.90 : 0.82) + tracking;
+  if (['I', '1', 'l', '!', '/', '|', ':', '.', ','].includes(letter)) return size * 0.36 + tracking;
+  if (['M', 'W', 'Q', 'O', 'G', 'D', '0'].includes(letter)) return size * (bold ? 0.90 : 0.82) + tracking;
   return size * (bold ? 0.72 : 0.66) + tracking;
 }
 
@@ -52,8 +53,10 @@ function Rig() {
 }
 
 /* Subcomponente para cada frase com transição contínua e suave de opacidade */
-function PhraseGroup({ phrase, phraseIndex, groupRef, R, onMountRef }) {
+function PhraseGroup({ phrase, phraseIndex, groupRef, R, isMobile, onMountRef }) {
   const phraseRef = useRef(null);
+  const mobileScale = Math.min(0.68, 9.2 / phrase.label.length);
+  const fontSize = phrase.size * 1.2 * (isMobile ? mobileScale : 1);
 
   const material = useMemo(
     () =>
@@ -61,16 +64,18 @@ function PhraseGroup({ phrase, phraseIndex, groupRef, R, onMountRef }) {
         color: phrase.color,
         transparent: true,
         opacity: phraseIndex === 0 ? 1 : 0,
-        side: THREE.FrontSide,
-        depthTest: true,
+        side: THREE.DoubleSide,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false,
       }),
     [phrase.color, phraseIndex]
   );
 
   const chars = useMemo(() => {
     const angleRad = (phrase.angle * Math.PI) / 180;
-    const tracking = phrase.size * 0.12;
-    const widths = [...phrase.label].map((ch) => getCharWidth(ch, phrase.size, tracking, phrase.bold));
+    const tracking = fontSize * 0.04;
+    const widths = [...phrase.label].map((ch) => getCharWidth(ch, fontSize, tracking, phrase.bold));
     const total = widths.reduce((a, b) => a + b, 0);
 
     let pen = -total / 2;
@@ -86,7 +91,7 @@ function PhraseGroup({ phrase, phraseIndex, groupRef, R, onMountRef }) {
         rot: [0, th, 0],
       };
     });
-  }, [phrase, phraseIndex, R]);
+  }, [phrase, phraseIndex, R, fontSize]);
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -117,7 +122,7 @@ function PhraseGroup({ phrase, phraseIndex, groupRef, R, onMountRef }) {
           <group key={item.id} position={item.pos} rotation={item.rot}>
             <Text
               font={phrase.bold ? FONT_BOLD : FONT_SEMI}
-              fontSize={phrase.size}
+              fontSize={fontSize}
               color={phrase.color}
               anchorX="center"
               anchorY="middle"
@@ -181,8 +186,8 @@ function SecondModel({ isMobile }) {
   const animateTexts = () => {
     const tl = gsap.timeline();
     let idx = 0;
-    phraseRefs.current.forEach((pGroup) => {
-      if (!pGroup) return;
+    phraseRefs.current.forEach((pGroup, phraseIndex) => {
+      if (!pGroup || phraseIndex === 0) return;
       pGroup.children.forEach((mesh) => {
         tl.from(mesh.scale, { x: 0, y: 0, z: 0, duration: 1, ease: 'circ.out' }, idx * 0.022);
         tl.from(mesh.position, { y: '+=0.04', duration: 1, ease: 'back.out' }, idx * 0.022);
@@ -207,7 +212,7 @@ function SecondModel({ isMobile }) {
           refreshPriority: 1,
         },
       })
-      .to(groupRef.current.rotation, { y: -Math.PI * 2, duration: 1 }, 0)
+      .to(groupRef.current.rotation, { y: -(Math.PI * 2 * (PHRASES.length - 1)) / PHRASES.length, duration: 1 }, 0)
       .add(animateTexts().duration(0.55), 0);
 
     const refreshFrame = requestAnimationFrame(() => {
@@ -258,6 +263,7 @@ function SecondModel({ isMobile }) {
           phraseIndex={pIdx}
           groupRef={groupRef}
           R={R}
+          isMobile={isMobile}
           onMountRef={(el, idx) => {
             phraseRefs.current[idx] = el;
           }}
