@@ -1,84 +1,114 @@
 const TECH_ITEMS = [
   {
-    id: 'compressor',
-    tag: 'MOTOR PRINCIPAL // CORE INVERTER',
-    title: 'Compressor Twin Rotary Inverter',
-    subtitle: 'Rotor de Neodímio e Mancais de Titânio',
-    img: '/assets/ac-inverter-engine.jpg',
-    alt: 'Corte técnico do compressor dual inverter',
+    id: 'instalacao',
+    tag: 'RESIDENCIAL // COMERCIAL // INDUSTRIAL',
+    title: 'Instalação e venda',
+    subtitle: 'Todas as marcas e modelos',
+    img: '/assets/servico-instalacao-v2.jpg',
+    alt: 'Técnico capacitado instalando ar-condicionado split em residência de Brasília',
     specs: [
-      { k: 'Eficiência Energética', v: 'SEER 8.5 — Classe A+++' },
-      { k: 'Faixa de Modulação', v: '10 Hz a 130 Hz contínuos' },
-      { k: 'Vibração & Ruído', v: 'Redução de até 85% vs comum' },
-      { k: 'Garantia de Motor', v: '10 anos de fábrica' },
+      { k: 'Visita técnica', v: 'Marcação e orientação' },
+      { k: 'Linha frigorígena', v: 'Tubulação de cobre' },
+      { k: 'Acabamento', v: 'Isolamento e suporte' },
+      { k: 'Garantia do serviço', v: '12 meses' },
     ],
-    desc: 'O coração da máquina: dois rotores descentralizados que equilibram as forças mecânicas, operando sem picos de partida e reduzindo a oscilação térmica para ±0,2°C.',
+    desc: 'Instalação profissional e segura, com orientação para escolher o aparelho adequado ao ambiente e suporte técnico após o serviço.',
   },
   {
-    id: 'serpentina',
-    tag: 'TROCA TÉRMICA // COPPER CORE',
-    title: 'Serpentina de Cobre Hidrofílica',
-    subtitle: 'Micro-Canaletas & Aletas Golden Fin',
-    img: '/assets/ac-copper-coil.jpg',
-    alt: 'Macro da serpentina de cobre com aletas de alumínio',
+    id: 'manutencao',
+    tag: 'PREVENÇÃO // DIAGNÓSTICO',
+    title: 'Manutenção preventiva e corretiva',
+    subtitle: 'Eficiência e vida útil do equipamento',
+    img: '/assets/servico-manutencao-v2.jpg',
+    alt: 'Técnico realizando diagnóstico em condensadora de ar-condicionado',
     specs: [
-      { k: 'Material da Tubulação', v: 'Cobre 100% ranhurado internamente' },
-      { k: 'Proteção Superficial', v: 'Tratamento Gold Fin anti-maresia' },
-      { k: 'Capacidade de Troca', v: '+28% de condutividade térmica' },
-      { k: 'Esterilização', v: 'Ciclo térmico auto-limpante 56°C' },
+      { k: 'Avaliação', v: 'Componentes e funcionamento' },
+      { k: 'Prevenção', v: 'Falhas e perda de rendimento' },
+      { k: 'Correção', v: 'Diagnóstico técnico' },
+      { k: 'Atendimento', v: 'Residencial e empresarial' },
     ],
-    desc: 'Tubo de cobre com ranhuras microscópicas em espiral que turbilhonam o gás ecológico R-32, extraindo calor instantaneamente com zero corrosão por décadas.',
+    desc: 'Manutenções periódicas ajudam a preservar o desempenho, reduzir falhas inesperadas e prolongar a vida útil do ar-condicionado.',
   },
   {
-    id: 'condensadora',
-    tag: 'UNIDADE EXTERNA // AETHERA UNIT',
-    title: 'Unidade Condensadora Aethera',
-    subtitle: 'Hélice Aerodinâmica & Chassi Reforçado',
-    img: '/assets/ac-condenser.jpg',
-    alt: 'Unidade condensadora externa de alta performance',
+    id: 'higienizacao',
+    tag: 'LIMPEZA // QUALIDADE DO AR',
+    title: 'Higienização completa',
+    subtitle: 'Cuidado com o aparelho e com o ambiente',
+    img: '/assets/servico-higienizacao-v2.jpg',
+    alt: 'Higienização profissional de evaporadora de ar-condicionado',
     specs: [
-      { k: 'Hélice do Ventilador', v: 'Pás biônicas inspiradas em aviação' },
-      { k: 'Nível de Ruído Externo', v: 'Apenas 38 dB(A) a 1 metro' },
-      { k: 'Gabinete Blindado', v: 'Aço galvanizado com pintura eletrostática' },
-      { k: 'Operação Extrema', v: '-15°C até 52°C ambientes' },
+      { k: 'Limpeza', v: 'Filtros e componentes' },
+      { k: 'Proteção do local', v: 'Área de trabalho organizada' },
+      { k: 'Benefício', v: 'Melhor qualidade do ar' },
+      { k: 'Prevenção', v: 'Acúmulo e falhas' },
     ],
-    desc: 'Projetada para resistir ao sol escaldante, chuva torrencial e maresia pesada do litoral, mantendo pressão e fluxo constantes sem superaquecer.',
+    desc: 'Limpeza profunda para remover sujeira acumulada e ajudar a reduzir fungos, bactérias e alérgenos que afetam a qualidade do ar.',
   },
   {
-    id: 'arquitetura',
-    tag: 'INTEGRAÇÃO // DESIGN MINIMALISTA',
-    title: 'Difusão Linear Invisível',
-    subtitle: 'Conforto Térmico Arquitetônico',
-    img: '/assets/ac-interior-architecture.jpg',
-    alt: 'Ambiente de luxo com difusores lineares embutidos',
+    id: 'reparos',
+    tag: 'CONSERTO // PEÇAS DE QUALIDADE',
+    title: 'Consertos e reparos',
+    subtitle: 'Diagnóstico rápido e solução responsável',
+    img: '/assets/servico-manutencao-v2.jpg',
+    alt: 'Diagnóstico técnico de ar-condicionado em Brasília',
     specs: [
-      { k: 'Abertura do Difusor', v: 'Fendas discretas de 15 mm' },
-      { k: 'Distribuição do Ar', v: 'Efeito Coanda 4D sem corrente direta' },
-      { k: 'Controle de Ruído', v: 'Atenuadores acústicos inaudíveis (19 dB)' },
-      { k: 'Compatibilidade', v: 'Automação residencial KNX / Control4' },
+      { k: 'Inspeção', v: 'Falha e causa do problema' },
+      { k: 'Peças', v: 'Originais ou de primeira linha' },
+      { k: 'Transparência', v: 'Orçamento antes do reparo' },
+      { k: 'Especialização', v: 'Principais marcas do mercado' },
     ],
-    desc: 'O melhor ar-condicionado é aquele que você não vê e não ouve — apenas sente. Projetos sob medida integrados ao forro de gesso e marcenaria de alto padrão.',
+    desc: 'Correção de falhas com técnicos especializados e peças adequadas, sempre após avaliação do equipamento e aprovação do orçamento.',
+  },
+  {
+    id: 'gas',
+    tag: 'CARGA // TESTE DE VAZAMENTO',
+    title: 'Recarga de gás refrigerante',
+    subtitle: 'Pressão correta e funcionamento seguro',
+    img: '/assets/servico-manutencao-v2.jpg',
+    alt: 'Técnico verificando pressão do sistema de ar-condicionado',
+    specs: [
+      { k: 'Antes da carga', v: 'Diagnóstico do sistema' },
+      { k: 'Verificação', v: 'Possíveis vazamentos' },
+      { k: 'Aplicação', v: 'Conforme o equipamento' },
+      { k: 'Teste final', v: 'Funcionamento e rendimento' },
+    ],
+    desc: 'A baixa pressão pode comprometer o resfriamento e indicar vazamento. A equipe avalia o sistema antes de recomendar qualquer recarga.',
+  },
+  {
+    id: 'ecologico',
+    tag: 'ECONOMIA // RESPONSABILIDADE',
+    title: 'Soluções mais econômicas',
+    subtitle: 'Tecnologia inverter e gases adequados',
+    img: '/assets/servico-comercial-v2.jpg',
+    alt: 'Manutenção de sistema de climatização em ambiente comercial',
+    specs: [
+      { k: 'Dimensionamento', v: 'Capacidade para cada ambiente' },
+      { k: 'Tecnologia', v: 'Opções inverter' },
+      { k: 'Aplicação', v: 'Casa, comércio e indústria' },
+      { k: 'Orientação', v: 'Uso e manutenção consciente' },
+    ],
+    desc: 'Orientação para equipamentos eficientes, modernos e compatíveis com o espaço, buscando conforto térmico com consumo responsável.',
   },
 ];
 
 export default function TechShowcase() {
   return (
-    <section id="engenharia" className="tech-showcase section bg-dark clip" data-bg="dark" style={{ position: 'relative', zIndex: 2 }}>
+    <section id="servicos" className="tech-showcase section bg-dark clip" data-bg="dark" style={{ position: 'relative', zIndex: 2 }}>
       <div className="tech-track" data-tech-track style={{ position: 'relative', zIndex: 1 }}>
         <div className="sticky-stage tech-stage">
           {/* Header da seção com telemetria — 100% legível e nítido */}
           <div className="container tech-header" style={{ position: 'relative', zIndex: 10 }}>
             <div className="tech-header-grid">
               <div>
-                <div className="l1 text-frost font-mono">[ ENGENHARIA & COMPONENTES ]</div>
+                <div className="l1 text-frost font-mono">[ SERVIÇOS MAXFRIO ]</div>
                 <h2 className="h2 tech-title" style={{ marginTop: '8px' }}>
-                  Anatomia do <span className="text-frost">Frio Extremo</span>
+                  Soluções completas para <span className="text-frost">seu conforto</span>
                 </h2>
               </div>
               <div className="a-right tech-header-meta">
-                <div className="font-mono l1 text-dim">ARQUITETURA DE CLIMATIZAÇÃO</div>
+                <div className="font-mono l1 text-dim">RESIDENCIAL · COMERCIAL · INDUSTRIAL</div>
                 <div className="p7 text-frost" style={{ marginTop: '4px' }}>
-                  Role para navegar horizontalmente pelos componentes
+                  Role para conhecer todos os serviços
                 </div>
               </div>
             </div>

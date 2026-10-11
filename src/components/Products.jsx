@@ -1,55 +1,55 @@
 import BlueprintSvg from './BlueprintSvg.jsx';
 
 const SPECS = [
-  ['Capacidade', '24.000 BTU/h'],
-  ['Área recomendada', 'até 40 m²'],
-  ['Eficiência', 'SEER 6,1 — classe A'],
-  ['Nível de ruído', '19 dB'],
-  ['Conexão', 'Wi-Fi nativo'],
-  ['Refrigerante', 'R-32 ecológico'],
+  ['Atendimento', 'todas as marcas'],
+  ['Tecnologias', 'convencional e inverter'],
+  ['Aplicação', 'residencial e comercial'],
+  ['Dimensionamento', 'conforme o ambiente'],
+  ['Instalação', 'linha frigorígena em cobre'],
+  ['Pós-serviço', 'orientação de uso'],
 ];
 
 const MINI = [
-  ['Instalação', 'até 24h'],
-  ['Garantia', '5 anos'],
-  ['Manutenção 1º ano', 'inclusa'],
+  ['Visita técnica', 'quando necessária'],
+  ['Garantia do serviço', '12 meses'],
+  ['Orçamento', 'antes da execução'],
 ];
 
 const MODELS = [
   {
-    img: '/assets/ac-hero.svg',
-    alt: 'Unidade hi-wall inverter MaxFrio Arctic',
-    tag: 'Hi-Wall Inverter',
-    name: 'Arctic 9–24k',
-    desc: 'A parede virou brisa: compacta, silenciosa e invisível na conta de luz.',
+    img: '/assets/produto-split-hiwall-v2.jpg',
+    alt: 'Ar-condicionado split hi-wall branco',
+    tag: 'Residencial e comercial',
+    name: 'Split Hi-Wall',
+    desc: 'Solução versátil para quartos, salas, escritórios e pequenos comércios.',
     specs: [
-      ['BTU', '9.000 — 24.000'],
-      ['Área', 'até 35 m²'],
-      ['Ruído', '19 dB'],
+      ['Tipo', 'convencional ou inverter'],
+      ['Capacidade', 'definida por cálculo'],
+      ['Serviços', 'instalação e manutenção'],
     ],
   },
   {
-    img: '/assets/ac-cassette.svg',
-    alt: 'Cassete de teto quatro vias MaxFrio',
-    tag: 'Cassete 4 Vias',
-    name: 'Ceil 24–48k',
-    desc: 'Clima uniforme em 360°, embutido no forro — perfeito para lojas e escritórios.',
+    img: '/assets/produto-cassete-v2.jpg',
+    alt: 'Ar-condicionado cassete de quatro vias branco',
+    tag: 'Ambientes comerciais',
+    name: 'Cassete 4 Vias',
+    desc: 'Distribuição de ar pelo ambiente com instalação integrada ao forro.',
     specs: [
-      ['BTU', '24.000 — 48.000'],
-      ['Área', 'até 70 m²'],
-      ['Ruído', '24 dB'],
+      ['Aplicação', 'lojas, clínicas e escritórios'],
+      ['Capacidade', 'definida por cálculo'],
+      ['Serviços', 'instalação e manutenção'],
     ],
   },
   {
-    img: '/assets/ac-pisoteto.svg',
-    alt: 'Console piso-teto MaxFrio',
-    tag: 'Piso-Teto',
-    name: 'Console PT 28–60k',
-    desc: 'Potência industrial com acabamento fino para halls, restaurantes e clínicas.',
+    img: '/assets/produto-pisoteto-v2.jpg',
+    alt: 'Ar-condicionado piso-teto branco',
+    tag: 'Grandes ambientes',
+    name: 'Piso-Teto',
+    desc: 'Alternativa robusta para salões, restaurantes, igrejas e espaços amplos.',
     specs: [
-      ['BTU', '28.000 — 60.000'],
-      ['Área', 'até 90 m²'],
-      ['Ruído', '27 dB'],
+      ['Aplicação', 'médios e grandes espaços'],
+      ['Capacidade', 'definida por cálculo'],
+      ['Serviços', 'instalação e manutenção'],
     ],
   },
 ];
@@ -69,33 +69,32 @@ export default function Products() {
                 <div className="u-96" />
                 <div className="prod-title">
                   <h2 className="h1" data-reveal="chars" data-prevent-flicker="true">
-                    Frio que
+                    Equipamento
                   </h2>
                   <h2 className="h1 a-right" data-reveal="chars" data-prevent-flicker="true">
-                    você sente.
+                    certo.
                   </h2>
                 </div>
                 <div className="prod-hero-bot">
                   <div className="grid">
                     <div className="g-col-6">
                       <div className="l1 text-dim" data-reveal="children" data-prevent-flicker="true">
-                        Equipamentos
+                        Tipos de aparelho
                       </div>
                       <div className="u-24" />
                       <h3 className="p5" data-reveal="lines" data-prevent-flicker="true">
-                        Conforto sem
-                        <br />
-                        pontos quentes
+                        Uma solução para
+                        <br />cada ambiente
                       </h3>
                     </div>
                     <div className="g-col-6 a-right">
                       <div className="l1" data-reveal="children" data-prevent-flicker="true">
-                        MaxFrio Arctic
+                        Atendimento especializado
                       </div>
                       <div className="u-12" />
                       <p className="p7 a-right" style={{ maxWidth: '44ch', marginLeft: 'auto' }}>
-                        Compressor inverter dual, distribuição 4D e sensor de presença: a Arctic
-                        alcança a temperatura ideal 40% mais rápido e mantém variação de ±0,5°.
+                        Instalamos e realizamos manutenção nos principais tipos de ar-condicionado,
+                        respeitando as especificações de cada fabricante.
                       </p>
                     </div>
                   </div>
@@ -114,7 +113,7 @@ export default function Products() {
                     <div className="u-12" />
                     <div className="l1 text-dim">Unidade Interna</div>
                     <div className="h3" style={{ marginTop: '8px', color: 'var(--navy-900)' }}>
-                      Arctic Dual 24k
+                      Instalação de Split
                     </div>
                     <div className="spec-list">
                       {SPECS.map(([k, v]) => (
@@ -133,12 +132,11 @@ export default function Products() {
                   <div className="prod-spec-card">
                     <div className="line-h" />
                     <div className="u-12" />
-                    <h3 className="p5 prod-right-title">Engenharia do conforto</h3>
+                    <h3 className="p5 prod-right-title">Instalação bem planejada</h3>
                     <div className="u-12" />
                     <p className="p7">
-                      Cada projeto nasce de um cálculo térmico real — não de palpite. Medimos o
-                      ambiente, o sol que bate e o fluxo de pessoas para dimensionar a máquina
-                      certa, na potência certa, no lugar certo.
+                      Avaliamos as características do ambiente para orientar a capacidade adequada,
+                      o melhor ponto de instalação e os materiais necessários para executar o serviço.
                     </p>
                     <div className="u-24" />
                     <div className="line-h" />
@@ -157,7 +155,7 @@ export default function Products() {
 
           {/* a unidade: encolhe e doca suavemente conforme o scroll */}
           <div className="prod-unit" data-prod-unit>
-            <img src="/assets/ac-hero.svg" alt="Unidade Arctic 24000 em destaque" />
+            <img src="/assets/ac-hero.svg" alt="Ilustração de uma unidade interna split hi-wall" />
           </div>
         </div>
       </div>
@@ -173,10 +171,10 @@ export default function Products() {
           <div className="u-24" />
           <div className="grid">
             <div className="g-col-8">
-              <h3 className="h3">Um para cada ambiente</h3>
+              <h3 className="h3">Um modelo para cada ambiente</h3>
             </div>
             <div className="g-col-4 a-right" style={{ alignSelf: 'end' }}>
-              <p className="p7">Do studio de 20 m² ao galpão inteiro.</p>
+              <p className="p7">Da residência ao ambiente comercial ou industrial.</p>
             </div>
           </div>
           <div className="u-60" />

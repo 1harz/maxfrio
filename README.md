@@ -1,6 +1,7 @@
-# MaxFrio — Climatização de Alta Performance
+# MaxFrio — Ar-Condicionado em Brasília
 
-Site institucional de uma loja de ar-condicionado, construído do zero com a mesma
+Site institucional da MaxFrio Ar-Condicionado, empresa de Brasília com mais de 20 anos
+de experiência em instalação, manutenção, higienização e reparos. Construído com a mesma
 linguagem de animação dos grandes sites editoriais: smooth scroll, zoom scrub,
 reveals com blur e transições coreografadas por scroll — **sem WebGL e sem
 modelos 3D**, apenas SVG artesanal + canvas 2D (leve em qualquer máquina).

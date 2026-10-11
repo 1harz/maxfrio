@@ -49,7 +49,7 @@ export default function BlueprintSvg() {
         <text x="560" y="46" textAnchor="middle" fontWeight="700">912 mm</text>
         <text x="1160" y="266" textAnchor="middle" transform="rotate(90 1160 266)" fontWeight="700">320 mm</text>
         <text x="38" y="266" textAnchor="middle" transform="rotate(-90 38 266)" fontWeight="700">282</text>
-        <text x="560" y="590" textAnchor="middle" opacity=".8" letterSpacing="4">UNIDADE INTERNA — ARTIC 24 · ESCALA 1:10</text>
+        <text x="560" y="590" textAnchor="middle" opacity=".8" letterSpacing="4">UNIDADE INTERNA SPLIT · REFERÊNCIA TÉCNICA</text>
       </g>
       <g fontFamily="Arial, Helvetica, sans-serif" fontSize="16" letterSpacing="2" fill="#4FA8DC">
         <text x="180" y="552">FLUXO 8,4 m³/min</text>

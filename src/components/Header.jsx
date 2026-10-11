@@ -13,13 +13,13 @@ export default function Header() {
           </a>
 
           <div className="header_side">
-            <a href="tel:+551140002020" className="link header_phone" data-hover="link">
+            <a href="tel:+556132736005" className="link header_phone" data-hover="link">
               <span className="link_label">
                 <span className="l1" data-hover-text>
-                  +55 11 4000-2020
+                  (61) 3273-6005
                 </span>
                 <span className="l1 is-2" data-hover-text aria-hidden="true">
-                  +55 11 4000-2020
+                  (61) 3273-6005
                 </span>
               </span>
             </a>
@@ -34,3 +34,4 @@ export default function Header() {
     </header>
   );
 }
+

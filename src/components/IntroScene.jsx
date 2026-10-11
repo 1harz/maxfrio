@@ -13,11 +13,11 @@ const FONT_SEMI = '/fonts/EncodeSansExpanded-600.ttf';
 
 /* 5 Frases oficiais MaxFrio perfeitamente distribuídas a cada 72° nos 360° */
 const PHRASES = [
-  { label: '22° NA MEDIDA', angle: 0, y: -0.16, size: 0.056, bold: true, color: '#f2fafe' },
-  { label: 'INSTALAÇÃO LIMPA', angle: 72, y: 0.16, size: 0.048, bold: false, color: '#7cc8f0' },
-  { label: 'MANUTENÇÃO PREVENTIVA', angle: 144, y: -0.16, size: 0.044, bold: false, color: '#a8ddf9' },
-  { label: 'O AR QUE VOCÊ SENTE', angle: 216, y: 0.16, size: 0.048, bold: false, color: '#85b8dd' },
-  { label: '40° LÁ FORA', angle: 288, y: 0.16, size: 0.054, bold: true, color: '#a8ddf9' },
+  { label: 'INSTALAÇÃO', angle: 0, y: -0.16, size: 0.056, bold: true, color: '#f2fafe' },
+  { label: 'MANUTENÇÃO', angle: 72, y: 0.16, size: 0.052, bold: false, color: '#7cc8f0' },
+  { label: 'HIGIENIZAÇÃO', angle: 144, y: -0.16, size: 0.048, bold: false, color: '#a8ddf9' },
+  { label: 'CONSERTO E REPARO', angle: 216, y: 0.16, size: 0.044, bold: false, color: '#85b8dd' },
+  { label: 'BRASÍLIA E ENTORNO', angle: 288, y: 0.16, size: 0.042, bold: true, color: '#a8ddf9' },
 ];
 
 function useIsMobile(breakpoint = 768) {
@@ -282,3 +282,4 @@ export default function IntroScene() {
 
 useGLTF.preload('/assets/ShirtScrolling.glb');
 useGLTF.preload('/assets/air.glb');
+

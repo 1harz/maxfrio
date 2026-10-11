@@ -175,14 +175,14 @@ export default function RemoteControl() {
       <div className="container remote-layout">
         {/* Left: copy */}
         <div className="remote-copy" data-remote-copy>
-          <div className="l1 font-mono text-frost">[ INTERFACE DE CONTROLE // MAXCONTROL ]</div>
+          <div className="l1 font-mono text-frost">[ CONTROLE DE TEMPERATURA ]</div>
           <h2 className="h3 remote-copy__title">
-            Ative o Clima<br />
-            <span className="text-frost">na Palma da Mão</span>
+            Ajuste o conforto<br />
+            <span className="text-frost">do seu ambiente</span>
           </h2>
           <p className="p7 text-dim" style={{ maxWidth: '44ch' }}>
-            Experimente a resposta instantânea do compressor Dual Inverter.
-            Aponte o controle para a evaporadora e pressione Ligar.
+            Ajuste a temperatura e visualize como pequenos cuidados de uso ajudam a manter
+            o conforto do ambiente. Para falhas ou baixo rendimento, conte com avaliação técnica.
           </p>
           <div className="remote-status-badge font-mono" style={{ marginTop: '24px' }}>
             <span className={`status-indicator ${climate.isOn ? 'is-online' : 'is-standby'}`} />
@@ -209,7 +209,7 @@ export default function RemoteControl() {
                 <span key={i} className="evap-flow-line" style={{ '--li': i }} />
               ))}
             </div>
-            <div className="evap-label font-mono">ARCTIC DUAL · 24K</div>
+            <div className="evap-label font-mono">CLIMATIZAÇÃO · MAXFRIO</div>
           </div>
 
           {/* 3-D Remote control body */}

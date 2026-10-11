@@ -28,7 +28,7 @@ export default function QuotePopup() {
               <label className="l1" htmlFor="q-zap">
                 WhatsApp
               </label>
-              <input id="q-zap" name="whatsapp" type="tel" placeholder="(11) 90000-0000" required />
+              <input id="q-zap" name="whatsapp" type="tel" placeholder="(61) 90000-0000" required />
             </div>
             <div className="field">
               <label className="l1" htmlFor="q-email">
@@ -55,10 +55,7 @@ export default function QuotePopup() {
             </div>
           </div>
 
-          <label className="form-legal l1" htmlFor="q-legal">
-            <input id="q-legal" type="checkbox" required />
-            Ao enviar, você concorda com nossa política de privacidade.
-          </label>
+          <p className="form-legal l1">Ao enviar, sua solicitação será aberta diretamente no WhatsApp da MaxFrio.</p>
 
           <div className="u-24" />
           <CtaButton data-form-btn>Enviar pedido</CtaButton>
@@ -75,7 +72,7 @@ export default function QuotePopup() {
           <div className="l1 text-frost">Pedido enviado</div>
           <h3 className="h3">Obrigado!</h3>
           <p className="p7" style={{ maxWidth: '38ch' }}>
-            Nossa equipe retorna em até 2h úteis com a melhor proposta de frio da cidade.
+            Sua solicitação foi preparada no WhatsApp. Envie a mensagem para iniciar o atendimento.
           </p>
         </div>
       </div>

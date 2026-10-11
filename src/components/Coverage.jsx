@@ -1,36 +1,31 @@
 import { PlaneIcon, HoverLink, CtaButton, Barcode, SnowIcon } from './bits.jsx';
 
 const BAIRROS = [
-  'Jardins',
-  'Itaim Bibi',
-  'Pinheiros',
-  'Vila Mariana',
-  'Moema',
-  'Vila Madalena',
-  'Brooklin',
-  'Morumbi',
-  'Perdizes',
-  'Pacaembu',
-  'Higienópolis',
-  'Santana',
-  'Tatuapé',
-  'Barra Funda',
-  'Butantã',
-  'Alphaville',
-  'Granja Viana',
-  'Santo André',
-  'São Bernardo',
-  'São Caetano',
-  'Santos',
-  'Guarujá',
-  'Campinas',
-  'Jundiaí',
-  'Sorocaba',
-  'Barueri',
-  'Osasco',
-  'Taboão da Serra',
-  'Santo Amaro',
-  'Água Branca',
+  'Brasília',
+  'Asa Sul',
+  'Asa Norte',
+  'Lago Sul',
+  'Lago Norte',
+  'Sudoeste',
+  'Noroeste',
+  'Águas Claras',
+  'Guará',
+  'Taguatinga',
+  'Vicente Pires',
+  'Jardim Botânico',
+  'Park Way',
+  'Núcleo Bandeirante',
+  'Cruzeiro',
+  'Sobradinho',
+  'Planaltina',
+  'Ceilândia',
+  'Samambaia',
+  'Gama',
+  'Santa Maria',
+  'São Sebastião',
+  'Riacho Fundo',
+  'Recanto das Emas',
+  'Entorno do DF',
 ];
 
 /* wordmark MAXFRIO com tipografia 3D geométrica minimalista */
@@ -120,9 +115,8 @@ export default function Coverage() {
               <div className="grid" style={{ alignItems: 'center' }}>
                 <div className="g-col-4">
                   <h2 className="p5" data-reveal="lines" data-prevent-flicker="true">
-                    Atendemos onde
-                    <br />
-                    o calor chegar
+                    Atendimento em
+                    <br />Brasília e Entorno
                   </h2>
                 </div>
                 <div className="g-col-2 cov-cities-diagram" aria-hidden="true">
@@ -161,15 +155,15 @@ export default function Coverage() {
       <div className="container cov-factoid">
         <div className="factoid-card" data-reveal="children" data-prevent-flicker="true">
           <div className="factoid-num">
-            12 mil+
+            20+ anos
             <Barcode className="barcode" />
           </div>
           <div className="u-12" />
-          <div className="l1 text-frost">Instalações realizadas com precisão</div>
+          <div className="l1 text-frost">Experiência, honestidade e confiança desde 2002</div>
           <div className="u-36" />
           <p className="p7" style={{ maxWidth: '56ch' }}>
-            Cada projeto segue norma ABNT, termo de garantia e checklist fotográfico — do primeiro
-            orçamento ao pós-venda que continua ano após ano.
+            Uma trajetória dedicada à instalação, manutenção, higienização e reparo de aparelhos de
+            ar-condicionado para clientes residenciais, comerciais e industriais.
           </p>
         </div>
       </div>
@@ -187,12 +181,12 @@ export default function Coverage() {
               <SnowIcon size={40} />
               <div className="u-24" />
               <h2 className="h3 foot-title" data-reveal="lines" data-prevent-flicker="true">
-                Pronto para o verão mais fresco da sua vida?
+                Precisa instalar ou cuidar do seu ar-condicionado?
               </h2>
               <div className="u-24" />
               <p className="p7" style={{ maxWidth: '46ch' }} data-reveal="children" data-prevent-flicker="true">
-                Resposta em até 2h úteis, visita técnica gratuita e orçamento fechado — sem letra
-                miúda.
+                Fale diretamente com nossa equipe para explicar sua necessidade e solicitar um
+                orçamento sem compromisso.
               </p>
             </div>
             <div className="foot-contact-list" data-reveal="children" data-prevent-flicker="true">
@@ -201,14 +195,14 @@ export default function Coverage() {
                 <br />
                 orçamentos
               </h4>
-              <HoverLink href="mailto:contato@maxfrio.com.br" textClass="p6">
-                contato@maxfrio.com.br
+              <HoverLink href="mailto:maxfrio710@gmail.com" textClass="p6">
+                maxfrio710@gmail.com
               </HoverLink>
-              <HoverLink href="tel:+551140002020" textClass="p6">
-                +55 11 4000-2020
+              <HoverLink href="tel:+556132736005" textClass="p6">
+                (61) 3273-6005
               </HoverLink>
-              <HoverLink href="https://wa.me/5511940002020" textClass="p6">
-                WhatsApp +55 11 94000-2020
+              <HoverLink href="https://wa.me/556132736005?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." textClass="p6" target="_blank" rel="noreferrer">
+                WhatsApp (61) 3273-6005
               </HoverLink>
             </div>
           </div>
@@ -217,7 +211,7 @@ export default function Coverage() {
               © <span data-year>2026</span> MaxFrio Climatização. Todos os direitos reservados.
             </div>
             <HoverLink href="#" textClass="l1">
-              Política de privacidade
+              Brasília, DF e Entorno
             </HoverLink>
           </div>
         </div>
@@ -225,3 +219,4 @@ export default function Coverage() {
     </section>
   );
 }
+

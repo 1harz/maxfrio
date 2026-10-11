@@ -7,6 +7,8 @@ import Intro from './components/Intro.jsx';
 import TechShowcase from './components/TechShowcase.jsx';
 import Products from './components/Products.jsx';
 import Benefits from './components/Benefits.jsx';
+import InstallationTerms from './components/InstallationTerms.jsx';
+import Clients from './components/Clients.jsx';
 import DataStrip from './components/DataStrip.jsx';
 import Coverage from './components/Coverage.jsx';
 import QuotePopup from './components/QuotePopup.jsx';
@@ -29,6 +31,8 @@ export default function App() {
         <TechShowcase />
         <Products />
         <Benefits />
+        <InstallationTerms />
+        <Clients />
         <DataStrip />
         <Coverage />
       </main>

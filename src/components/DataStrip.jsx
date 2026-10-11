@@ -6,19 +6,19 @@ export default function DataStrip() {
         <div className="line-h" />
         <div className="grid" data-reveal="children" data-prevent-flicker="true">
           <div className="g-col-4 data-item-v">
-            <div className="l1 text-dim">Bairros atendidos</div>
+            <div className="l1 text-dim">Experiência</div>
             <div className="h3" style={{ marginTop: '10px' }}>
-              96+
+              Mais de 20 anos
             </div>
           </div>
           <div className="g-col-4 data-item-v">
             <div className="l1 text-dim">Base</div>
             <div className="h3" style={{ marginTop: '10px' }}>
-              São Paulo, BR
+              Brasília, DF
             </div>
           </div>
           <div className="g-col-4 data-item-v a-right">
-            <div className="l1 text-dim">Hora local</div>
+            <div className="l1 text-dim">Atendimento local</div>
             <div className="clock" data-clock style={{ marginTop: '10px' }}>
               --:--
             </div>

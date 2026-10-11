@@ -36,7 +36,7 @@ export default function Preloader() {
         </div>
 
         <div className="pre-sub preloader_sub font-mono">
-          Engenharia Térmica de Alta Performance
+          Conforto, experiência e confiança desde 2002
         </div>
       </div>
 

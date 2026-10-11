@@ -1,10 +1,11 @@
 const MENU = [
   { n: '01', label: 'Sobre', href: '#sobre' },
-  { n: '02', label: 'Engenharia', href: '#engenharia' },
+  { n: '02', label: 'Serviços', href: '#servicos' },
   { n: '03', label: 'Equipamentos', href: '#equipamentos' },
-  { n: '04', label: 'Vantagens', href: '#vantagens' },
-  { n: '05', label: 'Cobertura', href: '#cobertura' },
-  { n: '06', label: 'Contato', href: '#contato' },
+  { n: '04', label: 'Diferenciais', href: '#vantagens' },
+  { n: '05', label: 'Instalação', href: '#termos-instalacao' },
+  { n: '06', label: 'Clientes', href: '#clientes' },
+  { n: '07', label: 'Contato', href: '#contato' },
 ];
 
 
@@ -21,8 +22,8 @@ export default function MenuPopup() {
         ))}
       </div>
       <div className="menu_foot">
-        <span className="l1">contato@maxfrio.com.br</span>
-        <span className="l1">+55 11 4000-2020</span>
+        <span className="l1">maxfrio710@gmail.com</span>
+        <span className="l1">(61) 3273-6005</span>
       </div>
     </div>
   );

@@ -25,8 +25,8 @@ export default function Hero() {
         {/* ── 1. FUNDO CONTÍNUO: O QUARTO CLIMATIZADO (visível pela janela e após o zoom) ── */}
         <div className="hero-w_bg_back" data-hero-room>
           <img
-            src="/assets/hero-interior-room.jpg"
-            alt="Quarto Climatizado MaxFrio"
+            src="/assets/maxfrio-hero-brasilia-v2.jpg"
+            alt="Sala climatizada em Brasília com ar-condicionado split instalado pela MaxFrio"
             className="hero-room-img"
             loading="eager"
           />
@@ -133,22 +133,22 @@ export default function Hero() {
             {/* Grid Superior: Textos à esquerda e direita da janela */}
             <div className="hero-s_top_grid">
               <div className="hero-s_title-l" data-hero-left>
-                <div className="hero-eyebrow">MAXFRIO // CLIMATIZAÇÃO</div>
+                <div className="hero-eyebrow">MAXFRIO AR-CONDICIONADO</div>
                 <h1 className="hero-h1-main">
-                  SEU<br />REFÚGIO
+                  SERVIÇOS<br />COMPLETOS
                 </h1>
                 <p className="hero-sub-text">
-                  Lá fora, 40° à sombra.
+                  Instalação, manutenção, higienização e reparos.
                 </p>
               </div>
 
               <div className="hero-s_title-r" data-hero-right>
-                <div className="hero-eyebrow a-right">DESDE 2009</div>
+                <div className="hero-eyebrow a-right">BRASÍLIA E ENTORNO</div>
                 <h2 className="hero-h1-main a-right">
-                  CONTRA O<br />CALOR.
+                  MAIS DE<br />20 ANOS
                 </h2>
                 <p className="hero-sub-text a-right">
-                  Aqui dentro, 22° na medida.
+                  Equipe técnica capacitada.
                 </p>
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function Hero() {
             {/* Grid Inferior: CTAs */}
             <div className="hero-s_bot" data-hero-bot>
               <div className="hero-s_bot_left">
-                <a href="#orcamento" className="hero-cta-btn" pop-up-open="orcamento">
+                <a href="#contato" className="hero-cta-btn" data-pop-open="quote">
                   <span>Solicitar Orçamento</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M5 12h14M12 5l7 7-7 7" />
@@ -166,8 +166,8 @@ export default function Hero() {
 
               <div className="hero-s_bot_right">
                 <div className="hero-pill-info font-mono">
-                  <span className="pill-val">12 MIL+</span>
-                  <span className="pill-lbl text-dim">INSTALAÇÕES REALIZADAS</span>
+                  <span className="pill-val">20+ ANOS</span>
+                  <span className="pill-lbl text-dim">DE EXPERIÊNCIA</span>
                 </div>
               </div>
             </div>
@@ -178,34 +178,34 @@ export default function Hero() {
         <div className="hero-room-content" data-hero-room-content>
           <div className="container">
             <div className="hero-room-minimal">
-              <div className="l1 font-mono text-frost room-min-tag">[ CONFORTO TÉRMICO // MAXFRIO ]</div>
+              <div className="l1 font-mono text-frost room-min-tag">[ MAXFRIO AR-CONDICIONADO ]</div>
               <h2 className="h2 room-min-title">
-                Lá fora, 40° à sombra.<br />
-                <span className="text-frost">Aqui dentro, 22° na medida.</span>
+                Climatização para sua casa ou empresa.<br />
+                <span className="text-frost">Instalação, manutenção e higienização.</span>
               </h2>
               <p className="p6 room-min-desc">
-                Instalação limpa em até 24h, manutenção preventiva de alta precisão e o ar que você sente na primeira respirada.
+                Atendimento para as principais marcas e modelos, com profissionais capacitados e 12 meses de garantia no serviço realizado.
               </p>
 
               <div className="room-min-stats font-mono">
                 <div className="min-stat-item">
-                  <span className="min-stat-num">2009</span>
+                  <span className="min-stat-num">2002</span>
                   <span className="min-stat-lbl text-dim">DESDE</span>
                 </div>
                 <div className="min-stat-divider" />
                 <div className="min-stat-item">
-                  <span className="min-stat-num">12 MIL+</span>
-                  <span className="min-stat-lbl text-dim">INSTALAÇÕES</span>
+                  <span className="min-stat-num">20+ ANOS</span>
+                  <span className="min-stat-lbl text-dim">DE MERCADO</span>
                 </div>
                 <div className="min-stat-divider" />
                 <div className="min-stat-item">
-                  <span className="min-stat-num">4,9 / 5</span>
-                  <span className="min-stat-lbl text-dim">AVALIAÇÃO</span>
+                  <span className="min-stat-num">12 MESES</span>
+                  <span className="min-stat-lbl text-dim">GARANTIA DO SERVIÇO</span>
                 </div>
               </div>
 
               <div className="room-min-actions">
-                <a href="#orcamento" className="hero-cta-btn" pop-up-open="orcamento">
+                <a href="#contato" className="hero-cta-btn" data-pop-open="quote">
                   <span>Solicitar Orçamento</span>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M5 12h14M12 5l7 7-7 7" />
@@ -220,7 +220,7 @@ export default function Hero() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                     <path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10" />
                   </svg>
-                  <span>{climate.isOn ? 'MaxFrio Ligado // 22°C' : 'Ligar Ar Condicionado'}</span>
+                  <span>{climate.isOn ? `Ar-condicionado ligado // ${climate.temp}°C` : 'Ligar ar-condicionado'}</span>
                 </button>
               </div>
             </div>
@@ -231,7 +231,7 @@ export default function Hero() {
             <div className="container">
               <div className="line-h on-color" style={{ opacity: 0.2 }} />
               <div className="hero-next-cue_meta font-mono">
-                <span className="l1 text-frost">[ INTERFACE DE CONTROLE // MAXCONTROL ]</span>
+                <span className="l1 text-frost">[ SERVIÇOS MAXFRIO ]</span>
                 <span className="p7 text-dim">Próxima Seção ↓</span>
               </div>
             </div>
@@ -241,3 +241,4 @@ export default function Hero() {
     </section>
   );
 }
+
