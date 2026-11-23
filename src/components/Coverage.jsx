@@ -1,4 +1,5 @@
 import { PlaneIcon, HoverLink, CtaButton, Barcode, SnowIcon } from './bits.jsx';
+import { openCookiePreferences } from '../js/cookies.js';
 
 const BAIRROS = [
   'Brasília',
@@ -104,7 +105,7 @@ function Wordmark() {
   );
 }
 
-export default function Coverage() {
+export default function Coverage({ onNavigateLegal }) {
   return (
     <section id="cobertura" className="cov bg-dark section clip" data-bg="dark">
       <div className="cov-track" data-cov-track>
@@ -227,6 +228,23 @@ export default function Coverage() {
           <div className="foot-legal">
             <div className="l1">
               © <span data-year>2026</span> MaxFrio Ar-Condicionado. Todos os direitos reservados.
+            </div>
+            <div className="foot-legal-links l1">
+              <a
+                href="#/cookies"
+                onClick={onNavigateLegal ? (event) => { event.preventDefault(); onNavigateLegal('cookies'); } : undefined}
+              >
+                Política de cookies
+              </a>
+              <a
+                href="#/termos"
+                onClick={onNavigateLegal ? (event) => { event.preventDefault(); onNavigateLegal('terms'); } : undefined}
+              >
+                Termos de uso
+              </a>
+              <button type="button" onClick={openCookiePreferences}>
+                Preferências de cookies
+              </button>
             </div>
             <HoverLink href="#" textClass="l1">
               Brasília, DF e Entorno

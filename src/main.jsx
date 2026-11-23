@@ -8,6 +8,7 @@ import './styles/hero.css';
 import './styles/benefits.css';
 import './styles/parts.css';
 import './styles/responsive.css';
+import './styles/legal.css';
 
 // Suprime warning de depreciação do THREE.Clock chamado internamente pelo @react-three/fiber
 const originalWarn = console.warn;
